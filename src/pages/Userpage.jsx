@@ -1,7 +1,12 @@
 import React from "react";
 
-const Userpage = () => {
+const UserPage = () => {
 
+    return (
+        <div>
+            <h1>Brukerside</h1>
+        </div>
+    );
 }
 
-export default Userpage;
+export default UserPage;
