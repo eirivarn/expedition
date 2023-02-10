@@ -1,9 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import { FirebaseApp } from '@firebase/app';
+import { useRef } from 'react';
+import handlesubmit from './hooks/handlesubmit';
 
 function App() {
+  const dataRef = useRef();
+
+  const submithandler = (e) => {
+    e.preventdefault();
+    handlesubmit(dataRef.current.value);
+    dataRef.current.value = "";
+  }
+
   return (
     <div className="App">
+      <form onSubmit={submithandler}>
+        <input type='text' ref={dataRef} />
+        <button type="submit">Save</button>
+      </form>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
