@@ -88,6 +88,8 @@ const DemoPage = () => {
             <div>
                 <h1>Demo page</h1>
                 <button onClick={getAllFirebaseUsers}>Click to load all users</button>
+                <br/>
+                <a href="https://console.firebase.google.com/u/0/project/testprosjekt-998ef/overview">Link to the firebase UI</a>
                 <p>Use the fields below to add a new user</p>
             </div>
             <div>
