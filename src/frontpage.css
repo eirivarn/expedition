@@ -1,0 +1,32 @@
+#body {
+    margin-left: 170px;
+    margin-right: 170px;
+}
+
+img {
+    width: 245px;
+    height: 245px;
+        
+    border-radius: 20px;
+    
+}
+
+.front_grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header2{
+    text-align: left;
+    color: #658864;
+    font-weight: bolder;
+    font-size: 27px;}
+
+.reiseNavn{
+    text-align: left;
+    margin-top: 0px;
+    margin-bottom: 40px;
+    color: #658864;
+    font-size: 20px;
+}
