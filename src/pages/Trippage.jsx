@@ -1,7 +1,12 @@
 import React from "react";
 
-const Trippage = () => {
+const TripPage = () => {
 
+    return (
+        <div>
+            <h1>Tur-siden</h1>
+        </div>
+    ); 
 }
 
-export default Trippage;
+export default TripPage;

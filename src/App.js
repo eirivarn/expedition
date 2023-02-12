@@ -1,16 +1,24 @@
-import './App.css';
 import React from 'react';
-import { BrowserRouter  as Router, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import FrontPage from './pages/Frontpage';
+import UserPage from './pages/Userpage';
+import TripPage from './pages/Trippage';
+import ErrorPage from './pages/Errorpage';
+import DemoPage from './pages/DemoPage';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route >
-
-        </Route>
-      </Routes>
-    </Router>
+    <BrowserRouter>
+      <div className='main-wrapper'>
+        <Routes>
+          <Route path="/" element={<FrontPage />} />
+          <Route path="/trip" element={<TripPage />} />
+          <Route path="/user" element={<UserPage />} />
+          <Route path="*" element={<ErrorPage />} />
+          <Route path="/demopage" element={<DemoPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
