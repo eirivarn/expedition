@@ -6,6 +6,7 @@ const Frontpage = () => {
     return (
         <div id="body">
             <h1>Frontpage</h1>
+            <button className="newRoute" type="button"> Del din egen reise! </button>
             <h2 className="header2">Reiseruter</h2>
             <div className="front_grid">
                 < Trips />
