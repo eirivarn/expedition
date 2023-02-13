@@ -7,9 +7,9 @@ import image from '../img/test.jpg';
 export class Trips extends React.Component {
     render() {
       return (
-        <div>
+        <div className='trips'>
           <a href="">
-            <img src={image}></img>
+            <img className="tripImage" src={image}></img>
           </a>
           
           <h2 className='reiseNavn'>Reisenavn</h2>
