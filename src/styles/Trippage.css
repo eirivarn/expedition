@@ -1,0 +1,145 @@
+.tripPage {
+    position: relative;
+    width: 1525px;
+    /*width: 1440px;*/
+    height: 2330px;
+    background: #F9F9F9;
+}
+
+.infoTrip {
+    position: absolute;
+    width: 1140px;
+    height: 564px;
+    left: 150px;
+    top: 198px;
+    /*overflow-y: scroll;*/
+}
+
+.title {
+    position: absolute;
+    height: 83px;
+    left: 414px;
+    right: 414px;
+    top: 0px;
+    color: #658864;
+}
+
+.author {
+    position: absolute;
+    width: 127px;
+    height: 23px;
+    left: 569px;
+    top: 119px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+}
+
+.rating {
+    position: absolute;
+    width: 160px;
+    height: 30px;
+    left: 566px;
+    top: 169px;
+}
+
+.image {
+    position: absolute;
+    width: 507px;
+    height: 436px;
+    left: 0px;
+    top: 115px;
+    /*background: url(.jpg), #D9D9D9; */
+    border-radius: 10px;
+}
+
+.description {
+    position: absolute;
+    width: 572px;
+    height: 303px;
+    left: 566px;
+    top: 248px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #000000;
+}
+
+.commentsTripPage {
+    position: absolute;
+    width: 1167px;
+    height: 618px;
+    left: 138px;
+    top: 979px;
+}
+
+.commentSymbol {
+    position: absolute;
+    width: 41px;
+    height: 41px;
+    left: 18px;
+    top: 32px;
+    color: #658864;
+}
+
+.commentHeader {
+    position: absolute;
+    width: 155px;
+    height: 45px;
+    left: 59px;
+    top: 32px;
+    color: #658864;
+}
+
+.nameText {
+    position: absolute;
+    width: 221px;
+    height: 19px;
+    left: 12px;
+    top: 112px;
+    color: #658864;
+}
+
+.nameInput {
+    position: absolute;
+    width: 1140px;
+    height: 61px;
+    left: 12px;
+    top: 146px;
+}
+
+.commentText {
+    position: absolute;
+    width: 221px;
+    height: 19px;
+    left: 12px;
+    top: 242px;
+    color: #658864;
+}
+
+.commentInput {
+    box-sizing: border-box;
+    position: absolute;
+    width: 1140px;
+    height: 213px;
+    left: 12px;
+    top: 267px;
+    border: 1px solid #658864;
+}
+
+.publishButton {
+    position: absolute;
+    width: 369px;
+    height: 74px;
+    left: 394px;
+    top: 528px;
+    color: #F9F9F9;
+    background: #658864;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.4);
+    border-radius: 40px;
+}
