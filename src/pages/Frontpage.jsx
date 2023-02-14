@@ -3,7 +3,7 @@ import React from "react";
 import {Trips} from '../components/trips.js';
 import {Header} from '../components/header.js';
 
-const Frontpage = () => {
+const FrontPage = () => {
     return (
         <div id="body">
             < Header />
@@ -33,4 +33,4 @@ const Frontpage = () => {
 
 
 
-export default Frontpage;
+export default FrontPage;

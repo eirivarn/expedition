@@ -1,21 +1,24 @@
-import './App.css';
 import React from 'react';
-
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-//import { Trips } from './components/trips';
-import Frontpage from './pages/Frontpage';
-
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import FrontPage from './pages/Frontpage';
+import UserPage from './pages/Userpage';
+import TripPage from './pages/Trippage';
+import ErrorPage from './pages/Errorpage';
+import DemoPage from './pages/DemoPage';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
+    <BrowserRouter>
+      <div className='main-wrapper'>
         <Routes>
-          <Route path="/" element={< Frontpage />} />
+          <Route path="/" element={<FrontPage />} />
+          <Route path="/trip" element={<TripPage />} />
+          <Route path="/user" element={<UserPage />} />
+          <Route path="*" element={<ErrorPage />} />
+          <Route path="/demopage" element={<DemoPage />} />
         </Routes>
-      </Router>
-      
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
