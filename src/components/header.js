@@ -7,7 +7,7 @@ import userIcon from '../img/user.png';
 export class Header extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {isLoggedIn: false};
+        this.state = {isLoggedIn: true};
     }
     
     handleLoginClick () {
