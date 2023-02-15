@@ -13,7 +13,7 @@ export class TripContainer extends Component {
         <h3 className="author">Ola Nordmann</h3>
         <text className="rating">PlaceHolder Vurdering</text>
         <img className="image" />
-        <text className="description">Lorem Ipsum</text>
+        <textarea className="description">Lorem Ipsum</textarea>
       </div>
     );
   }
