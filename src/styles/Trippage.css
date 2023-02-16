@@ -39,10 +39,32 @@
 
 .rating {
     position: absolute;
-    width: 160px;
-    height: 30px;
+    width: 250px;
+    height: 40px;
     left: 566px;
-    top: 169px;
+    top: 155px;
+}
+
+button {
+    height: 30px;
+    width: 30px;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    padding: 1%;
+    border: none;
+    box-sizing: content-box;
+}
+
+.ratingOn > span {
+    font-size: 40px;
+    color: #658864;
+    box-sizing: content-box;
+}
+
+.ratingOff > span {
+    font-size: 40px;
+    color: #ccc;
 }
 
 .image {
