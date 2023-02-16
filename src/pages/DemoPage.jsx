@@ -26,7 +26,7 @@ const DemoPage = () => {
     // ville latt Firebase aut-generere ID hadde addDoc() vært lettere
     const createFirebaseUser = async () => {
         const newId = crypto.randomUUID();
-        const docRef = doc(db, "users", newId);
+        const docRef = doc(db, collectionName, newId);
         const newUser = {
             id: newId,
             name: newName,
@@ -100,8 +100,10 @@ const DemoPage = () => {
                     return (
                         <div key={user.id}>
                             {" "}
+                            <h1></h1>
                             <h1>Name: {user.name}</h1>
                             <h1>Age: {user.age}</h1>
+                            <h3>Id: {user.id}</h3>
                             <button onClick={() => { updateFirebaseUser(user.id, parseInt(user.age) + 1) }}>Increment age by 1</button>
                             <input id={user.id + "newAge"} type="number" placeholder="Assign new age"/>
                             <button onClick={() => { assignNewAge(user.id) }}>Sumbit</button>
