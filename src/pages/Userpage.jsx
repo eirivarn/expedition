@@ -10,7 +10,7 @@ const UserPage  = () => {
       <div className="profile-page">
         <ProfileInfo />
         <h2 className="your-trips">Dine reiser</h2>
-          <div className="trips">
+          <div className="user-trips">
               <div className="rec">
               </div>
           </div>

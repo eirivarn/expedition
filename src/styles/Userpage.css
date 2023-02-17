@@ -39,8 +39,7 @@
   background: url("../img/user.png"), #d9d9d9;
 }
 
-/* // Overskriver tripps i frontpage, skal endres senere
-.trips{
+.user-trips{
    position: absolute;
     width: 245px;
     height: 245px;
