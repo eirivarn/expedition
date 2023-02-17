@@ -10,6 +10,8 @@
 }
 
 #userButton {
+    height: 60px;
+    width: 60px;
     border: none;
     background-color: white;
     position: absolute;

@@ -1,7 +1,7 @@
 import React from "react";
 import { UserAuth } from "../Context/AuthContext";
 import "../styles/frontpage.css";
-import userIcon from "../img/user.png";
+//import userIcon from "../img/user.png";
 
 const Account = () => {
   const { logOut, user } = UserAuth();
@@ -28,9 +28,7 @@ const Account = () => {
       >
         Logout
       </button>
-      <button id="userButton">
-        <img src={userIcon} height="50px" width="50px"></img>
-      </button>
+
     </div>
   );
 };

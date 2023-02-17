@@ -1,9 +1,11 @@
 import React from "react";
 import "../styles/header.css";
-import { Link } from "react-router-dom";
 import { UserAuth } from "../Context/AuthContext";
 import logo from "../img/xpedition_logo.png";
 import "../styles/frontpage.css";
+import { NavLink, Link } from 'react-router-dom';
+import userIcon from '../img/user.png';
+
 
 const Header = () => {
   const { user, logOut } = UserAuth();
@@ -18,7 +20,12 @@ const Header = () => {
 
   return (
     <div id="header">
-      <img id="logo" src={logo}></img>
+      <NavLink to="/">
+        <img id="logo" src={logo}></img>
+      </NavLink>
+      <NavLink to="/user">
+        <img id="userButton" src={userIcon}></img>
+      </NavLink>
       {user?.displayName ? (
         <button
           id="login"
