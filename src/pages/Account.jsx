@@ -1,6 +1,7 @@
 import React from 'react';
 import { UserAuth } from '../Context/AuthContext';
 import '../frontpage.css';
+import userIcon from '../img/user.png';
 
 const Account = () => {
   const { logOut, user } = UserAuth();
