@@ -9,7 +9,7 @@ const TripPage = () => {
   return (
     <div className="tripPage">
       <div className="infoTrip">
-        <TripContainer />
+        <TripContainer name={"Togtur på Balkan"} />
         <Rating />
       </div>
       <div className="commentsTripPage">
