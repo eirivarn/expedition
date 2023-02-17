@@ -1,12 +1,10 @@
 import React from "react";
 //import ReactDOM from 'react-dom';
 import {Trips} from '../components/trips.js';
-import {Header} from '../components/header.js';
 
 const FrontPage = () => {
     return (
         <div id="body">
-            < Header />
             <button id="shareTrip" className="button" type="button"> Del din egen reise! </button>
             <div className="flex_images">
                 <h2 className="header2">Reiseruter</h2>
