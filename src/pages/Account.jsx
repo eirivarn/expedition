@@ -22,6 +22,10 @@ const Account = () => {
       <button onClick={handleSignOut} id="logout" className='button' type='button'>
         Logout
       </button>
+      <button id='userButton'> 
+        <img src={userIcon} height='50px' width='50px'></img> 
+      </button>
+
     </div>
   );
 };
