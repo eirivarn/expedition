@@ -1,61 +1,60 @@
 .profile-page {
-    position: relative;
-    width: 1440px;
-    height: 1146px;
-    background: #F9F9F9;
+  position: relative;
+  width: 1440px;
+  height: 1146px;
+  background: #f9f9f9;
 }
 
-.username{
-    position: absolute;
-    left: 42.01%;
-    right: 42.08%;
-    top: 36.52%;
-    bottom: 60.74%;
+.username {
+  position: absolute;
+  left: 42.01%;
+  right: 42.08%;
+  top: 36.52%;
+  bottom: 60.74%;
 
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 30px;
-    color: #658864;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 30px;
+  color: #658864;
 }
 
-.your-trips{
-    position: absolute;
-    width: 155px;
-    height: 45px;
-    left: 150px;
-    top: 760px;
-    color: #658864;;
+.your-trips {
+  position: absolute;
+  width: 155px;
+  height: 45px;
+  left: 150px;
+  top: 760px;
+  color: #658864;
 }
 
-.profile-pic{
-    position: absolute;
-    width: 329px;
-    height: 329px;
-    left: 150px;
-    top: 287px;
-    border-radius: 50%;
-    background: url("../img/user.png"), #D9D9D9;
+.profile-pic {
+  position: absolute;
+  width: 329px;
+  height: 329px;
+  left: 150px;
+  top: 287px;
+  border-radius: 50%;
+  background: url("../img/user.png"), #d9d9d9;
 }
 
+/* // Overskriver tripps i frontpage, skal endres senere
 .trips{
    position: absolute;
     width: 245px;
     height: 245px;
     left: 150px;
     top: 837px;
-
 }
-
-.rec{
-    position: absolute;
-    width: 245px;
-    height: 245px;
-    left: 744px;
-    top: 837px;
-    border-color: #658864;
-
+*/
+.rec {
+  position: absolute;
+  width: 245px;
+  height: 245px;
+  left: 744px;
+  top: 837px;
+  border-color: #658864;
 }
 
 /*
