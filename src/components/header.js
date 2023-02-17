@@ -1,5 +1,5 @@
 import React from 'react';
-import '../frontpage.css';
+import '../header.css';
 import logo from '../img/xpedition_logo.png';
 import userIcon from '../img/user.png';
 

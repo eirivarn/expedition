@@ -3,27 +3,6 @@
     margin-right: 10%;
 }
 
-#header {
-    height: 100px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-}
-
-#logo {
-    height: 86px;
-    width: 170px;
-    position: absolute;
-    left: 10%;
-}
-
-#userButton {
-    border: none;
-    background-color: white;
-    position: absolute;
-    right: 19%;
-    margin-top: 30px;
-}
-
 .button {
     background-color: #658864;
     border-radius: 40px;
@@ -31,24 +10,22 @@
     font-size: 25px;
     border: none;
     box-shadow: 0px 4px 7px rgba(0,0,0,0.4);
+    justify-content: center;  
+    align-items: center;  
 }
-
 
 #shareTrip {
     width: 454px;
     height: 74px;
     margin-top: 30px;
     margin-bottom: 30px;
+    margin-left: 30%;
+    
+    display: flex;
+    flex-direction: row;
+    
 }
 
-#login {
-    width: 109px;
-    height: 51px;
-    font-size: 18px;
-    position: absolute;
-    right: 10%;
-    margin-top: 30px;
-}
 
 .tripImage {
     
@@ -66,8 +43,8 @@
     margin: 0 5px 30px 5px;
 }
 
-.flex_images {
-}
+/*.flex_images {
+}*/
 
 .front_grid {
     width: 100%;
@@ -76,12 +53,6 @@
     justify-content: space-between;
     flex-wrap: wrap;
 }
-
-.header2{
-    text-align: left;
-    color: #658864;
-    font-weight: bolder;
-    font-size: 27px;}
 
 .reiseNavn{
     text-align: left;
