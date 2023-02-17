@@ -1,4 +1,5 @@
 import React from 'react';
+import '../header.css';
 import { Link } from 'react-router-dom';
 import { UserAuth } from '../Context/AuthContext';
 import logo from '../img/xpedition_logo.png';
