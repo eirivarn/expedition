@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { UserAuth } from '../Context/AuthContext';
 import logo from '../img/xpedition_logo.png';
 import '../frontpage.css';
@@ -19,7 +19,9 @@ import '../frontpage.css';
 
         return (
             <div id="header">
+              <NavLink to="/">
                 <img id="logo" src={logo}></img>
+                </NavLink>
                 {user?.displayName ? (
                     <button id="login" className='button' type='button' onClick={handleSignOut}>Logout</button>
                 ) : (
