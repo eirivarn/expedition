@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { UserAuth } from '../Context/AuthContext';
 import logo from '../img/xpedition_logo.png';
 import '../frontpage.css';
+//import userIcon from '../img/user.png';
 
 
     const Header = () => {
