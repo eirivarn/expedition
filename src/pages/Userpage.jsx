@@ -8,9 +8,12 @@ const UserPage  = () => {
 
   return(
       <div className="profile-page">
-        <h1>Profiloversikt</h1>
         <ProfileInfo />
         <h2 className="your-trips">Dine reiser</h2>
+          <div className="trips">
+              <div className="rec">
+              </div>
+          </div>
       </div>// <TripContainer />
   )
 };

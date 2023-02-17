@@ -5,7 +5,7 @@ export function ProfileInfo() {
   return (
     <div className='Porfileinfocontainer'>
      <h2 className="username">Ola Nordmann</h2>
-     <img className="profile-pic" src={require("../img/user.png")}/>
+     <img className="profile-pic" />
     </div>
   );
 }
