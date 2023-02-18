@@ -16,9 +16,9 @@ export function NewTripInfo() {
       </div>
       <h2 className="description"> Beskrivelse </h2>
       <div className="userInputDescription" />
-      <div className="publishTripButon">
+      <button className="publishTripButon">
         <div className="buttonText">Publiser reise</div>
-      </div>
+      </button>
     </div>
   );
 }
