@@ -1,0 +1,151 @@
+.NewTripPage {
+  position: relative;
+  width: 1440px;
+  height: 1243px;
+
+  background: #f9f9f9;
+}
+
+.userInputs {
+  position: absolute;
+  width: 1142px;
+  height: 1073px;
+  left: 148px;
+  top: 264px;
+  overflow-x: scroll;
+}
+
+.title {
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 40px;
+  line-height: 48px;
+  text-align: center;
+  color: #658864;
+}
+
+.nameOfTrip {
+  position: absolute;
+  width: 221px;
+  height: 21px;
+  left: 0px;
+  top: 81px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #658864;
+}
+
+.userInputNameOfTrip {
+  position: absolute;
+  width: 1140px;
+  height: 61px;
+  left: 2px;
+  top: 140px;
+  box-sizing: border-box;
+  border: 1px solid #658864;
+}
+
+.countriesVisited {
+  position: absolute;
+  width: 221px;
+  height: 24px;
+  left: 0px;
+  top: 210px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #658864;
+}
+
+.userInputCountriesVisited {
+  position: absolute;
+  width: 1140px;
+  height: 61px;
+  left: 2px;
+  top: 260px;
+  box-sizing: border-box;
+  border: 1px solid #658864;
+}
+
+.ratinHeader {
+  position: absolute;
+  width: 221px;
+  height: 19px;
+  left: 2px;
+  top: 380px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #658864;
+}
+
+.rating {
+  position: absolute;
+  width: 271px;
+  height: 50px;
+  left: 0px;
+  top: 215px;
+}
+
+.description {
+  position: absolute;
+  width: 221px;
+  height: 19px;
+  left: 0px;
+  top: 500px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  color: #658864;
+}
+
+.userInputDescription {
+  box-sizing: border-box;
+  position: absolute;
+  width: 1140px;
+  height: 213px;
+  left: 0px;
+  top: 541px;
+  border: 1px solid #658864;
+}
+
+.publishTripButon {
+  position: absolute;
+  width: 354px;
+  height: 74px;
+  left: 394px;
+  top: 811px;
+  background: #658864;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.4);
+  border-radius: 40px;
+}
+
+.buttonText {
+  position: absolute;
+  left: 8.59%;
+  right: 8.37%;
+  top: 27.03%;
+  bottom: 27.03%;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 30px;
+  text-align: center;
+  color: #ffffff;
+}
