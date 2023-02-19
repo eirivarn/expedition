@@ -1,24 +1,17 @@
 import { db } from "../firebase-config";
-import {
-  getDocs,
-  collection,
-  addDoc,
-  doc,
-  query,
-  getDoc,
-} from "firebase/firestore";
+import { getDocs, collection, addDoc } from "firebase/firestore";
+import { getDocs, collection, addDoc, query, getDoc } from "firebase/firestore";
 
 /* 
 Trips storage format
 {
     id: string,
-    userMail: string
-    tripName: string,
-    countries: String[],
     area: string,
-    rating: number[]
-    description: string,
+    countries: String[],
     comments: String[],
+    description: string,
+    name: string,
+    rating: number
 }
 */
 
