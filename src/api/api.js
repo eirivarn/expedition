@@ -7,13 +7,12 @@ import { getAuth } from "firebase/auth";
 Trips storage format
 {
     id: string,
-    userMail: string
-    tripName: string,
-    countries: String[],
     area: string,
-    rating: number[]
-    description: string,
+    countries: String[],
     comments: String[],
+    description: string,
+    name: string,
+    rating: number
 }
 */
 
