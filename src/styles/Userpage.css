@@ -1,15 +1,23 @@
+.profile-page-container{
+  display: flex;
+  justify-content: center;
+}
+
 .profile-page {
   position: relative;
+  right: 10%;
+  left: 10%;
+  justify-content: center;
   width: 1440px;
   height: 1146px;
   background: #f9f9f9;
 }
 
 .username {
-  position: absolute;
+  position: relative;
   left: 42.01%;
   right: 42.08%;
-  top: 36.52%;
+  top: 20.52%;
   bottom: 60.74%;
 
   font-family: "Inter";
@@ -24,29 +32,33 @@
   position: absolute;
   width: 155px;
   height: 45px;
-  left: 150px;
-  top: 760px;
+  left: 10%;
+  top: 550px;
   color: #658864;
 }
 
 .profile-pic {
-  position: absolute;
+  position: relative;
   width: 329px;
   height: 329px;
-  left: 150px;
-  top: 287px;
+  left: 10%;
+  top: 5%;
   border-radius: 50%;
   background: url("../img/user.png"), #d9d9d9;
 }
 
 .user-trips{
    position: absolute;
-    width: 245px;
+
     height: 245px;
-    left: 150px;
-    top: 837px;
+    left: 10%;
+    top: 650px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
-*/
+
 .rec {
   position: absolute;
   width: 245px;
