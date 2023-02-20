@@ -26,6 +26,16 @@ export const getAllTrips = async () => {
   } catch (err) {
     console.error(err);
   }
+  try {
+    const trips = await getDocs(tripsReference);
+    const filteredTrips = trips.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    return filteredTrips; //Få til bedre formatering?
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const createTrip = async (
