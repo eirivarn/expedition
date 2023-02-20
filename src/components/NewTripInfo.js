@@ -8,14 +8,17 @@ export function NewTripInfo() {
   const [name, setName] = useState("");
   const [countries, setCountries] = useState([]);
   const [description, setDescription] = useState("");
+  const [rating, setRating] = useState();
 
   const onPublishTrip = async () => {
     console.log(name);
     console.log(countries);
+    console.log(rating);
     console.log(description);
     createTrip(name, countries, description);
     setName("");
     setCountries([]);
+    setRating();
     setDescription("");
   };
 

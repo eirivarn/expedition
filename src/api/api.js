@@ -24,13 +24,14 @@ export const getAllTrips = async () => {
   return trips;
 };
 
-export const createTrip = async (name, countries, description) => {
+export const createTrip = async (name, countries, rating, description) => {
   // Add the trip data to Firestore
   try {
     await addDoc(tripsReference, {
       name: name,
       countries: countries,
       description: description,
+      rating: rating,
     });
   } catch (error) {
     console.error("Error adding trip: ", error);
