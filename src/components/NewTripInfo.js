@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/NewTripPage.css";
 import { Rating } from "../components/Rating.js";
-import { createTrip, getAllTrips } from "../api/api";
+import { createTrip } from "../api/api";
 
 export function NewTripInfo() {
   //Innit blanc states
