@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/NewTripPage.css";
 import { Rating } from "../components/Rating.js";
-import { createTrip } from "../api/api";
+import { createTrip, getAllTrips } from "../api/api";
 
 export function NewTripInfo() {
   //Innit blanc states
@@ -28,7 +28,7 @@ export function NewTripInfo() {
 =======
     console.log(name);
     console.log(countries);
-    console.log(rating);
+    //console.log(rating);
     console.log(description);
     createTrip(name, countries, description);
     setName("");
