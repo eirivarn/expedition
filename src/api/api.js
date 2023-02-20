@@ -17,21 +17,26 @@ const collectionName = "trips";
 const tripsReference = collection(db, collectionName);
 
 export const getAllTrips = async () => {
-  const trips = await getDocs(tripsReference).catch((err) =>
-    console.error(err)
-  );
-  // TODO - format trips variable
-  return trips;
+  try {
+    const trips = await getDocs(tripsReference);
+    const filteredTrips = trips.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    return filteredTrips; //Få til bedre formatering?
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-export const createTrip = async (name, countries, rating, description) => {
+export const createTrip = async (name, countries, description) => {
   // Add the trip data to Firestore
   try {
     await addDoc(tripsReference, {
       name: name,
       countries: countries,
       description: description,
-      rating: rating,
+      //rating: rating,
     });
   } catch (error) {
     console.error("Error adding trip: ", error);
