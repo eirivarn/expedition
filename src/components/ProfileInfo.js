@@ -2,18 +2,17 @@ import React from "react";
 //import React, { useState, useEffect } from 'react';
 //import { collection, getDocs} from "firebase/firestore";
 //import { db } from "../firebase-config.js";
-import { UserAuth } from '../Context/AuthContext';
-import {Trips} from './trips'
+import { UserAuth } from "../Context/AuthContext";
+//import {Trips} from './trips'
 import "../styles/Userpage.css";
 
-export function ProfileInfo() { //props
+export function ProfileInfo() {
+  //props
   //const { id } = props;
- // const [userData, setUserData] = useState(null);
-  const {user} = UserAuth();
-  if(!user){
-    return (
-        <h2 className="username">Log in with Google to see your account</h2>
-    )
+  // const [userData, setUserData] = useState(null);
+  const { user } = UserAuth();
+  if (!user) {
+    return <h2 className="username">Log in with Google to see your account</h2>;
   }
   /*NOTE: Trips component only returns default values atm. When it's ready this can be used to find all trips
   written by the logged in user.
@@ -40,14 +39,14 @@ getTripsByUid(user.uid).then((trips) => {
 */
   return (
     <div className="profile-page">
-        <h2 className="username">Navn: {user.displayName}</h2>
-        <h2 className="username">E-mail: {user.email}</h2>
-          <img className="profile-pic" src={user.photoURL} />
-          <h2 className="your-trips">Dine reiser</h2>
-          <div className="user-trips">
-            <Trips />
-            <Trips />
-          </div>
+      <h2 className="username">Navn: {user.displayName}</h2>
+      <h2 className="username">E-mail: {user.email}</h2>
+      <img className="profile-pic" src={user.photoURL} />
+      <h2 className="your-trips">Dine reiser</h2>
+      <div className="user-trips">
+        {/*             <Trips />
+            <Trips /> */}
+      </div>
     </div>
   );
 }
