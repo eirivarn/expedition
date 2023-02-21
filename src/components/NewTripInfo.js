@@ -7,18 +7,26 @@ export function NewTripInfo() {
   //Innit blanc states
   const [name, setName] = useState("");
   const [countries, setCountries] = useState([]);
+  const [area, setArea] = useState("");
+  const rating = [];
   const [description, setDescription] = useState("");
-  //const [rating, setRating] = useState();
+
+  //TODO Legge til ratings som array, legge til egen rating som element ved innit.  legge til area, comments som tom array.
 
   const onPublishTrip = async () => {
     console.log(name);
     console.log(countries);
-    //console.log(rating);
+    console.log(area);
+    console.log(rating);
     console.log(description);
-    createTrip(name, countries, description);
+    console.log();
+
+    createTrip(name, countries, area, rating, description);
+
     setName("");
     setCountries([]);
-    //setRating();
+    setArea("");
+    setRating();
     setDescription("");
   };
 
@@ -35,13 +43,23 @@ export function NewTripInfo() {
           }}
         />
       </div>
-      <h2 className="countriesVisited"> Land</h2>
+      <h2 className="countriesVisited"> Land </h2>
       <div className="userInputCountriesVisited">
         <input
           type="text"
           value={countries}
           onChange={(event) => {
             setCountries(event.target.value.split(","));
+          }}
+        />
+      </div>
+      <h2 className="areaVisited"> Area </h2>
+      <div className="userInputareaVisited">
+        <input
+          type="text"
+          value={countries}
+          onChange={(event) => {
+            setArea(event.target.value);
           }}
         />
       </div>
