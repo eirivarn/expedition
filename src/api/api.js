@@ -1,6 +1,7 @@
 import { db } from "../firebase-config";
 import { getDocs, collection, addDoc } from "firebase/firestore";
 import { v4 as uuid } from "uuid";
+import { getAuth } from "firebase/auth";
 
 /* 
 Trips storage format
@@ -35,13 +36,14 @@ export const createTrip = async (
   countries,
   area,
   description,
-  rating,
-  userID
+  rating
 ) => {
   // Add the trip data to Firestore
   try {
     const unique_id = uuid();
-    const small_id = unique_id.slice(0, 8);
+    const small_id = unique_id.slice(0, 10);
+    const auth = getAuth();
+    const userID = auth.currentUser.uid;
     await addDoc(tripsReference, {
       name: name,
       countries: countries,
