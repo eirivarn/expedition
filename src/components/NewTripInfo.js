@@ -28,9 +28,13 @@ export function NewTripInfo() {
 =======
     console.log(name);
     console.log(countries);
-    //console.log(rating);
+    console.log(area);
+    console.log(rating);
     console.log(description);
-    createTrip(name, countries, description);
+    console.log();
+
+    createTrip(name, countries, area, rating, description);
+
     setName("");
     setCountries([]);
     setRating();
