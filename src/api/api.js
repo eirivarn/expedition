@@ -1,5 +1,12 @@
 import { db } from "../firebase-config";
-import { getDocs, collection, addDoc, doc } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  addDoc,
+  doc,
+  query,
+  getDoc,
+} from "firebase/firestore";
 
 /* 
 Trips storage format
@@ -18,33 +25,64 @@ const tripsReference = collection(db, collectionName);
 
 export const getAllTrips = async () => {
   try {
-    const trips = await getDocs(tripsReference);
-    const filteredTrips = trips.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    }));
-    return filteredTrips; //Få til bedre formatering?
-  } catch (error) {
-    console.error(error);
+    const data = await getDocs(tripsReference);
+    const tripsArray = data.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    return tripsArray;
+  } catch (err) {
+    console.error(err);
   }
 };
 
-export const createTrip = async (name, countries, rating, description) => {
+export const createTrip = async (
+  id,
+  userMail,
+  tripName,
+  countries,
+  area,
+  rating,
+  description,
+  comments
+) => {
   try {
     await addDoc(tripsReference, {
-      name: name,
+      id: id,
+      userMail: userMail,
+      tripName: tripName,
       countries: countries,
       description: description,
       rating: rating,
+      area: area,
+      comments: comments,
     });
-  } catch (error) {
-    console.error("Error adding trip: ", error);
+  } catch (err) {
+    console.error("Error adding trip: ", err);
   }
 };
 
-/*
-export const addComment = async (newComment) => {};
+export const getTripsByUser = async (userMail) => {
+  try {
+    const q = query(tripsReference, where("userMail", "==", userMail));
+    const querySnapshot = await getDocs(q);
+    const tripsArray = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    return tripsArray;
+  } catch (err) {
+    console.error(err);
+  }
+};
 
-// Wait to implement
-export const updateTrip = async () => {};
-*/
+export const getTripRating = async (tripId) => {
+  try {
+    const tripReference = collection(db, tripsReference, tripId);
+    const tripSnapshot = await getDoc(tripReference);
+    if (tripSnapshot.exists()) {
+      return tripSnapshot.data();
+    } else {
+      console.log("No such trip exists.");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
