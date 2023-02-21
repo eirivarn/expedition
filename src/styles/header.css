@@ -15,8 +15,8 @@
     border: none;
     background-color: white;
     position: absolute;
-    right: 19%;
-    margin-top: 30px;
+    right: 22%;
+    margin-top: 20px;
 }
 
 #logo {
@@ -29,18 +29,56 @@
 .button {
     background-color: #658864;
     border-radius: 40px;
-    color: white;
+    /*color: white;
     font-size: 25px;
     border: none;
-    box-shadow: 0px 4px 7px rgba(0,0,0,0.4);
+    box-shadow: 0px 4px 7px rgba(0,0,0,0.4); */
+   
+    --h: 1.2em;
+
+  line-height: var(--h);
+  color: white;
+  text-shadow: 
+    0 var(--_i, var(--h)) #658864,
+    0 0 rgb(0 0 0 / calc(var(--_i, 1) * 100%) );
+  background: 
+    linear-gradient(#092f24 0 0) 
+    bottom/100% calc(100% - var(--_i, 1) * 100%) no-repeat;
+  overflow: hidden;
+  transition: 0.15s;
+  background-color: #658864;
+    
 }
 
 #login {
-    width: 109px;
-    height: 51px;
-    font-size: 18px;
+    width: 100px;
+    height: 35px;
+    font-size: 20px;
     position: absolute;
     right: 10%;
     margin-top: 30px;
+}
+
+#tripsButton {
+    width: 200px;
+    height: 51px;
+    font-size: 25px;
+    position: absolute;
+    right: 38%;
+    margin-top: 20px;
+    visibility: hidden;
+}
+
+#frontButton {
+    width: 200px;
+    height: 51px;
+    font-size: 25px;
+    position: absolute;
+    right: 55%;
+    margin-top: 20px;
+}
+
+.button:hover {
+    --_i: 0;
 }
 

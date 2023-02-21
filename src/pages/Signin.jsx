@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { GoogleButton } from 'react-google-button';
 import { UserAuth } from '../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import '../styles/signin.css';
 
 const Signin = () => {
   const { googleSignIn, user } = UserAuth();
@@ -17,15 +18,15 @@ const Signin = () => {
 
   useEffect(() => {
     if (user != null) {
-      navigate('/account');
+      navigate('/user');
     }
   }, [user]);
 
   return (
     <div>
-      <h1 className='h1Signin'>Sign in</h1>
+      <h1 id='h1Signin'>Sign in using</h1>
       <div className='googleButton'>
-        <GoogleButton onClick={handleGoogleSignIn} />
+        <GoogleButton id="googleButton" onClick={handleGoogleSignIn} />
       </div>
     </div>
   );
