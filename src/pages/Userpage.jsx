@@ -2,21 +2,18 @@ import React from 'react';
 import {ProfileInfo} from "../components/ProfileInfo.js"
 //import { TripContainer } from "../components/TripContainer.js";
 import "../styles/Userpage.css";
+//import {Trips} from "../components/trips";
 
 
 const UserPage  = () => {
 
   return(
-      <div className="profile-page">
+      <div className="profile-container">
         <ProfileInfo />
-        <h2 className="your-trips">Dine reiser</h2>
-          <div className="user-trips">
-              <div className="rec">
-              </div>
-          </div>
-      </div>// <TripContainer />
+
+      </div>
   )
 };
-
+//E4I8FwHiseUh00SW7IRvPfF29sq1
 
 export default UserPage;
