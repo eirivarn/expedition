@@ -54,6 +54,7 @@ export const createTrip = async (
       userMail: userMail,
       tripName: tripName,
       countries: countries,
+      area: area,
       description: description,
       rating: rating,
       area: area,
