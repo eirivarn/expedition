@@ -47,13 +47,13 @@ export const createTrip = async (
   area,
   rating,
   description,
-  rating,
-  userID
-  comments
+  rating
 ) => {
   try {
     const unique_id = uuid();
-    const small_id = unique_id.slice(0, 8);
+    const small_id = unique_id.slice(0, 10);
+    const auth = getAuth();
+    const userID = auth.currentUser.uid;
     await addDoc(tripsReference, {
       id: id,
       userMail: userMail,
