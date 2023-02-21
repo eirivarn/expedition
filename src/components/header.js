@@ -1,47 +1,40 @@
-import React from 'react';
-import '../frontpage.css';
-import logo from '../img/xpedition_logo.png';
-import userIcon from '../img/user.png';
+import React from "react";
+import "../styles/header.css";
+import { Link } from "react-router-dom";
+import { UserAuth } from "../Context/AuthContext";
+import logo from "../img/xpedition_logo.png";
+import "../styles/frontpage.css";
 
+const Header = () => {
+  const { user, logOut } = UserAuth();
 
-export class Header extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {isLoggedIn: true};
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
     }
-    
-    handleLoginClick () {
-        this.setState({isLoggedIn: true});
-    }
+  };
 
-    handleLogoutClick () {
-        this.setState({isLoggedIn: false});
-    }
+  return (
+    <div id="header">
+      <img id="logo" src={logo}></img>
+      {user?.displayName ? (
+        <button
+          id="login"
+          className="button"
+          type="button"
+          onClick={handleSignOut}
+        >
+          Logout
+        </button>
+      ) : (
+        <Link id="login" className="button" type="button" to="/signin">
+          Sign in
+        </Link>
+      )}
+    </div>
+  );
+};
 
-
-
-    render() {
-        const isLoggedIn = this.state.isLoggedIn;
-        let logButton;
-        let userButton;
-
-        if (isLoggedIn) {
-            logButton = <button id="login" className='button' type='button' onClick={this.handleLogoutClick}>Logg ut</button>
-            userButton = <button id='userButton'> <img src={userIcon} height='50px' width='50px'></img> </button>
-        }
-        else {
-            logButton = <button id='login' className='button' type='button' onClick={this.handleLoginClick}>Logg inn</button>
-            userButton = null;
-
-        }
-
-
-        return (
-            <div id="header">
-                <img id="logo" src={logo}></img>
-                {userButton}
-                {logButton}
-            </div>
-        )
-    }
-}
+export default Header;
