@@ -8,26 +8,30 @@ export function NewTripInfo() {
   const [name, setName] = useState("");
   const [countries, setCountries] = useState([]);
   const [area, setArea] = useState("");
-  const rating = [];
+  const [ratings, setRating] = useState([]);
   const [description, setDescription] = useState("");
 
   //TODO Legge til ratings som array, legge til egen rating som element ved innit.  legge til area, comments som tom array.
+
+  const onRatingClick = async (innitRating) => {
+    setRating([]);
+    ratings.push(innitRating);
+  };
 
   const onPublishTrip = async () => {
     console.log(name);
     console.log(countries);
     console.log(area);
-    console.log(rating);
+    console.log(ratings);
     console.log(description);
     console.log();
-
-    createTrip(name, countries, area, rating, description);
+    createTrip(name, countries, area, ratings, description);
 
     setName("");
     setCountries([]);
     setArea("");
-    setRating();
     setDescription("");
+    setRating("");
   };
 
   return (
@@ -54,7 +58,7 @@ export function NewTripInfo() {
         />
       </div>
       <h2 className="areaVisited"> Area </h2>
-      <div className="userInputareaVisited">
+      <div className="userInputAreaVisited">
         <input
           type="text"
           value={countries}
@@ -64,8 +68,8 @@ export function NewTripInfo() {
         />
       </div>
       <h2 className="ratinHeader"> Rating </h2>
-      <div className="rating ">
-        <Rating />
+      <div className="rating">
+        <Rating onClick={onRatingClick} />
       </div>
       <h2 className="description"> Beskrivelse </h2>
       <div className="userInputDescription">

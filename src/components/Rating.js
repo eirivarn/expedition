@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import "../styles/Trippage.css";
 
-export function Rating() {
+export function Rating({ onClick }) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
 
-  const getRating = (ind) => {
+  const handleButtonClick = (ind) => {
     setRating(ind);
-    return ind;
-  }
+    onClick(ind);
+  };
 
   return (
     <div className="rating">
@@ -19,7 +20,7 @@ export function Rating() {
             type="button"
             className={ind <= (rating || hover) ? "ratingOn" : "ratingOff"}
             key={ind}
-            onClick={() => getRating(ind)}
+            onClick={() => handleButtonClick(ind)}
             onMouseEnter={() => setHover(ind)}
             onMouseLeave={() => setHover(rating)}
           >
@@ -30,3 +31,7 @@ export function Rating() {
     </div>
   );
 }
+
+Rating.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
