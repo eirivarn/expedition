@@ -7,14 +7,16 @@ import { getAuth } from "firebase/auth";
 Trips storage format
 {
     id: string,
-    area: string,
+    userMail: string
+    tripName: string,
     countries: String[],
-    comments: String[],
+    area: string,
+    rating: number[]
     description: string,
-    name: string,
-    rating: number
+    comments: String[],
 }
 */
+
 const collectionName = "trips";
 const tripsReference = collection(db, collectionName);
 
