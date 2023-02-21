@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import PropTypes from "prop-types";
+=======
+>>>>>>> c662faa (Cleanup remaining #TODOS: Rating, navigating, CSS)
 import "../styles/Trippage.css";
 
 export function Rating() {
@@ -31,7 +34,10 @@ export function Rating() {
     </div>
   );
 }
+<<<<<<< HEAD
 
 Rating.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
+=======
+>>>>>>> c662faa (Cleanup remaining #TODOS: Rating, navigating, CSS)

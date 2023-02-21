@@ -10,6 +10,7 @@ export function NewTripInfo() {
   const [area, setArea] = useState("");
   const [ratings, setRating] = useState([]);
   const [description, setDescription] = useState("");
+  const [rating, setRating] = useState();
 
   //TODO Legge til ratings som array, legge til egen rating som element ved innit.  legge til area, comments som tom array.
 
@@ -19,10 +20,21 @@ export function NewTripInfo() {
   };
 
   const onPublishTrip = async () => {
+<<<<<<< HEAD
     createTrip(name, countries, area, ratings, description);
     setName("");
     setCountries([]);
     setArea("");
+=======
+    console.log(name);
+    console.log(countries);
+    console.log(rating);
+    console.log(description);
+    createTrip(name, countries, description);
+    setName("");
+    setCountries([]);
+    setRating();
+>>>>>>> c662faa (Cleanup remaining #TODOS: Rating, navigating, CSS)
     setDescription("");
     setRating("");
   };
