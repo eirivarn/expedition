@@ -1,4 +1,5 @@
 import { db } from "../firebase-config";
+import { v4 as uuid } from "uuid";
 import {
   getDocs,
   collection,
@@ -7,6 +8,7 @@ import {
   getDoc,
   where,
 } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 /* 
 Trips storage format
@@ -46,14 +48,11 @@ export const getAllTrips = async () => {
 };
 
 export const createTrip = async (
-  id,
-  userMail,
   tripName,
   countries,
   area,
   rating,
-  description,
-  rating
+  description
 ) => {
   try {
     const unique_id = uuid();
@@ -61,8 +60,6 @@ export const createTrip = async (
     const auth = getAuth();
     const userID = auth.currentUser.uid;
     await addDoc(tripsReference, {
-      id: id,
-      userMail: userMail,
       tripName: tripName,
       countries: countries,
       area: area,
@@ -71,8 +68,6 @@ export const createTrip = async (
       comments: [],
       tripID: small_id,
       userID: userID,
-      area: area,
-      comments: comments,
     });
   } catch (err) {
     console.error("Error adding trip: ", err);
