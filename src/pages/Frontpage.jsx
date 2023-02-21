@@ -4,9 +4,15 @@ import TripComponent from "../components/TripComponent.js";
 import "../styles/frontpage.css";
 import PropTypes from "prop-types";
 import { getAllTrips } from "../api/api.js";
+import { NavLink } from "react-router-dom";
 
 const FrontPage = () => {
   const [trips, setTrips] = useState([]);
+
+  const getSpecificTrip = (id) => {
+    const res = trips.filter((trip) => trip.id === id);
+    return res;
+  };
 
   useEffect(() => {
     const fetchAllTrips = async () => {
@@ -26,13 +32,17 @@ const FrontPage = () => {
         <h2 className="header2">Reiseruter</h2>
         <div className="front_grid">
           {trips.map((trip) => {
-            console.log("trip.tripName", trip.tripName);
             return (
-              <TripComponent
+              <NavLink
                 key={trip.id}
-                tripID={trip.id}
-                name={trip.tripName}
-              />
+                to={{
+                  pathname: "/trip",
+                  state: { trip: getSpecificTrip(trip.id) },
+                }}
+                style={{ textDecoration: "none" }}
+              >
+                <TripComponent tripID={trip.id} name={trip.tripName} />
+              </NavLink>
             );
           })}
         </div>
