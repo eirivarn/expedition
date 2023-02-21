@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/NewTripPage.css";
 import { Rating } from "../components/Rating.js";
 import { createTrip } from "../api/api";
+import { getAuth } from "firebase/auth";
 
 export function NewTripInfo() {
   //Innit blanc states
@@ -19,13 +20,9 @@ export function NewTripInfo() {
   };
 
   const onPublishTrip = async () => {
-    console.log(name);
-    console.log(countries);
-    console.log(area);
-    console.log(ratings);
-    console.log(description);
-    createTrip(name, countries, area, ratings, description);
-
+    const auth = getAuth();
+    const userID = auth.currentUser;
+    createTrip(name, countries, area, ratings, description, userID);
     setName("");
     setCountries([]);
     setArea("");

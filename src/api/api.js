@@ -1,5 +1,6 @@
 import { db } from "../firebase-config";
 import { getDocs, collection, addDoc } from "firebase/firestore";
+import { v4 as uuid } from "uuid";
 
 /* 
 Trips storage format
@@ -34,10 +35,13 @@ export const createTrip = async (
   countries,
   area,
   description,
-  rating
+  rating,
+  userID
 ) => {
   // Add the trip data to Firestore
   try {
+    const unique_id = uuid();
+    const small_id = unique_id.slice(0, 8);
     await addDoc(tripsReference, {
       name: name,
       countries: countries,
@@ -45,6 +49,8 @@ export const createTrip = async (
       description: description,
       rating: rating,
       comments: [],
+      tripID: small_id,
+      userID: userID,
     });
   } catch (error) {
     console.error("Error adding trip: ", error);
