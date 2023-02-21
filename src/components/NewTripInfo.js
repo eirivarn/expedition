@@ -24,7 +24,6 @@ export function NewTripInfo() {
     console.log(area);
     console.log(ratings);
     console.log(description);
-    console.log();
     createTrip(name, countries, area, ratings, description);
 
     setName("");
@@ -61,7 +60,7 @@ export function NewTripInfo() {
       <div className="userInputAreaVisited">
         <input
           type="text"
-          value={countries}
+          value={area}
           onChange={(event) => {
             setArea(event.target.value);
           }}

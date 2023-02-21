@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "../styles/Trippage.css";
 
-export function Rating({ onClick }) {
+export function Rating() {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
 
   const handleButtonClick = (ind) => {
     setRating(ind);
-    onClick(ind);
+    ind = 0;
   };
 
   return (
