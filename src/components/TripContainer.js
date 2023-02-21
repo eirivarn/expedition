@@ -1,38 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import "../styles/Trippage.css";
-import { doc } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import { db } from "../firebase-config.js";
 import PropTypes from "prop-types";
+import image from "../img/test.jpg";
 
-export function TripContainer( { name }) {
-  const [trip, setTrip] = useState();
+export function TripContainer({ name }) {
+  const [trips, setTrips] = useState([]);
+  //const docRef = doc(db, "trips", "yXN15Kw1OBZlgr8x1ht0");
 
-  //const tripsCollectionRef = collection(db, "trips");
-  useEffect(() => {
-    const getTrip = async () => {
-      setTrip(doc(db, "trips", name));
-    };
-    getTrip()
-    console.log(name)
-    console.log(trip)
-  }, []);
   /*
+  onSnapshot(docRef, (doc) => {
+    console.log(doc.data(), doc.id)
+  }) */
+  const tripsCollectionRef = collection(db, "users")
   useEffect(() => {
-    const getTrip = async () => {
+    const getTrips = async () => {
       const data = await getDocs(tripsCollectionRef);
-      const trips = data.docs.map((doc) => ({ ...doc.data(), area: doc.area }));
-      setTrip(trips.filter((t => t.area === id).findFirst()));
+      setTrips(data.docs.map((doc) => ({ ...doc.data(), area: doc.area })));
     };
-    getTrip();
-    console.log(name)
-  }, []); */
-  
+    getTrips();
+  }, []);
+
   return (
     <div>
-      <h1 className="title">name</h1>
-      <h3 className="author">Ola Nordmann</h3>
-      <img className="image" />
-      <textarea className="description">trip.description</textarea>
+      {trips.map((trip) => {
+        return <div key={trip.area}>
+            {" "}
+            <h1 className="title">{trip.name}</h1>
+            <h3 className="author">Ola Nordmann</h3>
+            <img className="image" src={image}/>
+            <textarea className="description">{trip.description} + {name}</textarea>
+          </div>
+      })};
     </div>
   );
 }
