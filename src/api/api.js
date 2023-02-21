@@ -1,6 +1,13 @@
 import { db } from "../firebase-config";
-import { getDocs, collection, addDoc } from "firebase/firestore";
 import { v4 as uuid } from "uuid";
+import {
+  getDocs,
+  collection,
+  addDoc,
+  query,
+  getDoc,
+  where,
+} from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 /* 
@@ -40,21 +47,18 @@ export const getAllTrips = async () => {
 };
 
 export const createTrip = async (
-  name,
+  tripName,
   countries,
   area,
-  description,
-  rating
+  rating,
+  description
 ) => {
-  // Add the trip data to Firestore
   try {
     const unique_id = uuid();
     const small_id = unique_id.slice(0, 10);
     const auth = getAuth();
     const userID = auth.currentUser.uid;
     await addDoc(tripsReference, {
-      id: id,
-      userMail: userMail,
       tripName: tripName,
       countries: countries,
       area: area,
