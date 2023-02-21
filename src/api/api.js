@@ -12,13 +12,12 @@ import {
 Trips storage format
 {
     id: string,
-    userMail: string
-    tripName: string,
-    countries: String[],
     area: string,
-    rating: number[]
-    description: string,
+    countries: String[],
     comments: String[],
+    description: string,
+    name: string,
+    rating: number
 }
 */
 
@@ -34,6 +33,16 @@ export const getAllTrips = async () => {
   } catch (err) {
     console.error(err);
   }
+  try {
+    const trips = await getDocs(tripsReference);
+    const filteredTrips = trips.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    return filteredTrips; //Få til bedre formatering?
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const createTrip = async (
@@ -44,16 +53,24 @@ export const createTrip = async (
   area,
   rating,
   description,
-  comments
+  rating
 ) => {
   try {
+    const unique_id = uuid();
+    const small_id = unique_id.slice(0, 10);
+    const auth = getAuth();
+    const userID = auth.currentUser.uid;
     await addDoc(tripsReference, {
       id: id,
       userMail: userMail,
       tripName: tripName,
       countries: countries,
+      area: area,
       description: description,
       rating: rating,
+      comments: [],
+      tripID: small_id,
+      userID: userID,
       area: area,
       comments: comments,
     });

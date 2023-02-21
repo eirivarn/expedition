@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import FrontPage from "./pages/Frontpage";
 import UserPage from "./pages/Userpage";
 import TripPage from "./pages/Trippage";
+import NewTripPage from "./pages/NewTripPage";
 import ErrorPage from "./pages/Errorpage";
 import DemoPage from "./pages/DemoPage";
 import Header from "./components/header";
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<FrontPage />} />
             <Route path="/trip" element={<TripPage />} />
+            <Route path="/NewTrip" element={<NewTripPage />} />
             <Route path="/user" element={<UserPage />} />
             <Route path="*" element={<ErrorPage />} />
             <Route path="/demopage" element={<DemoPage />} />
