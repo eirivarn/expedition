@@ -12,7 +12,7 @@ export function ProfileInfo() {
   // const [userData, setUserData] = useState(null);
   const { user } = UserAuth();
   if (!user) {
-    return <h2 className="username">Log in with Google to see your account</h2>;
+    return <div className="notLoggedIn">Log in with Google to see your account</div>;
   }
   /*NOTE: Trips component only returns default values atm. When it's ready this can be used to find all trips
   written by the logged in user.
