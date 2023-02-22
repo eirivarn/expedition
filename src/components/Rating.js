@@ -10,23 +10,15 @@ export function Rating() {
     ind = 0;
   };
 
-  const handleButtonClick = (ind) => {
-    setRating(ind);
-    ind = 0;
-  };
-
   return (
-    <div className="rating">
     <div className="rating">
       {[...Array(5)].map((circle, ind) => {
         ind += 1;
         return (
           <button
-          <button
             type="button"
             className={ind <= (rating || hover) ? "ratingOn" : "ratingOff"}
             key={ind}
-            onClick={() => handleButtonClick(ind)}
             onClick={() => handleButtonClick(ind)}
             onMouseEnter={() => setHover(ind)}
             onMouseLeave={() => setHover(rating)}
