@@ -9,10 +9,10 @@ import { NavLink } from "react-router-dom";
 const FrontPage = () => {
   const [trips, setTrips] = useState([]);
 
-  const getSpecificTrip = (id) => {
+  /*   const getSpecificTrip = (id) => {
     const res = trips.filter((trip) => trip.id === id);
     return res;
-  };
+  }; */
 
   useEffect(() => {
     const fetchAllTrips = async () => {
@@ -35,10 +35,8 @@ const FrontPage = () => {
             return (
               <NavLink
                 key={trip.id}
-                to={{
-                  pathname: "/trip",
-                  state: { trip: getSpecificTrip(trip.id) },
-                }}
+                to="/trip"
+                state={{ from: trip }}
                 style={{ textDecoration: "none" }}
               >
                 <TripComponent tripID={trip.id} name={trip.tripName} />

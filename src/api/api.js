@@ -30,7 +30,6 @@ export const getAllTrips = async () => {
   try {
     const data = await getDocs(tripsReference);
     const tripsArray = data.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-    console.log("tripsArray:", tripsArray);
     return tripsArray;
   } catch (err) {
     console.error(err);
