@@ -4,12 +4,17 @@ import { Rating } from "../components/Rating.js";
 import { NewComment } from "../components/NewComment.js";
 import { Comment } from "../components/Comment.js";
 import "../styles/Trippage.css";
+import { useLocation } from "react-router";
 
 const TripPage = () => {
+  const location = useLocation();
+  const { from } = location.state;
+  console.log("from:", from);
+
   return (
     <div className="tripPage">
       <div className="infoTrip">
-        <TripContainer name={"Togtur på Balkan"} />
+        <TripContainer trip={from} />
         <Rating />
       </div>
       <div className="commentsTripPage">
@@ -20,6 +25,6 @@ const TripPage = () => {
       </div>
     </div>
   );
-}
+};
 
 export default TripPage;

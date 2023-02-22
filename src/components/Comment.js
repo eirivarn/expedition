@@ -6,7 +6,7 @@ export function Comment() {
     <div className='commentShowBody'>
       <h2 className='commentShowAuthor'>Kari Nordmann</h2>
       <label className='commentShowDateTime'>02.02.2023, KL 12:04</label>
-      <textarea className='commentShowText'>Lorem Ipsum</textarea>
+      <textarea className='commentShowText'>Spennende tur</textarea>
       <line className='commentShowLine' />
     </div>
   );

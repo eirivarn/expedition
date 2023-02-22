@@ -17,15 +17,15 @@
     width: 60px;
     border: none;
     background-color: white;
-    position: absolute;
+    position: fixed;
     right: 22%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #logo {
     height: 86px;
     width: 170px;
-    position: absolute;
+    position: fixed;
     left: 10%;
 }
 
@@ -57,7 +57,7 @@
     width: 100px;
     height: 35px;
     font-size: 20px;
-    position: absolute;
+    position: fixed;
     right: 10%;
     margin-top: 30px;
     display: flex;
@@ -77,8 +77,8 @@
     width: 200px;
     height: 51px;
     font-size: 25px;
-    position: absolute;
-    right: 55%;
+    position: fixed;
+    right: 45%;
     margin-top: 20px;
 }
 
@@ -86,3 +86,9 @@
     --_i: 0;
 }
 
+@media only screen and (max-width: 850px) {
+    #header .button{
+        margin-top: 70px;
+    }
+    
+}

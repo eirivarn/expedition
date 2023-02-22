@@ -11,7 +11,7 @@ export function Rating() {
   };
 
   return (
-    <div className="rating">
+    <div className="tripRating">
       {[...Array(5)].map((circle, ind) => {
         ind += 1;
         return (
