@@ -1,6 +1,6 @@
 import React from "react";
 import { TripContainer } from "../components/TripContainer.js";
-//import { Rating } from "../components/Rating.js";
+import { Rating } from "../components/Rating.js";
 import { NewComment } from "../components/NewComment.js";
 import { Comment } from "../components/Comment.js";
 import "../styles/Trippage.css";
@@ -15,6 +15,7 @@ const TripPage = () => {
     <div className="tripPage">
       <div className="infoTrip">
         <TripContainer trip={from} />
+        <Rating />
       </div>
       <div className="commentsTripPage">
         <NewComment />

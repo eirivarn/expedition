@@ -22,13 +22,10 @@ export function TripContainer({ trip }) {
 
   return (
     <div key={trip.id}>
-      {" "}
-      <h1 className="title">{trip.tripName}</h1>
-      <h3 className="author">{trip.userMail}</h3>
-      <img className="image" src={image} />
-      <div className="description">
-        <textarea>{trip.description}</textarea>
-      </div>
+        <h1 className="title">{trip.tripName}</h1>
+        <h3 className="author">{trip.userMail}Ola Nordmann</h3>
+        <img className="image" src={image} />
+        <textarea className="tripDescription">{trip.description}</textarea>
     </div>
   );
 }

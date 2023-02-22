@@ -37,7 +37,7 @@
     color: #000000;
 }
 
-.rating {
+.tripRating {
     position: absolute;
     width: 250px;
     height: 40px;
@@ -73,11 +73,10 @@ button {
     height: 436px;
     left: 0px;
     top: 115px;
-    /*background: url(.jpg), #D9D9D9; */
     border-radius: 10px;
 }
 
-.description {
+.tripDescription {
     position: absolute;
     background: transparent;
     border: none;
@@ -194,11 +193,14 @@ button {
     color: #658864;
 }
 
+textarea {
+    resize: none;
+}
+
 .commentShowText {
     position: absolute;
     background: transparent;
     border: none;
-    resize: none;
     width: 1140px;
     height: 80px;
     left: 12px;
