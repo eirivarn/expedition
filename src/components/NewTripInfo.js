@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../styles/NewTripPage.css";
 import { Rating } from "../components/Rating.js";
 import { createTrip } from "../api/api";
+import { NavLink } from "react-router-dom";
 
 export function NewTripInfo() {
   //Innit blanc states
@@ -75,7 +76,10 @@ export function NewTripInfo() {
         />
       </div>
       <button className="publishTripButon" onClick={onPublishTrip}>
-        <div className="buttonText">Publiser reise</div>
+        <div className="buttonText">
+          <NavLink to="/" >Publiser reise
+          </NavLink>
+          </div>
       </button>
     </div>
   );
