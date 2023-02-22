@@ -24,10 +24,9 @@ const FrontPage = () => {
 
   return (
     <div id="body">
-      <button id="shareTrip" className="button" type="button">
-        {" "}
-        Del din egen reise!{" "}
-      </button>
+      <NavLink to="/newtrip" id="shareTrip" className="button" type="button">
+        Del din egen reise!
+      </NavLink>
       <div className="flex_images">
         <h2 className="header2">Reiseruter</h2>
         <div className="front_grid">
