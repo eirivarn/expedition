@@ -6,7 +6,8 @@
 #header {
     height: 100px;
     margin-top: 30px;
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
+    font-family: 'Inter'; 
 }
 
 #userButton {

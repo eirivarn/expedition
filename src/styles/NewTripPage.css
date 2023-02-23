@@ -1,3 +1,4 @@
+
 .NewTripPage {
   position: relative;
   width: 1440px;
@@ -44,15 +45,17 @@
   color: #658864;
 }
 
+
 .userInputNameOfTrip {
   position: absolute;
   width: 1140px;
   height: 61px;
   left: 2px;
-  top: 140px;
+  top: 130px;
   box-sizing: border-box;
-  border: 1px solid #658864;
+  /*border: 1px solid #658864;*/
 }
+
 
 .countriesVisited {
   position: absolute;
@@ -75,7 +78,7 @@
   left: 0px;
   top: 245px;
   box-sizing: border-box;
-  border: 1px solid #658864;
+  /*border: 1px solid #658864;*/
 }
 
 .areaVisited {
@@ -99,7 +102,7 @@
   left: 0px;
   top: 340px;
   box-sizing: border-box;
-  border: 1px solid #658864;
+  /*border: 1px solid #658864;*/
 }
 
 .ratinHeader {
@@ -129,7 +132,7 @@
   width: 221px;
   height: 19px;
   left: 0px;
-  top: 500px;
+  top: 530px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -144,19 +147,20 @@
   width: 1140px;
   height: 213px;
   left: 0px;
-  top: 541px;
-  border: 1px solid #658864;
+  top: 580px;
+  /*border: 1px solid #658864;*/
 }
 
 .publishTripButon {
   position: absolute;
   width: 354px;
-  height: 74px;
+  height: 50px;
   left: 394px;
   top: 811px;
   background: #658864;
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.4);
   border-radius: 40px;
+
 }
 
 .buttonText {
@@ -172,4 +176,31 @@
   line-height: 30px;
   text-align: center;
   color: #ffffff;
+  text-decoration: none;
+
 }
+
+
+input[type=text] {
+  border: 1px solid #658864; 
+  width: 100%;
+  padding: 16px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+textarea {
+  width: 100%;
+  height: 200px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 1px solid #658864;
+}
+
+
+/*
+.publishButton {
+  text-decoration: none;
+  color: white;
+}
+*/
