@@ -51,7 +51,7 @@ export function NewTripInfo() {
           }}
         />
       </div>
-      <h2 className="areaVisited"> Area </h2>
+      <h2 className="areaVisited"> Område </h2>
       <div className="userInputAreaVisited">
         <input
           type="text"
@@ -61,7 +61,7 @@ export function NewTripInfo() {
           }}
         />
       </div>
-      <h2 className="ratinHeader"> Rating </h2>
+      <h2 className="ratinHeader"> Vurdering </h2>
       <div className="rating">
         <Rating onClick={onRatingClick} />
       </div>
