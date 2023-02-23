@@ -39,11 +39,11 @@ const Header = () => {
           type="button"
           onClick={handleSignOut}
         >
-          Sign out
+          Logg ut
         </NavLink>
       ) : (
         <NavLink id="login" className="button" type="button" to="/signin">
-          Sign in
+          Logg inn
         </NavLink>
       )}
     </div>
