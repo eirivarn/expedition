@@ -27,7 +27,7 @@ const Header = () => {
         Trips
       </NavLink>
       <NavLink to="/" id="frontButton" className="button">
-        Frontpage
+        Forside
       </NavLink>
       <NavLink to="/user">
         <img id="userButton" src={userIcon}></img>
