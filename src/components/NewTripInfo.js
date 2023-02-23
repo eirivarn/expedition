@@ -67,7 +67,7 @@ export function NewTripInfo() {
       </div>
       <h2 className="description"> Beskrivelse </h2>
       <div className="userInputDescription">
-        <input
+        <textarea
           type="text"
           value={description}
           onChange={(event) => {
@@ -77,7 +77,7 @@ export function NewTripInfo() {
       </div>
       <button className="publishTripButon" onClick={onPublishTrip}>
         <div className="buttonText">
-          <NavLink to="/" >Publiser reise
+          <NavLink to="/" type="button">Publiser reise
           </NavLink>
           </div>
       </button>
