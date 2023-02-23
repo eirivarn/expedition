@@ -2,9 +2,10 @@ import React from "react";
 import "../styles/header.css";
 import { UserAuth } from "../Context/AuthContext";
 import logo from "../img/xpedition_logo.png";
-import "../styles/frontpage.css";
+//import "../styles/frontpage.css";
 import { NavLink} from 'react-router-dom';
 import userIcon from '../img/user.png';
+//import { useScrollDirection } from "../hooks/headerScroll";
 
 
 const Header = () => {
@@ -18,8 +19,12 @@ const Header = () => {
     }
   };
 
+ // const scrollDirection = useScrollDirection();
+  
+
   return (
     <div id="header">
+      <div>
       <NavLink to="/">
         <img id="logo" src={logo}></img>
       </NavLink>
@@ -46,6 +51,7 @@ const Header = () => {
           Logg inn
         </NavLink>
       )}
+      </div>
     </div>
   );
 };

@@ -8,6 +8,7 @@
     margin-top: 30px;
     margin-bottom: 30px;
     font-family: 'Inter'; 
+    background-color: #c8e7bb;
 }
 
 #userButton {
@@ -15,7 +16,7 @@
     width: 60px;
     border: none;
     background-color: white;
-    position: fixed;
+    position: absolute;
     right: 22%;
     margin-top: 10px;
 }
@@ -23,13 +24,13 @@
 #logo {
     height: 86px;
     width: 170px;
-    position: fixed;
+    position: absolute;
     left: 10%;
 }
 
 .button {
     background-color: #658864;
-    border-radius: 40px;
+    border-radius: 40px; 
     /*color: white;
     font-size: 25px;
     border: none;
@@ -55,7 +56,7 @@
     width: 100px;
     height: 35px;
     font-size: 20px;
-    position: fixed;
+    position: absolute;
     right: 10%;
     margin-top: 30px;
     display: flex;
@@ -75,7 +76,7 @@
     width: 200px;
     height: 51px;
     font-size: 25px;
-    position: fixed;
+    position: absolute;
     right: 45%;
     margin-top: 20px;
 }
@@ -84,9 +85,24 @@
     --_i: 0;
 }
 
+/*
+.header {
+    position: sticky;
+    top: 0px;
+    height: 6rem;
+    transition-property: all; 
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 500ms;
+  }
+  
+  .header.down {
+    top: -6rem;
+  }
+*/
 @media only screen and (max-width: 850px) {
     #header .button{
         margin-top: 70px;
     }
     
 }
+
