@@ -42,8 +42,7 @@
       
     /*width: 90%;
     height: 90%;*/
-    border-radius: 10px;
-    
+    border-radius: 10px;   
 }
 
 .trips {
@@ -63,12 +62,16 @@
 
 .reiseNavn{
     text-align: left;
-    margin-top: 0px;
+    margin-top: -10px;
     color: #658864;
     margin-left: 4%;
     font-size: 20px;
 }
 
+#tripRating {
+    text-align: left;
+    margin-top: -15px;
+}
 
 @media only screen and (max-width: 1000px) {
     
