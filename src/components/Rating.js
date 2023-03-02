@@ -16,7 +16,7 @@ export function Rating() {
         ind += 1;
         return (
           <button
-            type="button"
+            id="ratingButton"
             className={ind <= (rating || hover) ? "ratingOn" : "ratingOff"}
             key={ind}
             onClick={() => handleButtonClick(ind)}

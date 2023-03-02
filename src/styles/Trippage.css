@@ -44,7 +44,7 @@
     top: 155px;
 }
 
-button {
+#ratingButton {
     height: 30px;
     width: 30px;
     background-color: transparent;
@@ -90,6 +90,28 @@ button {
     font-size: 16px;
     line-height: 23px;
     color: #000000;
+}
+
+.editTripButton {
+    position: absolute;
+    border: none;
+    width: 102px;
+    height: 40px;
+    left: 893px;
+    top: 11px;
+    color: #658864;
+    background-color: #c8e7bb;
+}
+
+.deleteTripButton {
+    position: absolute;
+    border: none;
+    width: 134px;
+    height: 40px;
+    left: 1004px;
+    top: 11px;
+    color: #658864;
+    background-color: #c8e7bb;
 }
 
 .commentsTripPage {
