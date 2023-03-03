@@ -38,7 +38,7 @@ const FrontPage = () => {
                 state={{ from: trip }}
                 style={{ textDecoration: "none" }}
               >
-                <TripComponent tripID={trip.id} name={trip.tripName} />
+                <TripComponent tripID={trip.id} name={trip.tripName} ratings={trip.rating} />
               </NavLink>
             );
           })}
