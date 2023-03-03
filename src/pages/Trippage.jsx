@@ -12,10 +12,10 @@ const TripPage = () => {
   console.log("from:", from);
 
   return (
-    <div className="tripPage">
+    <div>
       <div className="infoTrip">
         <TripContainer trip={from} />
-        <Rating />
+        <Rating className="tripPage" clickable={false} ratings={from.rating}/>
       </div>
       <div className="commentsTripPage">
         <NewComment />
