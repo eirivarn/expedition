@@ -35,7 +35,7 @@ export function TripContainer({ trip }) {
   return (
     <div key={trip.id}>
         <h1 className="title">{trip.tripName}</h1>
-        <h3 className="author">{trip.userMail}Ola Nordmann</h3>
+        <h3 className="author">{trip.authorName}</h3>
         <img className="image" src={image} />
         <textarea 
           className="tripDescription"

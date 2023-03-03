@@ -39,10 +39,10 @@ getTripsByUid(user.uid).then((trips) => {
 */
   return (
     <div className="profile-page">
-      <h2 className="username">Navn: {user.displayName}</h2>
+      <h2 className="username">Name: {user.displayName}</h2>
       <h2 className="username">E-mail: {user.email}</h2>
       <img className="profile-pic" src={user.photoURL} />
-      <h2 className="your-trips">Dine reiser</h2>
+      <h2 className="your-trips">My Trips</h2>
       <div className="user-trips">
         {/*             <Trips />
             <Trips /> */}
