@@ -24,7 +24,6 @@ const Signin = () => {
 
   return (
     <div>
-      <h1 id='h1Signin'>Sign in using</h1>
       <div className='googleButton'>
         <GoogleButton id="googleButton" onClick={handleGoogleSignIn} />
       </div>

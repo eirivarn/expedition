@@ -32,7 +32,7 @@ const Header = () => {
         Trips
       </NavLink>
       <NavLink to="/" id="frontButton" className="button">
-        Forside
+        Frontpage
       </NavLink>
       <NavLink to="/user">
         <img id="userButton" src={userIcon}></img>
@@ -44,11 +44,11 @@ const Header = () => {
           type="button"
           onClick={handleSignOut}
         >
-          Logg ut
+          Log out
         </NavLink>
       ) : (
         <NavLink id="login" className="button" type="button" to="/signin">
-          Logg inn
+          Log in
         </NavLink>
       )}
       </div>
