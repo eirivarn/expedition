@@ -18,12 +18,12 @@ export function Rating({ clickable, ratings }) {
         ind += 1;
         return (
           <button
-            id="ratingButton"
-            className={ind <= (rating || hover) ? "ratingOn" : "ratingOff"}
-            key={ind}
-            onClick={() => handleButtonClick(ind)}
-            onMouseEnter={() => setHover(ind)}
-            onMouseLeave={() => setHover(rating)}
+            type="button"
+            className={clickable ? ind <= (rating || hover) ? "ratingOn" : "ratingOff" : ind <= average ? "ratingOn" : "ratingOff"}
+            key={clickable ? ind : average}
+            onClick={clickable ? () => handleButtonClick(ind) : null}
+            onMouseEnter= {clickable ? () => setHover(ind) : null}
+            onMouseLeave={clickable ? () => setHover(rating) : null}
           >
             <span className="circleGroup">&#11044;</span>
           </button>
