@@ -32,8 +32,8 @@ export function NewTripInfo() {
 
   return (
     <div>
-      <h1 className="title"> Legg til ny reise</h1>
-      <h2 className="nameOfTrip"> Navnet på reisen</h2>
+      <h1 className="title"> Add a New Trip</h1>
+      <h2 className="nameOfTrip"> TRIP-NAME</h2>
       <div className="userInputNameOfTrip">
         <input
           type="text"
@@ -44,7 +44,7 @@ export function NewTripInfo() {
         />
        </div>
 
-      <h2 className="countriesVisited"> Land </h2>
+      <h2 className="countriesVisited"> COUNTRY </h2>
       <div className="userInputCountriesVisited">
         <input
           type="text"
@@ -54,7 +54,7 @@ export function NewTripInfo() {
           }}
         />
       </div>
-      <h2 className="areaVisited"> Område </h2>
+      <h2 className="areaVisited"> AREA </h2>
       <div className="userInputAreaVisited">
         <input
           type="text"
@@ -64,11 +64,11 @@ export function NewTripInfo() {
           }}
         />
       </div>
-      <h2 className="ratinHeader"> Vurdering </h2>
+      <h2 className="ratinHeader"> RATING </h2>
       <div className="rating">
         <Rating onClick={onRatingClick} clickable={true} ratings={[]} />
       </div>
-      <h2 className="description"> Beskrivelse </h2>
+      <h2 className="description"> DESCRIPTION </h2>
       <div className="userInputDescription">
         <textarea
           type="text"
@@ -81,7 +81,7 @@ export function NewTripInfo() {
       <button className="publishTripButon" onClick={onPublishTrip}>
         <div className="buttonText">
           <NavLink to="/" type="button">
-            Publiser reise
+            Publish Trip
           </NavLink>
         </div>
       </button>

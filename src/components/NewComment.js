@@ -17,15 +17,15 @@ export function NewComment() {
   return (
     <div>
       <h2 className="commentSymbol">💬</h2>
-      <h2 className="commentHeader">Kommentarer</h2>
+      <h2 className="commentHeader">Comments</h2>
       <div className="nameComment">
-        <label className="nameText">Navn: {name}</label>
+        <label className="nameText">Name: {name}</label>
         <input 
           className="nameInput" 
           onChange={(event) => setName(event.target.value)}/>
       </div>
       <div className="comments">
-        <label className="commentText">Kommentar:</label>
+        <label className="commentText">Comment:</label>
         <textarea 
           className="commentInput" 
           onChange={handleNewComment}/>
@@ -33,7 +33,7 @@ export function NewComment() {
       <button 
         className="publishButton"
         onClick={publishComment}>
-        Publiser Kommentar
+        Publish Comment
       </button>
     </div>
   );
