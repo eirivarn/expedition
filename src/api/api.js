@@ -7,6 +7,9 @@ import {
   query,
   getDoc,
   where,
+  arrayUnion,
+  updateDoc,
+  doc,
 } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
@@ -96,6 +99,18 @@ export const getTripRating = async (tripId) => {
     } else {
       console.log("No such trip exists.");
     }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const addComment = async (tripId, newComment) => {
+  try {
+    const trip = doc(db, "trips", tripId);
+
+    await updateDoc(trip, {
+      comments: arrayUnion(newComment),
+    });
   } catch (err) {
     console.error(err);
   }

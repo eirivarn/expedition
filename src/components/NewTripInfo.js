@@ -63,7 +63,7 @@ export function NewTripInfo() {
       </div>
       <h2 className="ratinHeader"> Vurdering </h2>
       <div className="rating">
-        <Rating onClick={onRatingClick} />
+        <Rating onClick={onRatingClick} clickable={true} ratings={[]} />
       </div>
       <h2 className="description"> Beskrivelse </h2>
       <div className="userInputDescription">
@@ -77,9 +77,10 @@ export function NewTripInfo() {
       </div>
       <button className="publishTripButon" onClick={onPublishTrip}>
         <div className="buttonText">
-          <NavLink to="/" type="button">Publiser reise
+          <NavLink to="/" type="button">
+            Publiser reise
           </NavLink>
-          </div>
+        </div>
       </button>
     </div>
   );
