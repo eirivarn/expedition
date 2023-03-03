@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 export function Rating({ clickable, ratings }) {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
-  const average = Math.round(ratings.reduce((a, b) => a + b, 0) / ratings.length);
+  const average = Math.round(ratings.reduce((a,b) => a + b, 0) / ratings.length);
 
   const handleButtonClick = (ind) => {
     setRating(ind);
