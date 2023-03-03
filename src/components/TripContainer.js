@@ -12,7 +12,8 @@ export function TripContainer({ trip }) {
   const [editing, setEditing] = useState(false);
   const [description, setDescription] = useState(trip.description);
   const [tripName, setTripName] = useState(trip.tripName);
-  const isAuthor = (trip.authorName === auth.currentUser.displayName);
+  const isAuthor = (auth.currentUser !== null ? (trip.authorName === auth.currentUser.displayName) : false);
+  console.log(auth.currentUser)
 
   const handleUpdateTrip = async (id) => {
     if (isAuthor) {
