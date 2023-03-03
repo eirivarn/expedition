@@ -1,33 +1,34 @@
 import React from "react";
+import { useState } from "react";
 import "../styles/Trippage.css";
 import PropTypes from "prop-types";
 import image from "../img/test.jpg";
 import { db, auth } from "../firebase-config.js";
 import { useNavigate } from 'react-router-dom';
+import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 
 export function TripContainer({ trip }) {
   const navigate = useNavigate();
-  //const [trips, setTrips] = useState([]);
-  //const docRef = doc(db, "trips", "yXN15Kw1OBZlgr8x1ht0");
+  const [editing, setEditing] = useState(false);
+  const [text, setText] = useState(trip.description);
 
-  /*
-  onSnapshot(docRef, (doc) => {
-    console.log(doc.data(), doc.id)
-  }) */
-  /*   const tripsCollectionRef = collection(db, "users");
-  useEffect(() => {
-    const getTrips = async () => {
-      const data = await getDocs(tripsCollectionRef);
-      setTrips(data.docs.map((doc) => ({ ...doc.data(), area: doc.area })));
-    };
-    getTrips();
-  }, []); */
-
-  async function handleDeleteButtonClick() {
-    if (trip.userMail === auth.currentUser) {
-      await db.collection("trips").doc(trip.id).delete();
+  const handleUpdatingDescription = async (id) => {
+    if (trip.userMail !== auth.currentUser) {
+      const document = doc(db, "trips", id);
+      await updateDoc(document, {description: text})
     }
-    console.log(trip.id);
+    handleToggle()
+  }
+
+  const handleToggle = () => {
+    setEditing((current) => !current);
+  }
+
+  const handleDeleteButtonClick = async (id) => {
+    if (trip.userMail !== auth.currentUser) {
+      const document = doc(db, "trips", id);
+      await deleteDoc(document);
+    }
     navigate("/")
   }
 
@@ -36,9 +37,22 @@ export function TripContainer({ trip }) {
         <h1 className="title">{trip.tripName}</h1>
         <h3 className="author">{trip.userMail}Ola Nordmann</h3>
         <img className="image" src={image} />
-        <textarea className="tripDescription">{trip.description}</textarea>
-        <button className="editTripButton">&#9998; Edit</button>
-        <button className="deleteTripButton" onClick={handleDeleteButtonClick}>&#9746; Delete</button>
+        <textarea 
+          className="tripDescription"
+          disabled={!editing}
+          value={text} 
+          onChange={(event) => {setText(event.target.value)}}>
+        </textarea>
+        <button 
+          className="editTripButton" 
+          onClick={editing ? () => {handleUpdatingDescription(trip.id)} : () => handleToggle()}> 
+          {editing ? "Ferdig" : "Edit"}
+        </button>
+        <button 
+          className="deleteTripButton" 
+          onClick={() => {handleDeleteButtonClick(trip.id)}}>
+          &#9746; Delete
+        </button>
 
     </div>
   );
