@@ -105,16 +105,16 @@ button {
     width: 41px;
     height: 41px;
     left: 18px;
-    top: 32px;
+    top: 650px;
     color: #658864;
 }
 
 .commentHeader {
-    position: absolute;
+    position: relative;
     width: 155px;
     height: 45px;
     left: 59px;
-    top: 32px;
+    top: 650px;
     color: #658864;
 }
 
@@ -220,4 +220,10 @@ textarea {
     left: 12px;
     top: 195px;
     border: 1px solid #658864;
+}
+
+.addRating {
+    position: relative;
+    top: -200px;
+    left: -560px;
 }
