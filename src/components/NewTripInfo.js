@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/NewTripPage.css";
-import { Rating } from "../components/Rating.js";
+import Rating from "@mui/material/Rating";
 import { createTrip } from "../api/api";
 import { NavLink } from "react-router-dom";
 
@@ -13,10 +13,6 @@ export function NewTripInfo() {
   const [description, setDescription] = useState("");
 
   //TODO Legge til ratings som array, legge til egen rating som element ved innit.  legge til area, comments som tom array.
-  const onRatingClick = async (innitRating) => {
-    setRating([]);
-    ratings.push(innitRating);
-  };
 
   const onPublishTrip = async () => {
     createTrip(name, countries, area, ratings, description);
@@ -61,10 +57,15 @@ export function NewTripInfo() {
           }}
         />
       </div>
-      <h2 className="ratinHeader"> RATING </h2>
+      <h2 className="ratingHeader"> RATING </h2>
       <div className="rating">
-        <Rating onClick={onRatingClick} clickable={true} ratings={[]} />
-        <Rating onClick={onRatingClick} clickable={true} ratings={[]} />
+        <Rating
+          value={ratings[0]}
+          onChange={(event, newValue) => {
+            setRating([newValue]);
+          }}
+          size="large"
+        />
       </div>
       <h2 className="description"> DESCRIPTION </h2>
       <div className="userInputDescription">

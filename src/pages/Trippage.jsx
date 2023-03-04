@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TripContainer } from "../components/TripContainer.js";
-import { Rating } from "../components/Rating.js";
+import Rating from "@mui/material/Rating";
 import { NewComment } from "../components/NewComment.js";
 import { Comment } from "../components/Comment.js";
 import "../styles/Trippage.css";
@@ -13,11 +13,26 @@ const TripPage = () => {
   console.log("from:", from);
   console.log("from.id:", from.id);
 
+  const calculateAverageRating = () => {
+    let ratings = from.rating;
+    const average = Math.round(
+      ratings.reduce((a, b) => a + b, 0) / ratings.length
+    );
+
+    setAverageRating(average);
+  };
+
+  useEffect(() => {
+    calculateAverageRating();
+  }, []);
+
   return (
     <div>
       <div className="infoTrip">
         <TripContainer trip={from} />
-        <Rating className="tripPage" clickable={false} ratings={from.rating} />
+        <div className="tripRating">
+          <Rating value={averageRating} size="large" readOnly />
+        </div>
       </div>
       <div className="commentsTripPage">
         <NewComment tripId={from.id} />

@@ -116,3 +116,30 @@ export const addComment = async (tripId, newComment) => {
     console.error(err);
   }
 };
+
+export const addRating = async (tripId, newRating) => {
+  try {
+    const trip = doc(db, "trips", tripId);
+
+    await updateDoc(trip, {
+      rating: arrayUnion(newRating),
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const updateRating = async (tripId, oldRating, newRating) => {
+  try {
+    const trip = doc(db, "trips", tripId);
+    const ratings = trip.data.rating;
+    let idx = ratings.indexOf(oldRating);
+    if (idx != -1) {
+      ratings[idx] = newRating;
+    }
+
+    await updateDoc(trip, {
+      rating: ratings,
+    });
+  } catch (error) {}
+};
