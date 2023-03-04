@@ -37,7 +37,7 @@ export const AuthContextProvider = ({ children }) => {
           console.log("Dokumentet finnes i collectionen");
         } else {
           console.log("Dokumentet finnes ikke i collectionen");
-          addUserInfo();
+          addNewUser();
         }
       });
     });

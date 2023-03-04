@@ -60,7 +60,7 @@ export const getAllTrips = async () => {
   }
 };
 
-export const addUserInfo = async () => {
+export const addNewUser = async () => {
   try {
     const userEmail = auth.currentUser.email;
     const usersRef = collection(db, "users");
