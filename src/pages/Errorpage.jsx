@@ -6,9 +6,9 @@ const ErrorPage = () => {
 
     return (
         <div className="container" >
-            <h1>Nå har det skjedd noe feil her!</h1>
-            <h2>Du er på en side som ikke eksisterer.</h2>
-            <Link to="/" className="route" >Trykk her for å gå tilbake til forsiden</Link>
+            <h1> Something has gone wrong!</h1>
+            <h2> Page that does not exist</h2>
+            <Link to="/" className="route" > Click here to return to the front page</Link>
         </div>
     );
 }

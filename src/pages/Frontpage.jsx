@@ -25,10 +25,10 @@ const FrontPage = () => {
   return (
     <div id="body">
       <NavLink to="/newtrip" id="shareTrip" className="button" type="button">
-        Del din egen reise!
+        Share your own adventure!
       </NavLink>
       <div className="flex_images">
-        <h2 className="header2">Reiseruter</h2>
+        <h2 className="header2">Trips</h2>
         <div className="front_grid">
           {trips.map((trip) => {
             return (

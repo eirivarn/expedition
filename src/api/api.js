@@ -69,7 +69,8 @@ export const createTrip = async (
       rating: rating,
       comments: [],
       tripID: small_id,
-      userID: userID,
+      authorID: userID,
+      authorName: auth.currentUser.displayName,
     });
   } catch (err) {
     console.error("Error adding trip: ", err);
