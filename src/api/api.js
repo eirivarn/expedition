@@ -1,4 +1,4 @@
-import { db } from "../firebase-config";
+import { db, auth } from "../firebase-config";
 import { v4 as uuid } from "uuid";
 import {
   getDocs,
@@ -7,8 +7,9 @@ import {
   query,
   getDoc,
   where,
+  doc,
+  setDoc,
 } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
 
 /* 
 Trips storage format
@@ -23,8 +24,21 @@ Trips storage format
 }
 */
 
-const collectionName = "trips";
-const tripsReference = collection(db, collectionName);
+const tripscollectionName = "trips";
+const tripsReference = collection(db, tripscollectionName);
+
+const usersscollectionName = "users";
+const usersReference = collection(db, usersscollectionName);
+
+export const getAllUsers = async () => {
+  try {
+    const data = await getDocs(usersReference);
+    const tripsArray = data.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    return tripsArray;
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 export const getAllTrips = async () => {
   try {
@@ -46,6 +60,19 @@ export const getAllTrips = async () => {
   }
 };
 
+export const addUserInfo = async () => {
+  try {
+    const userEmail = auth.currentUser.email;
+    const usersRef = collection(db, "users");
+    await setDoc(doc(usersRef, userEmail), {
+      myTrips: [],
+      favoritedTrips: [],
+    });
+  } catch (err) {
+    console.error("Error adding user: ", err);
+  }
+};
+
 export const createTrip = async (
   tripName,
   countries,
@@ -56,7 +83,6 @@ export const createTrip = async (
   try {
     const unique_id = uuid();
     const small_id = unique_id.slice(0, 10);
-    const auth = getAuth();
     const userID = auth.currentUser.uid;
     await addDoc(tripsReference, {
       tripName: tripName,

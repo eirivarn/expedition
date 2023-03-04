@@ -1,13 +1,15 @@
-import { useContext, createContext, useEffect, useState } from 'react';
+import { useContext, createContext, useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
   signInWithPopup,
-  //signInWithRedirect,
   signOut,
-  onAuthStateChanged} from 'firebase/auth';
-import { auth } from '../firebase-config';
-import PropTypes from 'prop-types';
-import React from 'react'
+  onAuthStateChanged,
+} from "firebase/auth";
+import { auth, db } from "../firebase-config";
+import PropTypes from "prop-types";
+import React from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { addUserInfo } from "../api/api";
 
 const AuthContext = createContext();
 
@@ -16,18 +18,28 @@ export const AuthContextProvider = ({ children }) => {
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-     signInWithPopup(auth, provider);
-    //signInWithRedirect(auth, provider)
+    signInWithPopup(auth, provider);
   };
 
   const logOut = () => {
-      signOut(auth)
-  }
+    signOut(auth);
+  };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      console.log('User', currentUser)
+      console.log(currentUser);
+      const usersRef = collection(db, "users");
+      getDocs(usersRef).then((querySnapshot) => {
+        const docIds = querySnapshot.docs.map((doc) => doc.id);
+
+        if (docIds.includes(auth.currentUser.email)) {
+          console.log("Dokumentet finnes i collectionen");
+        } else {
+          console.log("Dokumentet finnes ikke i collectionen");
+          addUserInfo();
+        }
+      });
     });
     return () => {
       unsubscribe();
@@ -38,13 +50,12 @@ export const AuthContextProvider = ({ children }) => {
     <AuthContext.Provider value={{ googleSignIn, logOut, user }}>
       {children}
     </AuthContext.Provider>
-    
   );
-  
 };
+
 AuthContextProvider.propTypes = {
-    children: PropTypes.node.isRequired,
-    };
+  children: PropTypes.node.isRequired,
+};
 
 export const UserAuth = () => {
   return useContext(AuthContext);
