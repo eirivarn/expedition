@@ -4,7 +4,7 @@ import "../styles/Trippage.css";
 import PropTypes from "prop-types";
 import image from "../img/test.jpg";
 import { db, auth } from "../firebase-config.js";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 
 export function TripContainer({ trip }) {
@@ -12,28 +12,34 @@ export function TripContainer({ trip }) {
   const [editing, setEditing] = useState(false);
   const [description, setDescription] = useState(trip.description);
   const [tripName, setTripName] = useState(trip.tripName);
-  const isAuthor = (auth.currentUser !== null ? (trip.authorName === auth.currentUser.displayName) : false);
-  console.log(auth.currentUser)
+  const isAuthor =
+    auth.currentUser !== null
+      ? trip.authorName === auth.currentUser.displayName
+      : false;
+  console.log(auth.currentUser);
 
   const handleUpdateTrip = async (id) => {
     if (isAuthor) {
       const document = doc(db, "trips", id);
-      await updateDoc(document, { description: description, tripName: tripName })
+      await updateDoc(document, {
+        description: description,
+        tripName: tripName,
+      });
     }
-    handleToggle()
-  }
+    handleToggle();
+  };
 
   const handleToggle = () => {
     setEditing((current) => !current);
-  }
+  };
 
   const handleDeleteButtonClick = async (id) => {
     if (isAuthor) {
       const document = doc(db, "trips", id);
       await deleteDoc(document);
     }
-    navigate("/")
-  }
+    navigate("/");
+  };
 
   return (
     <div key={trip.id}>
@@ -41,26 +47,40 @@ export function TripContainer({ trip }) {
         className="title"
         disabled={!editing}
         value={tripName}
-        onChange={(event) => { setTripName(event.target.value) }}>
-      </textarea>
+        onChange={(event) => {
+          setTripName(event.target.value);
+        }}
+      ></textarea>
       <h3 className="author">{trip.authorName}</h3>
       <img className="image" src={image} />
       <textarea
         className="tripDescription"
         disabled={!editing}
         value={description}
-        onChange={(event) => { setDescription(event.target.value) }}>
-      </textarea>
+        onChange={(event) => {
+          setDescription(event.target.value);
+        }}
+      ></textarea>
       <button
         className={isAuthor ? "editTripButton" : "notVisibleEditButton"}
         disabled={!isAuthor}
-        onClick={editing ? () => { handleUpdateTrip(trip.id) } : () => handleToggle()}>
+        onClick={
+          editing
+            ? () => {
+                handleUpdateTrip(trip.id);
+              }
+            : () => handleToggle()
+        }
+      >
         {editing ? "Ferdig" : "Edit"}
       </button>
       <button
         className={isAuthor ? "deleteTripButton" : "notVisibleDeleteButton"}
         disabled={!isAuthor}
-        onClick={() => { handleDeleteButtonClick(trip.id) }}>
+        onClick={() => {
+          handleDeleteButtonClick(trip.id);
+        }}
+      >
         &#9746; Delete
       </button>
     </div>
