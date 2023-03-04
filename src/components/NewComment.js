@@ -24,6 +24,7 @@ export function NewComment({ tripId, updatePage }) {
     updatePage(commentString);
     setName("");
     setComment("");
+    setRating(0);
   };
 
   return (
@@ -32,6 +33,7 @@ export function NewComment({ tripId, updatePage }) {
       <h2 className="commentHeader">Comments</h2>
       <div className="addRating">
         <Rating
+          name="newCommentRating"
           value={rating}
           onChange={(event, newValue) => {
             setRating(newValue);
@@ -44,12 +46,17 @@ export function NewComment({ tripId, updatePage }) {
         <label className="nameText">Name:</label>
         <input
           className="nameInput"
+          value={name}
           onChange={(event) => setName(event.target.value)}
         />
       </div>
       <div className="comments">
         <label className="commentText">Comment:</label>
-        <textarea className="commentInput" onChange={handleNewComment} />
+        <textarea
+          className="commentInput"
+          onChange={handleNewComment}
+          value={comment}
+        />
       </div>
       <button className="publishButton" onClick={publishComment}>
         Publish Comment
