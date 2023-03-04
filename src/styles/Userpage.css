@@ -1,4 +1,4 @@
-.profile-container{
+.profile-container {
   display: flex;
   justify-content: center;
   width: 50%;
@@ -46,7 +46,7 @@
   background: url("../img/user.png"), #d9d9d9;
 }
 
-.user-trips{
+.user-trips {
   position: absolute;
   height: 245px;
   top: 650px;
@@ -74,10 +74,18 @@
     top: 0px;
  */
 
- .notLoggedIn {
+.notLoggedIn {
   text-align: center;
   color: black;
   text-decoration: double;
   font-size: 25px;
   margin-left: 30%;
- }
+}
+
+.front_grid {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

@@ -18,7 +18,28 @@ export const AuthContextProvider = ({ children }) => {
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const currentUser = result.user;
+        setUser(currentUser);
+        console.log(currentUser);
+        const usersRef = collection(db, "users");
+        getDocs(usersRef).then((querySnapshot) => {
+          const docIds = querySnapshot.docs.map((doc) => doc.id);
+
+          if (docIds.includes(auth.currentUser.email)) {
+            console.log("Bruker allerede i collectionen");
+          } else {
+            console.log(
+              "Bruker finnes ikke i collectionen, legger til bruker nu"
+            );
+            addNewUser();
+          }
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   const logOut = () => {
@@ -29,17 +50,6 @@ export const AuthContextProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       console.log(currentUser);
-      const usersRef = collection(db, "users");
-      getDocs(usersRef).then((querySnapshot) => {
-        const docIds = querySnapshot.docs.map((doc) => doc.id);
-
-        if (docIds.includes(auth.currentUser.email)) {
-          console.log("Bruker allerede i collectionen");
-        } else {
-          console.log("Bruker finnes ikke i collectionen");
-          addNewUser();
-        }
-      });
     });
     return () => {
       unsubscribe();
