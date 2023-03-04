@@ -1,269 +1,312 @@
 .tripPage {
-    position: relative;
-    width: 1440px;
-    height: 2330px;
+  position: relative;
+  width: 1440px;
+  height: 2330px;
 }
 
 .infoTrip {
-    position: absolute;
-    width: 1140px;
-    height: 564px;
-    left: 150px;
-    top: 100px;
-    /*overflow-y: scroll;*/
+  position: absolute;
+  width: 1140px;
+  height: 564px;
+  left: 150px;
+  top: 100px;
+  /*overflow-y: scroll;*/
 }
 
 .title {
-    position: absolute;
-    background: transparent;
-    border: none;
-    height: 83px;
-    left: 414px;
-    right: 414px;
-    top: 0px;
-    color: #658864;
+  position: absolute;
+  background: transparent;
+  border: none;
+  height: 83px;
+  left: 414px;
+  right: 414px;
+  top: 0px;
+  color: #658864;
 }
 
 .author {
-    position: absolute;
-    width: 300px;
-    height: 23px;
-    left: 569px;
-    top: 119px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    color: #000000;
+  position: absolute;
+  width: 300px;
+  height: 23px;
+  left: 569px;
+  top: 119px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  color: #000000;
 }
 
 .tripRating {
-    position: absolute;
-    width: 250px;
-    height: 40px;
-    left: 566px;
-    top: 155px;
+  position: absolute;
+  width: 250px;
+  height: 40px;
+  left: 566px;
+  top: 155px;
 }
 
 #ratingButton {
-    height: 30px;
-    width: 30px;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
-    padding: 1%;
-    border: none;
-    box-sizing: content-box;
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 1%;
+  border: none;
+  box-sizing: content-box;
 }
 
 .ratingOn > span {
-    font-size: 40px;
-    color: #658864;
-    box-sizing: content-box;
+  font-size: 40px;
+  color: #658864;
+  box-sizing: content-box;
 }
 
 .ratingOff > span {
-    font-size: 40px;
-    color: #ccc;
+  font-size: 40px;
+  color: #ccc;
 }
 
 .image {
-    position: absolute;
-    width: 507px;
-    height: 436px;
-    left: 0px;
-    top: 115px;
-    border-radius: 10px;
+  position: absolute;
+  width: 507px;
+  height: 436px;
+  left: 0px;
+  top: 115px;
+  border-radius: 10px;
 }
 
 .tripDescription {
-    position: absolute;
-    background: transparent;
-    border: none;
-    resize: none;
-    width: 572px;
-    height: 303px;
-    left: 566px;
-    top: 248px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 23px;
-    color: #000000;
+  position: absolute;
+  background: transparent;
+  border: none;
+  resize: none;
+  width: 572px;
+  height: 303px;
+  left: 566px;
+  top: 248px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #000000;
 }
 
 .editTripButton {
-    position: absolute;
-    border: none;
-    width: 102px;
-    height: 40px;
-    left: 893px;
-    top: 11px;
-    color: #658864;
-    background-color: #c8e7bb;
+  position: absolute;
+  border: none;
+  width: 102px;
+  height: 40px;
+  left: 893px;
+  top: 11px;
+  color: #658864;
+  background-color: #c8e7bb;
 }
 
 .notVisibleEditButton {
-    position: absolute;
-    background: transparent;
-    color: #FFFFFF;
-    border: none;
-    width: 102px;
-    height: 40px;
-    left: 893px;
-    top: 11px;
+  position: absolute;
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  width: 102px;
+  height: 40px;
+  left: 893px;
+  top: 11px;
 }
 
 .deleteTripButton {
-    position: absolute;
-    border: none;
-    width: 134px;
-    height: 40px;
-    left: 1004px;
-    top: 11px;
-    color: #658864;
-    background-color: #c8e7bb;
+  position: absolute;
+  border: none;
+  width: 134px;
+  height: 40px;
+  left: 1004px;
+  top: 11px;
+  color: #658864;
+  background-color: #c8e7bb;
 }
 
 .notVisibleDeleteButton {
-    position: absolute;
-    background: transparent;
-    color: #FFFFFF;
-    border: none;
-    width: 134px;
-    height: 40px;
-    left: 1004px;
-    top: 11px;
+  position: absolute;
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  width: 134px;
+  height: 40px;
+  left: 1004px;
+  top: 11px;
 }
 
 .commentsTripPage {
-    position: absolute;
-    width: 1167px;
-    height: 618px;
-    left: 138px;
-    top: 979px;
+  position: absolute;
+  width: 1167px;
+  height: 618px;
+  left: 138px;
+  top: 979px;
 }
 
 .commentSymbol {
-    position: absolute;
-    width: 41px;
-    height: 41px;
-    left: 18px;
-    top: 32px;
-    color: #658864;
+  position: absolute;
+  width: 41px;
+  height: 41px;
+  left: 18px;
+  top: 32px;
+  color: #658864;
 }
 
 .commentHeader {
-    position: absolute;
-    width: 155px;
-    height: 45px;
-    left: 59px;
-    top: 32px;
-    color: #658864;
+  position: absolute;
+  width: 155px;
+  height: 45px;
+  left: 59px;
+  top: 32px;
+  color: #658864;
 }
 
 .nameText {
-    position: absolute;
-    width: 221px;
-    height: 19px;
-    left: 12px;
-    top: 112px;
-    color: #658864;
+  position: absolute;
+  width: 221px;
+  height: 19px;
+  left: 12px;
+  top: 112px;
+  color: #658864;
 }
 
 .nameInput {
-    position: absolute;
-    width: 1140px;
-    height: 61px;
-    left: 12px;
-    top: 146px;
+  position: absolute;
+  width: 1140px;
+  height: 61px;
+  left: 12px;
+  top: 146px;
 }
 
 .commentText {
-    position: absolute;
-    width: 221px;
-    height: 19px;
-    left: 12px;
-    top: 242px;
-    color: #658864;
+  position: absolute;
+  width: 221px;
+  height: 19px;
+  left: 12px;
+  top: 242px;
+  color: #658864;
 }
 
 .commentInput {
-    box-sizing: border-box;
-    position: absolute;
-    width: 1140px;
-    height: 213px;
-    left: 12px;
-    top: 267px;
-    border: 1px solid #658864;
+  box-sizing: border-box;
+  position: absolute;
+  width: 1140px;
+  height: 213px;
+  left: 12px;
+  top: 267px;
+  border: 1px solid #658864;
 }
 
 .publishButton {
-    position: absolute;
-    width: 369px;
-    height: 50px;
-    left: 394px;
-    top: 528px;
-    color: #F9F9F9;
-    background: #658864;
-    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.4);
-    border-radius: 40px;
-    font-size: 25px;
+  position: absolute;
+  width: 369px;
+  height: 50px;
+  left: 394px;
+  top: 528px;
+  color: #f9f9f9;
+  background: #658864;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.4);
+  border-radius: 40px;
+  font-size: 25px;
 }
 
 .commentShowBody {
-    position: absolute;
-    width: 1152px;
-    height: 238px;
-    left: 138px;
-    top: 1712px;
+  position: absolute;
+  width: 1152px;
+  height: 238px;
+  left: 138px;
+  top: 1712px;
 }
 
 .commentShowAuthor {
-    position: absolute;
-    width: 750px;
-    height: 45px;
-    left: 12px;
-    top: 0px;
-    color: #658864;
+  position: absolute;
+  width: 750px;
+  height: 45px;
+  left: 12px;
+  top: 0px;
+  color: #658864;
 }
 
 .commentShowDateTime {
-    position: absolute;
-    width: 221px;
-    height: 19px;
-    left: 12px;
-    top: 45px;
-    color: #658864;
+  position: absolute;
+  width: 221px;
+  height: 19px;
+  left: 12px;
+  top: 45px;
+  color: #658864;
 }
 
 textarea {
-    resize: none;
+  resize: none;
 }
 
 .commentShowText {
-    position: absolute;
-    background: transparent;
-    border: none;
-    width: 1140px;
-    height: 80px;
-    left: 12px;
-    top: 76px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 23px;
-    color: #000000;
+  position: absolute;
+  background: transparent;
+  border: none;
+  width: 1140px;
+  height: 80px;
+  left: 12px;
+  top: 76px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #000000;
 }
 
 .commentShowLine {
-    position: absolute;
-    width: 1140px;
-    height: 0px;
-    left: 12px;
-    top: 195px;
-    border: 1px solid #658864;
+  position: absolute;
+  width: 1140px;
+  height: 0px;
+  left: 12px;
+  top: 195px;
+  border: 1px solid #658864;
+}
+
+.addFavoriteArea {
+  position: absolute;
+  width: 174px;
+  height: 40px;
+  left: 153px;
+  top: 776px;
+}
+
+.addFavoriteShowText {
+  position: absolute;
+  left: 24.14%;
+  right: -6.32%;
+  top: 22.5%;
+  bottom: 30%;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 21px;
+
+  color: #658864;
+}
+
+.addFavoriteShowHeart {
+  position: absolute;
+  left: 8.33%;
+  right: 8.33%;
+  top: 26%;
+  bottom: 20%;
+}
+
+.addFavoriteShowBox {
+  position: absolute;
+  left: 0%;
+  right: -6.32%;
+  top: 0%;
+  bottom: 0%;
+
+  background: #c5dfc4;
+  border-radius: 10px;
 }

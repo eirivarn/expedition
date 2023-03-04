@@ -3,6 +3,7 @@ import { TripContainer } from "../components/TripContainer.js";
 import { Rating } from "../components/Rating.js";
 import { NewComment } from "../components/NewComment.js";
 import { Comment } from "../components/Comment.js";
+import { AddToFavorites } from "../components/AddToFavorites.js";
 import "../styles/Trippage.css";
 import { useLocation } from "react-router";
 
@@ -15,7 +16,10 @@ const TripPage = () => {
     <div>
       <div className="infoTrip">
         <TripContainer trip={from} />
-        <Rating className="tripPage" clickable={false} ratings={from.rating}/>
+        <Rating className="tripPage" clickable={false} ratings={from.rating} />
+      </div>
+      <div className="addFavoriteArea">
+        <AddToFavorites />
       </div>
       <div className="commentsTripPage">
         <NewComment />
