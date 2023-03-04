@@ -47,10 +47,11 @@
 
 .tripAvgRating {
     position: relative;
+
 }
 
 .trips {
-    margin: 0 5px 30px 5px;
+    margin: 0 5px 30px 10px;
 }
 
 /*.flex_images {
@@ -65,8 +66,9 @@
 }
 
 .reiseNavn{
+    position: relative;
     text-align: left;
-    margin-top: -10px;
+    margin-top: 5px;
     color: #658864;
     margin-left: 4%;
     font-size: 20px;

@@ -37,9 +37,6 @@ export function NewComment({ tripId }) {
           onChange={(event, newValue) => {
             setRating(newValue);
           }}
-          onChangeActive={(event, newHover) => {
-            setHover(newHover);
-          }}
           size="large"
         />
       </div>

@@ -12,7 +12,9 @@ const TripComponent = ({ name, handleClick, ratings }) => {
   return (
     <div className="trips" onClick={handleClick}>
       <img className="tripImage" src={image}></img>
-      <Rating name="tripRating" value={average} size="small" readOnly />
+      <div className="tripAvgRating">
+        <Rating value={average} size="medium" readOnly />
+      </div>
       <h2 className="reiseNavn">{name}</h2>
     </div>
   );
