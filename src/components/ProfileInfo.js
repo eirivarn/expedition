@@ -1,55 +1,64 @@
-import React from "react";
-//import React, { useState, useEffect } from 'react';
-//import { collection, getDocs} from "firebase/firestore";
-//import { db } from "../firebase-config.js";
+import React, { useState, useEffect } from "react";
 import { UserAuth } from "../Context/AuthContext";
-//import {Trips} from './trips'
 import "../styles/Userpage.css";
+import PropTypes from "prop-types";
+import TripComponent from "../components/TripComponent.js";
+import { getAllTripsByCurrentUser } from "../api/api.js";
+import { NavLink } from "react-router-dom";
 
 export function ProfileInfo() {
-  //props
-  //const { id } = props;
-  // const [userData, setUserData] = useState(null);
+  const [trips, setTrips] = useState([]);
   const { user } = UserAuth();
+
   if (!user) {
-    return <div className="notLoggedIn">Log in with Google to see your account</div>;
+    return (
+      <div className="notLoggedIn">Log in with Google to see your account</div>
+    );
   }
-  /*NOTE: Trips component only returns default values atm. When it's ready this can be used to find all trips
-  written by the logged in user.
 
-  const getTripsByUid = async (uid) => {
-  const trips = [];
-  const querySnapshot = await getDocs(collection(db, "trips"));
-  querySnapshot.forEach((doc) => {
-    if (doc.exists() && "uid" in doc.data()) {
-      const trip = doc.data();
-      trip.id = doc.id;
-      if (trip.uid === uid) {
-        trips.push(trip);
-      }
-    }
-  });
-  return trips;
-};
+  useEffect(() => {
+    const fetchAllTrips = async () => {
+      const allTrips = await getAllTripsByCurrentUser(user);
+      setTrips(allTrips);
+    };
+    fetchAllTrips();
+  }, [user.email]);
 
-getTripsByUid(user.uid).then((trips) => {
-  console.log(trips);
-});
-
-*/
   return (
     <div className="profile-page">
       <h2 className="username">Name: {user.displayName}</h2>
       <h2 className="username">E-mail: {user.email}</h2>
       <img className="profile-pic" src={user.photoURL} />
-      <h2 className="your-trips">My Trips</h2>
-      <div className="user-trips">
-        {/*             <Trips />
-            <Trips /> */}
+      <div className="user-trips ">
+        <div className="flex_images">
+          <h2 className="header2">My Trips</h2>
+          <div className="front_grid_userpage">
+            {trips.map((trip) => {
+              return (
+                <NavLink
+                  key={trip.id}
+                  to="/trip"
+                  state={{ from: trip }}
+                  style={{ textDecoration: "none" }}
+                >
+                  <TripComponent
+                    tripID={trip.id}
+                    name={trip.tripName}
+                    ratings={trip.rating}
+                  />
+                </NavLink>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
+ProfileInfo.propTypes = {
+  trips: PropTypes.array,
+};
 
 export default ProfileInfo;
 

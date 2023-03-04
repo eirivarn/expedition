@@ -4,9 +4,7 @@ import {
   getDocs,
   collection,
   addDoc,
-  query,
   getDoc,
-  where,
   doc,
   setDoc,
 } from "firebase/firestore";
@@ -100,17 +98,21 @@ export const createTrip = async (
   }
 };
 
-export const getTripsByUser = async (userMail) => {
+export const getAllTripsByCurrentUser = async (currentUser) => {
   try {
-    const q = query(tripsReference, where("userMail", "==", userMail));
-    const querySnapshot = await getDocs(q);
-    const tripsArray = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    return tripsArray;
-  } catch (err) {
-    console.error(err);
+    if (currentUser && currentUser.uid) {
+      const tripsRef = collection(db, "trips");
+      const querySnapshot = await getDocs(tripsRef);
+      const tripsArray = querySnapshot.docs
+        .map((doc) => ({ id: doc.id, ...doc.data() }))
+        .filter((trip) => trip.authorID === currentUser.uid);
+      return tripsArray;
+    } else {
+      console.log("User is not authenticated.");
+      return [];
+    }
+  } catch (error) {
+    console.error(error);
   }
 };
 
