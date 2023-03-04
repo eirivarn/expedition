@@ -34,9 +34,9 @@ export const AuthContextProvider = ({ children }) => {
         const docIds = querySnapshot.docs.map((doc) => doc.id);
 
         if (docIds.includes(auth.currentUser.email)) {
-          console.log("Dokumentet finnes i collectionen");
+          console.log("Bruker allerede i collectionen");
         } else {
-          console.log("Dokumentet finnes ikke i collectionen");
+          console.log("Bruker finnes ikke i collectionen");
           addNewUser();
         }
       });

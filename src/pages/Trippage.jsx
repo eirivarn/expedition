@@ -19,7 +19,7 @@ const TripPage = () => {
         <Rating className="tripPage" clickable={false} ratings={from.rating} />
       </div>
       <div className="addFavoriteArea">
-        <AddToFavorites />
+        <AddToFavorites trip={from} />
       </div>
       <div className="commentsTripPage">
         <NewComment />
