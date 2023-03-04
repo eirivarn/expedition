@@ -9,7 +9,7 @@ import { auth, db } from "../firebase-config";
 import PropTypes from "prop-types";
 import React from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { addUserInfo } from "../api/api";
+import { addNewUser } from "../api/api";
 
 const AuthContext = createContext();
 
