@@ -7,14 +7,15 @@ import PropTypes from "prop-types";
 import { updateDoc, collection, getDoc, doc } from "firebase/firestore";
 import { db, auth } from "../firebase-config.js";
 
+//Lagrer basert på hva som sendes til handleOnClick lagres ulik data til arrayet.
 export function AddToFavorites({ trip }) {
-  const handleOnClick = async (id) => {
+  const handleOnClick = async (trip) => {
     const userEmail = auth.currentUser.email;
     const collectionRef = collection(db, "users");
     const docRef = doc(collectionRef, userEmail);
     const getdoc = await getDoc(docRef);
-    const updatedFavoritedTrips = [...getdoc.data().favoritedTrips, id];
-    if (getdoc.data().favoritedTrips.includes(id)) {
+    const updatedFavoritedTrips = [...getdoc.data().favoritedTrips, trip];
+    if (getdoc.data().favoritedTrips.includes(trip)) {
       console.log("Denne turen er allerede i databasen");
     } else {
       console.log(
@@ -28,7 +29,7 @@ export function AddToFavorites({ trip }) {
     <div
       className="addFavoriteShowBox"
       onClick={() => {
-        handleOnClick(trip.id);
+        handleOnClick(trip.id); // <-- Hva som sendes inn her lagres som favoritedTrip
       }}
     >
       <div className="addFavoriteShowText">Add to favorites</div>

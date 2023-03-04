@@ -58,6 +58,23 @@ export const getAllTrips = async () => {
   }
 };
 
+export const getFavoritedTrips = async (user) => {
+  try {
+    const userRef = doc(usersReference, user.email);
+    const userData = await getDoc(userRef);
+    const favoritedTrips = userData.data().favoritedTrips;
+
+    const trips = await getDocs(tripsReference);
+    const favoritedTripsData = trips.docs
+      .filter((doc) => favoritedTrips.includes(doc.id))
+      .map((doc) => ({ id: doc.id, ...doc.data() }));
+
+    return favoritedTripsData;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 export const addNewUser = async () => {
   try {
     const userEmail = auth.currentUser.email;

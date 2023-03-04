@@ -89,3 +89,77 @@
   font-size: 25px;
   margin-left: 30%;
 }
+
+.MyTripArea {
+  position: absolute;
+  width: 140px;
+  height: 40px;
+  left: 0px;
+  top: -30px;
+}
+
+.MyFavoritesArea {
+  position: absolute;
+  width: 140px;
+  height: 40px;
+  left: 160px;
+  top: -30px;
+}
+
+.addMyTripsShowText {
+  position: absolute;
+  top: 22.5%;
+  bottom: 30%;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 21px;
+
+  color: #658864;
+}
+
+.addFavoriteShowText {
+  position: absolute;
+  top: 22.5%;
+  bottom: 30%;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 21px;
+
+  color: #658864;
+}
+
+.addFavoriteShowHeart {
+  position: absolute;
+  left: 8.33%;
+  right: 8.33%;
+  top: 26%;
+  bottom: 20%;
+}
+
+.addFavoriteShowBox {
+  position: absolute;
+  left: 0%;
+  right: -6.32%;
+  top: 0%;
+  bottom: 0%;
+
+  background: #c5dfc4;
+  border-radius: 10px;
+}
+
+.addMyTripsShowBox {
+  position: absolute;
+  left: 0%;
+  right: -6.32%;
+  top: 0%;
+  bottom: 0%;
+
+  background: #c5dfc4;
+  border-radius: 10px;
+}
