@@ -1,13 +1,13 @@
 import { getAuth } from "firebase/auth";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { addComment } from "../api/api";
 import "../styles/Trippage.css";
-import { Rating } from "../components/Rating.js";
+import Rating from "@mui/material/Rating";
 
 export function NewComment({ tripId }) {
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
-  const [ratings, setRatings] = useState([]);
+  const [rating, setRating] = useState(0);
 
   const handleNewComment = ({ target }) => {
     setComment(target.value);
@@ -15,19 +15,16 @@ export function NewComment({ tripId }) {
 
   const publishComment = async () => {
     const userID = getAuth().currentUser.uid;
-    const commentString = userID + ":" + name + ":" + comment + ":" + ratings;
-    console.log("rating:", ratings);
+    const commentString = userID + ":" + name + ":" + comment + ":" + rating;
+    console.log("rating:", rating);
     console.log("commentString:", commentString);
     await addComment(tripId, commentString);
     setName("");
     setComment("");
   };
 
-  const onRatingClick = (innitRating) => {
-    console.log("innitRating:", innitRating);
-    //setRatings([]);
-    ratings.push(innitRating);
-    console.log(ratings);
+  const onRatingClick = (rating) => {
+    console.log("test");
   };
 
   return (
@@ -35,7 +32,16 @@ export function NewComment({ tripId }) {
       <h2 className="commentSymbol">💬</h2>
       <h2 className="commentHeader">Kommentarer</h2>
       <div className="addRating">
-        <Rating onClick={onRatingClick} clickable={true} ratings={[]} />
+        <Rating
+          value={rating}
+          onChange={(event, newValue) => {
+            setRating(newValue);
+          }}
+          onChangeActive={(event, newHover) => {
+            setHover(newHover);
+          }}
+          size="large"
+        />
       </div>
       <div className="nameComment">
         <label className="nameText">Navn: {name}</label>

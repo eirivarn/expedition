@@ -224,6 +224,6 @@ textarea {
 
 .addRating {
     position: relative;
-    top: -200px;
-    left: -560px;
+    left: 8px;
+    top: -10px;
 }

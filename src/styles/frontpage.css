@@ -45,6 +45,10 @@
     border-radius: 10px;   
 }
 
+.tripAvgRating {
+    position: relative;
+}
+
 .trips {
     margin: 0 5px 30px 5px;
 }
