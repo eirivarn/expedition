@@ -9,6 +9,7 @@ import { useLocation } from "react-router";
 const TripPage = () => {
   const location = useLocation();
   const { from } = location.state;
+  const [averageRating, setAverageRating] = useState(0);
   console.log("from:", from);
   console.log("from.id:", from.id);
 
