@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { addComment } from "../api/api";
 import "../styles/Trippage.css";
 import Rating from "@mui/material/Rating";
+import PropTypes from "prop-types";
 
-export function NewComment({ tripId }) {
+export function NewComment({ tripId, updatePage }) {
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
@@ -15,10 +16,12 @@ export function NewComment({ tripId }) {
 
   const publishComment = async () => {
     const userID = getAuth().currentUser.uid;
-    const commentString = userID + ":" + name + ":" + comment + ":" + rating;
+    const date = new Date();
+    const commentString =
+      userID + "::" + name + "::" + comment + "::" + date + "::" + rating;
 
     await addComment(tripId, commentString);
-
+    updatePage(commentString);
     setName("");
     setComment("");
   };
@@ -54,3 +57,8 @@ export function NewComment({ tripId }) {
     </div>
   );
 }
+
+NewComment.propTypes = {
+  tripId: PropTypes.string,
+  updatePage: PropTypes.func,
+};

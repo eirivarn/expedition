@@ -91,14 +91,12 @@ export const getTripsByUser = async (userMail) => {
   }
 };
 
-export const getTripRating = async (tripId) => {
+export const getSpecificTrip = async (tripId) => {
   try {
     const tripReference = collection(db, tripsReference, tripId);
     const tripSnapshot = await getDoc(tripReference);
     if (tripSnapshot.exists()) {
       return tripSnapshot.data();
-    } else {
-      console.log("No such trip exists.");
     }
   } catch (err) {
     console.error(err);
@@ -141,5 +139,7 @@ export const updateRating = async (tripId, oldRating, newRating) => {
     await updateDoc(trip, {
       rating: ratings,
     });
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+  }
 };
