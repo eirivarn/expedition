@@ -4,6 +4,7 @@ import { addComment } from "../api/api";
 import "../styles/Trippage.css";
 import Rating from "@mui/material/Rating";
 import PropTypes from "prop-types";
+import commentIcon from '../img/comment_icon.svg';
 
 export function NewComment({ tripId, updatePage }) {
   const [name, setName] = useState("");
@@ -29,10 +30,13 @@ export function NewComment({ tripId, updatePage }) {
 
   return (
     <div>
-      <h2 className="commentSymbol">💬</h2>
-      <h2 className="commentHeader">Comments</h2>
+      {/*<h2 className="commentSymbol">💬</h2> */}
+      <img src={commentIcon} className="commentIcon"></img>
+      <h2 className="commentHeader"> Comments</h2>
       <div className="addRating">
+        <label className="nameRating">RATING</label>
         <Rating
+          className="newCommentRating"
           name="newCommentRating"
           value={rating}
           onChange={(event, newValue) => {
@@ -43,7 +47,7 @@ export function NewComment({ tripId, updatePage }) {
       </div>
 
       <div className="nameComment">
-        <label className="nameText">Name:</label>
+        <label className="nameText">NAME</label>
         <input
           className="nameInput"
           value={name}
@@ -51,7 +55,7 @@ export function NewComment({ tripId, updatePage }) {
         />
       </div>
       <div className="comments">
-        <label className="commentText">Comment:</label>
+        <label className="commentText">COMMENT</label>
         <textarea
           className="commentInput"
           onChange={handleNewComment}

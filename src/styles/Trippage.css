@@ -155,21 +155,47 @@
     color: #658864;
 }
 
+
+.commentIcon {
+    position: absolute;
+    width: 31px;
+    height: 31px;
+    left: 18px;
+    color: #658864;
+}
+
 .commentHeader {
     position: relative;
     width: 155px;
     height: 45px;
-    left: 59px;
-    top: 650px;
+    font-size: 27px;
+    left: 62px;
     color: #658864;
 }
+
+.nameRating {
+    width: 221px;
+    height: 19px;
+    font-size: 20px;
+    left: 12px;
+    top: 170px;
+    color: #658864;
+
+}
+
+.newCommentRating {
+    top: 60px;
+    left: -72px;
+}
+
 
 .nameText {
     position: absolute;
     width: 221px;
     height: 19px;
-    left: 12px;
-    top: 112px;
+    font-size: 20px;
+    left: 20px;
+    top: 250px;
     color: #658864;
 }
 
@@ -177,16 +203,19 @@
     position: absolute;
     width: 1140px;
     height: 61px;
-    left: 12px;
-    top: 146px;
+    left: 20px;
+    top: 300px;
+    border: #658864 solid 1px;
 }
+
 
 .commentText {
     position: absolute;
     width: 221px;
     height: 19px;
-    left: 12px;
-    top: 242px;
+    font-size: 20px;
+    left: 20px;
+    top: 410px;
     color: #658864;
 }
 
@@ -195,8 +224,8 @@
     position: absolute;
     width: 1140px;
     height: 213px;
-    left: 12px;
-    top: 267px;
+    left: 20px;
+    top: 450px;
     border: 1px solid #658864;
 }
 
@@ -205,7 +234,7 @@
     width: 369px;
     height: 50px;
     left: 394px;
-    top: 528px;
+    top: 720px;
     color: #F9F9F9;
     background: #658864;
     box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.4);
@@ -215,19 +244,26 @@
 
 .commentShowBody {
     position: relative;
-    width: 1152px;
-    height: 238px;
-    left: 138px;
-    top: 1712px;
+    width: 1138px;
+    height: 243px;
+    left: 152px;
+    top: 1812px;
 }
 
 .commentShowAuthor {
     position: relative;
     width: 750px;
     height: 45px;
+    font-size: 27px;
     left: 12px;
     top: 0px;
     color: #658864;
+}
+
+.commentRating {
+    top: 30px;
+    left: -457px;
+
 }
 
 .commentShowDateTime {
@@ -235,7 +271,7 @@
     width: 221px;
     height: 19px;
     left: 12px;
-    top: 45px;
+    top: -20px;
     color: #658864;
 }
 
@@ -249,14 +285,22 @@ textarea {
     border: none;
     width: 1140px;
     height: 80px;
-    left: 12px;
-    top: 76px;
+    left: -7px;
+    top: 50px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 23px;
     color: #000000;
+}
+
+.commentLinebrake {
+    border-top: #658864 solid 1px;
+    width: 1130px;
+    margin-left: 12px;
+    margin-top: 50px;
+    color: #658864;
 }
 
 .commentShowLine {
@@ -270,6 +314,6 @@ textarea {
 
 .addRating {
     position: relative;
-    left: 8px;
-    top: -10px;
+    left: 22px;
+    top: 20px;
 }

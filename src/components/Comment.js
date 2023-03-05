@@ -3,14 +3,16 @@ import React from "react";
 import "../styles/Trippage.css";
 import PropTypes from "prop-types";
 
-export function Comment({ userId, name, content, rating, date }) {
+/* userId,*/
+
+export function Comment({ name, content, rating, date }) {
   return (
     <div className="commentShowBody">
       <h2 className="commentShowAuthor">{name}</h2>
-      <Rating value={rating} size="medium" readOnly />
       <label className="commentShowDateTime">{date}</label>
+      <Rating className="commentRating" value={rating} size="medium" readOnly />
       <textarea className="commentShowText">{content}</textarea>
-      <line className="commentShowLine" />
+      <div className="commentLinebrake"></div>
     </div>
   );
 }
