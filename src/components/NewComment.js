@@ -34,7 +34,7 @@ export function NewComment({ tripId, updatePage }) {
       <img src={commentIcon} className="commentIcon"></img>
       <h2 className="commentHeader"> Comments</h2>
       <div className="addRating">
-        <label className="nameRating">RATING</label>
+        <label className="nameRating">Rating:</label>
         <Rating
           className="newCommentRating"
           name="newCommentRating"
@@ -47,7 +47,7 @@ export function NewComment({ tripId, updatePage }) {
       </div>
 
       <div className="nameComment">
-        <label className="nameText">NAME</label>
+        <label className="nameText">Name:</label>
         <input
           className="nameInput"
           value={name}
@@ -55,7 +55,7 @@ export function NewComment({ tripId, updatePage }) {
         />
       </div>
       <div className="comments">
-        <label className="commentText">COMMENT</label>
+        <label className="commentText">Comment:</label>
         <textarea
           className="commentInput"
           onChange={handleNewComment}

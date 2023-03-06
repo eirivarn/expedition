@@ -151,7 +151,7 @@
     width: 41px;
     height: 41px;
     left: 18px;
-    top: 650px;
+    top: 680px;
     color: #658864;
 }
 
@@ -161,6 +161,7 @@
     width: 31px;
     height: 31px;
     left: 18px;
+    top: 28px;
     color: #658864;
 }
 
@@ -185,7 +186,7 @@
 
 .newCommentRating {
     top: 60px;
-    left: -72px;
+    left: -64px;
 }
 
 
