@@ -318,3 +318,46 @@ textarea {
     left: 22px;
     top: 20px;
 }
+
+.addFavoriteArea {
+  position: absolute;
+  width: 174px;
+  height: 40px;
+  left: 153px;
+  top: 776px;
+}
+
+.addFavoriteShowText {
+  position: absolute;
+  left: 24.14%;
+  right: -6.32%;
+  top: 22.5%;
+  bottom: 30%;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 21px;
+
+  color: #658864;
+}
+
+.addFavoriteShowHeart {
+  position: absolute;
+  left: 8.33%;
+  right: 8.33%;
+  top: 26%;
+  bottom: 20%;
+}
+
+.addFavoriteShowBox {
+  position: absolute;
+  left: 0%;
+  right: -6.32%;
+  top: 0%;
+  bottom: 0%;
+
+  background: #c5dfc4;
+  border-radius: 10px;
+}
