@@ -1,41 +1,41 @@
 .tripPage {
-    position: relative;
-    width: 1440px;
-    height: 2330px;
+  position: relative;
+  width: 1440px;
+  height: 2330px;
 }
 
 .infoTrip {
-    position: absolute;
-    width: 1140px;
-    height: 564px;
-    left: 150px;
-    top: 100px;
-    /*overflow-y: scroll;*/
+  position: absolute;
+  width: 1140px;
+  height: 564px;
+  left: 150px;
+  top: 100px;
+  /*overflow-y: scroll;*/
 }
 
 .title {
-    position: absolute;
-    background: transparent;
-    border: none;
-    height: 83px;
-    left: 414px;
-    right: 414px;
-    top: 0px;
-    color: #658864;
+  position: absolute;
+  background: transparent;
+  border: none;
+  height: 83px;
+  left: 414px;
+  right: 414px;
+  top: 0px;
+  color: #658864;
 }
 
 .author {
-    position: absolute;
-    width: 300px;
-    height: 23px;
-    left: 569px;
-    top: 119px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    color: #000000;
+  position: absolute;
+  width: 300px;
+  height: 23px;
+  left: 569px;
+  top: 119px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  color: #000000;
 }
 
 .tripRating {
@@ -47,103 +47,103 @@
 }
 
 #ratingButton {
-    height: 30px;
-    width: 30px;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
-    padding: 1%;
-    border: none;
-    box-sizing: content-box;
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 1%;
+  border: none;
+  box-sizing: content-box;
 }
 
 .ratingOn > span {
-    font-size: 40px;
-    color: #658864;
-    box-sizing: content-box;
+  font-size: 40px;
+  color: #658864;
+  box-sizing: content-box;
 }
 
 .ratingOff > span {
-    font-size: 40px;
-    color: #ccc;
+  font-size: 40px;
+  color: #ccc;
 }
 
 .image {
-    position: absolute;
-    width: 507px;
-    height: 436px;
-    left: 0px;
-    top: 115px;
-    border-radius: 10px;
+  position: absolute;
+  width: 507px;
+  height: 436px;
+  left: 0px;
+  top: 115px;
+  border-radius: 10px;
 }
 
 .tripDescription {
-    position: absolute;
-    background: transparent;
-    border: none;
-    resize: none;
-    width: 572px;
-    height: 303px;
-    left: 566px;
-    top: 248px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 23px;
-    color: #000000;
+  position: absolute;
+  background: transparent;
+  border: none;
+  resize: none;
+  width: 572px;
+  height: 303px;
+  left: 566px;
+  top: 248px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #000000;
 }
 
 .editTripButton {
-    position: absolute;
-    border: none;
-    width: 102px;
-    height: 40px;
-    left: 893px;
-    top: 11px;
-    color: #658864;
-    background-color: #c8e7bb;
+  position: absolute;
+  border: none;
+  width: 102px;
+  height: 40px;
+  left: 893px;
+  top: 11px;
+  color: #658864;
+  background-color: #c8e7bb;
 }
 
 .notVisibleEditButton {
-    position: absolute;
-    background: transparent;
-    color: #FFFFFF;
-    border: none;
-    width: 102px;
-    height: 40px;
-    left: 893px;
-    top: 11px;
+  position: absolute;
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  width: 102px;
+  height: 40px;
+  left: 893px;
+  top: 11px;
 }
 
 .deleteTripButton {
-    position: absolute;
-    border: none;
-    width: 134px;
-    height: 40px;
-    left: 1004px;
-    top: 11px;
-    color: #658864;
-    background-color: #c8e7bb;
+  position: absolute;
+  border: none;
+  width: 134px;
+  height: 40px;
+  left: 1004px;
+  top: 11px;
+  color: #658864;
+  background-color: #c8e7bb;
 }
 
 .notVisibleDeleteButton {
-    position: absolute;
-    background: transparent;
-    color: #FFFFFF;
-    border: none;
-    width: 134px;
-    height: 40px;
-    left: 1004px;
-    top: 11px;
+  position: absolute;
+  background: transparent;
+  color: #ffffff;
+  border: none;
+  width: 134px;
+  height: 40px;
+  left: 1004px;
+  top: 11px;
 }
 
 .commentsTripPage {
-    position: absolute;
-    width: 1167px;
-    height: 618px;
-    left: 138px;
-    top: 979px;
+  position: absolute;
+  width: 1167px;
+  height: 618px;
+  left: 138px;
+  top: 979px;
 }
 
 .commentSymbol {
@@ -277,7 +277,7 @@
 }
 
 textarea {
-    resize: none;
+  resize: none;
 }
 
 .commentShowText {

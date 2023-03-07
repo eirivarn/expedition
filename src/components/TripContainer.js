@@ -16,7 +16,7 @@ export function TripContainer({ trip }) {
     auth.currentUser !== null
       ? trip.authorName === auth.currentUser.displayName
       : false;
-  // console.log(auth.currentUser)
+  console.log(auth.currentUser);
 
   const handleUpdateTrip = async (id) => {
     if (isAuthor) {

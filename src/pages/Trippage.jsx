@@ -3,6 +3,7 @@ import { TripContainer } from "../components/TripContainer.js";
 import Rating from "@mui/material/Rating";
 import { NewComment } from "../components/NewComment.js";
 import { Comment } from "../components/Comment.js";
+import { AddToFavorites } from "../components/AddToFavorites.js";
 import "../styles/Trippage.css";
 import { useLocation } from "react-router";
 
@@ -57,6 +58,9 @@ const TripPage = () => {
         <TripContainer trip={from} />
         <div className="tripRating">
           <Rating value={averageRating} size="large" readOnly />
+        </div>
+        <div className="addFavoriteArea">
+          <AddToFavorites trip={from} />
         </div>
       </div>
       <div className="commentsTripPage">
