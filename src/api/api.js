@@ -66,11 +66,12 @@ export const createTrip = async (
       countries: countries,
       area: area,
       description: description,
-      rating: rating,
+      rating: [],
       comments: [],
       tripID: small_id,
       authorID: userID,
       authorName: auth.currentUser.displayName,
+      authorRating: rating,
     });
   } catch (err) {
     console.error("Error adding trip: ", err);
@@ -127,6 +128,7 @@ export const addRating = async (tripId, newRating) => {
   }
 };
 
+// This API-call updates a rating from a user, NOT the author
 export const updateRating = async (tripId, oldRating, newRating) => {
   try {
     const trip = doc(db, "trips", tripId);
