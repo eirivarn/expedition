@@ -3,34 +3,34 @@ import "../styles/NewTripPage.css";
 import { Rating } from "../components/Rating.js";
 import { createTrip } from "../api/api";
 import { NavLink } from "react-router-dom";
+import countries from "countries-list";
 
 export function NewTripInfo() {
   const [name, setName] = useState("");
-  const [countries, setCountries] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedCountries, setSelectedCountries] = useState([]);
   const [area, setArea] = useState("");
   const [ratings, setRating] = useState([]);
   const [description, setDescription] = useState("");
 
-  const onRatingClick = async (innitRating) => {
-    setRating([]);
-    ratings.push(innitRating);
-  };
+  const countryOptions = Object.entries(countries.countries)
+    .map(([code, name]) => ({ code, name }))
+    .sort((a, b) => a.name.localeCompare(b.name));
 
-  const onAddCountry = () => {
-    if (selectedCountry !== "" && !countries.includes(selectedCountry)) {
-      setCountries([...countries, selectedCountry]);
-      setSelectedCountry("");
+  const onCountrySelect = (event) => {
+    const countryCode = event.target.value;
+    const countryName = countries.countries[countryCode]?.name;
+    if (!selectedCountries.includes(countryName)) {
+      setSelectedCountries([...selectedCountries, countryName]);
     }
   };
 
   const onPublishTrip = async () => {
-    createTrip(name, countries, area, ratings, description);
+    createTrip(name, selectedCountries, area, ratings, description);
     setName("");
-    setCountries([]);
+    setSelectedCountries([]);
     setArea("");
     setDescription("");
-    setRating("");
+    setRating([]);
   };
 
   return (
@@ -49,25 +49,21 @@ export function NewTripInfo() {
 
       <h2 className="countriesVisited"> COUNTRY </h2>
       <div className="userInputCountriesVisited">
-        <select
-          value={selectedCountry}
-          onChange={(event) => {
-            setSelectedCountry(event.target.value);
-          }}
-        >
+        <select onChange={onCountrySelect} value="">
           <option value="">Select a country</option>
-          <option value="Norway">Norway</option>
-          <option value="Sweden">Sweden</option>
-          <option value="Denmark">Denmark</option>
-          <option value="Finland">Finland</option>
+          {countryOptions.map(({ code, name }) => (
+            <option key={code} value={code}>
+              {name}
+            </option>
+          ))}
         </select>
-        <button onClick={onAddCountry}>Add</button>
         <ul>
-          {countries.map((country) => (
+          {selectedCountries.map((country) => (
             <li key={country}>{country}</li>
           ))}
         </ul>
       </div>
+
       <h2 className="areaVisited"> AREA </h2>
       <div className="userInputAreaVisited">
         <input
@@ -78,10 +74,12 @@ export function NewTripInfo() {
           }}
         />
       </div>
+
       <h2 className="ratinHeader"> RATING </h2>
       <div className="rating">
-        <Rating onClick={onRatingClick} clickable={true} ratings={[]} />
+        <Rating onClick={setRating} clickable={true} ratings={ratings} />
       </div>
+
       <h2 className="description"> DESCRIPTION </h2>
       <div className="userInputDescription">
         <textarea
@@ -92,6 +90,7 @@ export function NewTripInfo() {
           }}
         />
       </div>
+
       <button className="publishTripButon" onClick={onPublishTrip}>
         <div className="buttonText">
           <NavLink to="/" type="button">
