@@ -4,20 +4,24 @@ import { Rating } from "../components/Rating.js";
 import { createTrip } from "../api/api";
 import { NavLink } from "react-router-dom";
 
-
 export function NewTripInfo() {
-  //Innit blanc states
   const [name, setName] = useState("");
   const [countries, setCountries] = useState([]);
+  const [selectedCountry, setSelectedCountry] = useState("");
   const [area, setArea] = useState("");
   const [ratings, setRating] = useState([]);
   const [description, setDescription] = useState("");
 
-
-  //TODO Legge til ratings som array, legge til egen rating som element ved innit.  legge til area, comments som tom array.
   const onRatingClick = async (innitRating) => {
     setRating([]);
     ratings.push(innitRating);
+  };
+
+  const onAddCountry = () => {
+    if (selectedCountry !== "" && !countries.includes(selectedCountry)) {
+      setCountries([...countries, selectedCountry]);
+      setSelectedCountry("");
+    }
   };
 
   const onPublishTrip = async () => {
@@ -28,7 +32,6 @@ export function NewTripInfo() {
     setDescription("");
     setRating("");
   };
-
 
   return (
     <div>
@@ -42,17 +45,28 @@ export function NewTripInfo() {
             setName(event.target.value);
           }}
         />
-       </div>
+      </div>
 
       <h2 className="countriesVisited"> COUNTRY </h2>
       <div className="userInputCountriesVisited">
-        <input
-          type="text"
-          value={countries}
+        <select
+          value={selectedCountry}
           onChange={(event) => {
-            setCountries(event.target.value.split(","));
+            setSelectedCountry(event.target.value);
           }}
-        />
+        >
+          <option value="">Select a country</option>
+          <option value="Norway">Norway</option>
+          <option value="Sweden">Sweden</option>
+          <option value="Denmark">Denmark</option>
+          <option value="Finland">Finland</option>
+        </select>
+        <button onClick={onAddCountry}>Add</button>
+        <ul>
+          {countries.map((country) => (
+            <li key={country}>{country}</li>
+          ))}
+        </ul>
       </div>
       <h2 className="areaVisited"> AREA </h2>
       <div className="userInputAreaVisited">
