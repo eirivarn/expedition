@@ -46,6 +46,14 @@
     top: 170px;
 }
 
+.averageRating {
+  position: absolute;
+  width: 250px;
+  height: 40px;
+  left: 10px;
+  top: 570px;
+}
+
 #ratingButton {
   height: 30px;
   width: 30px;
@@ -323,8 +331,8 @@ textarea {
   position: absolute;
   width: 174px;
   height: 40px;
-  left: 153px;
-  top: 776px;
+  left: 10px;
+  top: 660px;
 }
 
 .addFavoriteShowText {
