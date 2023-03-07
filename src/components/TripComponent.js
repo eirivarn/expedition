@@ -4,16 +4,12 @@ import image from "../img/test.jpg";
 import PropTypes from "prop-types";
 import { Rating } from "@mui/material";
 
-const TripComponent = ({ name, handleClick, ratings }) => {
-  const average = Math.round(
-    ratings.reduce((a, b) => a + b, 0) / ratings.length
-  );
-
+const TripComponent = ({ name, handleClick, averageRating }) => {
   return (
     <div className="trips" onClick={handleClick}>
       <img className="tripImage" src={image}></img>
       <div className="tripAvgRating">
-        <Rating value={average} size="medium" readOnly />
+        <Rating value={averageRating} size="medium" readOnly />
       </div>
       <h2 className="reiseNavn">{name}</h2>
     </div>
@@ -23,7 +19,7 @@ const TripComponent = ({ name, handleClick, ratings }) => {
 TripComponent.propTypes = {
   name: PropTypes.string,
   handleClick: PropTypes.func,
-  ratings: PropTypes.array,
+  averageRating: PropTypes.number,
 };
 
 export default TripComponent;

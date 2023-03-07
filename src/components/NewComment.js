@@ -1,12 +1,12 @@
 import { getAuth } from "firebase/auth";
 import React, { useState } from "react";
-import { addComment } from "../api/api";
+import { addComment, addRating } from "../api/api";
 import "../styles/Trippage.css";
 import Rating from "@mui/material/Rating";
 import PropTypes from "prop-types";
-import commentIcon from '../img/comment_icon.svg';
+import commentIcon from "../img/comment_icon.svg";
 
-export function NewComment({ tripId, updatePage }) {
+export function NewComment({ tripId, updatePage, ratings }) {
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
@@ -22,7 +22,10 @@ export function NewComment({ tripId, updatePage }) {
       userID + "::" + name + "::" + comment + "::" + date + "::" + rating;
 
     await addComment(tripId, commentString);
-    updatePage(commentString);
+    const newRatings = ratings;
+    newRatings.push(rating);
+    await addRating(tripId, newRatings);
+    updatePage(commentString, newRatings);
     setName("");
     setComment("");
     setRating(0);
@@ -72,4 +75,5 @@ export function NewComment({ tripId, updatePage }) {
 NewComment.propTypes = {
   tripId: PropTypes.string,
   updatePage: PropTypes.func,
+  ratings: PropTypes.array,
 };

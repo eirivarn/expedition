@@ -106,7 +106,7 @@ export const createTrip = async (
       countries: countries,
       area: area,
       description: description,
-      rating: [],
+      rating: [rating],
       comments: [],
       tripID: small_id,
       authorID: userID,
@@ -160,12 +160,13 @@ export const addComment = async (tripId, newComment) => {
   }
 };
 
+// This API-call is used when a user publishes a new comment and adds a new rating
 export const addRating = async (tripId, newRating) => {
   try {
     const trip = doc(db, "trips", tripId);
 
     await updateDoc(trip, {
-      rating: arrayUnion(newRating),
+      rating: newRating,
     });
   } catch (err) {
     console.error(err);

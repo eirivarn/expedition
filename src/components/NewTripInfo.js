@@ -9,18 +9,18 @@ export function NewTripInfo() {
   const [name, setName] = useState("");
   const [countries, setCountries] = useState([]);
   const [area, setArea] = useState("");
-  const [ratings, setRating] = useState([]);
+  const [rating, setRating] = useState(0);
   const [description, setDescription] = useState("");
 
   //TODO Legge til ratings som array, legge til egen rating som element ved innit.  legge til area, comments som tom array.
 
   const onPublishTrip = async () => {
-    createTrip(name, countries, area, ratings, description);
+    createTrip(name, countries, area, rating, description);
     setName("");
     setCountries([]);
     setArea("");
     setDescription("");
-    setRating("");
+    setRating(0);
   };
 
   return (
@@ -60,9 +60,9 @@ export function NewTripInfo() {
       <h2 className="ratingHeader"> RATING </h2>
       <div className="rating">
         <Rating
-          value={ratings[0]}
+          value={rating}
           onChange={(event, newValue) => {
-            setRating([newValue]);
+            setRating(newValue);
           }}
           size="large"
         />
