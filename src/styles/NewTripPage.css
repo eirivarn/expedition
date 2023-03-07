@@ -105,7 +105,7 @@
   /*border: 1px solid #658864;*/
 }
 
-.ratinHeader {
+.ratingHeader {
   position: absolute;
   width: 221px;
   height: 19px;
@@ -121,10 +121,8 @@
 
 .rating {
   position: absolute;
-  width: 271px;
-  height: 0px;
-  left: -565px;
-  top: 300px;
+  left: 0px;
+  top: 470px;
 }
 
 .description {
