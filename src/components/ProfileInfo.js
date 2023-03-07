@@ -41,12 +41,12 @@ export function ProfileInfo() {
       <img className="profile-pic" src={user.photoURL} />
       <div className="user-trips ">
         <div className="MyTripArea">
-          <div className="addMyTripsShowBox" onClick={handleShowTrips}>
+          <div id="addMyTripsShowBox" className="lightbutton" onClick={handleShowTrips}>
             <div className="addMyTripsShowText">My Trips</div>
           </div>
         </div>
         <div className="MyFavoritesArea">
-          <div className="addFavoriteShowBox" onClick={handleShowFavorites}>
+          <div id="addFavoriteShowBox" className="lightbutton" onClick={handleShowFavorites}>
             <div className="addFavoriteShowHeart">
               <img id="heartIcon" src={heartIcon}></img>
             </div>

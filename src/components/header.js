@@ -6,6 +6,7 @@ import logo from "../img/xpedition_logo.png";
 import { NavLink} from 'react-router-dom';
 import userIcon from '../img/user.png';
 //import { useScrollDirection } from "../hooks/headerScroll";
+import {DarkToggle} from './Darkmode.js';
 
 
 const Header = () => {
@@ -51,6 +52,7 @@ const Header = () => {
           Log in
         </NavLink>
       )}
+      <DarkToggle />
       </div>
     </div>
   );
