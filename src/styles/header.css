@@ -1,6 +1,6 @@
 
 #header {
-    height: 100px;
+    height: 153px;
     margin-top: 0px;
     margin-bottom: 30px;
     left: 400px;
@@ -13,8 +13,8 @@
     width: 60px;
     border: none;
     position: absolute;
-    right: 22%;
-    margin-top: 10px;
+    right: 19%;
+    margin-top: 65px;
 }
 
 #logo {
@@ -22,6 +22,7 @@
     width: 170px;
     position: absolute;
     left: 10%;
+    margin-top: 39px;
 }
 
 /*
@@ -52,12 +53,12 @@
 */
 
 #login {
-    width: 100px;
-    height: 35px;
+    width: 109px;
+    height: 51px;
     font-size: 20px;
     position: absolute;
     right: 10%;
-    margin-top: 30px;
+    margin-top: 67px;
     display: flex;
 }
 
@@ -73,10 +74,11 @@
 
 #frontButton {
     width: 200px;
-    height: 35px;
+    height: 51px;
+    font-size: 25px;
     position: absolute;
     right: 45%;
-    margin-top: 20px;
+    margin-top: 67px;
 }
 
 .button:hover {
