@@ -5,8 +5,10 @@ import {
   collection,
   addDoc,
   getDoc,
-  doc,
   setDoc,
+  arrayUnion,
+  updateDoc,
+  doc,
 } from "firebase/firestore";
 
 /* 
@@ -104,11 +106,12 @@ export const createTrip = async (
       countries: countries,
       area: area,
       description: description,
-      rating: rating,
+      rating: [rating],
       comments: [],
       tripID: small_id,
       authorID: userID,
       authorName: auth.currentUser.displayName,
+      authorRating: rating,
     });
   } catch (err) {
     console.error("Error adding trip: ", err);
@@ -133,16 +136,57 @@ export const getAllTripsByCurrentUser = async (currentUser) => {
   }
 };
 
-export const getTripRating = async (tripId) => {
+export const getSpecificTrip = async (tripId) => {
   try {
     const tripReference = collection(db, tripsReference, tripId);
     const tripSnapshot = await getDoc(tripReference);
     if (tripSnapshot.exists()) {
       return tripSnapshot.data();
-    } else {
-      console.log("No such trip exists.");
     }
   } catch (err) {
     console.error(err);
+  }
+};
+
+export const addComment = async (tripId, newComment) => {
+  try {
+    const trip = doc(db, "trips", tripId);
+
+    await updateDoc(trip, {
+      comments: arrayUnion(newComment),
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+// This API-call is used when a user publishes a new comment and adds a new rating
+export const addRating = async (tripId, newRating) => {
+  try {
+    const trip = doc(db, "trips", tripId);
+
+    await updateDoc(trip, {
+      rating: newRating,
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+// This API-call updates a rating from a user, NOT the author
+export const updateRating = async (tripId, oldRating, newRating) => {
+  try {
+    const trip = doc(db, "trips", tripId);
+    const ratings = trip.data.rating;
+    let idx = ratings.indexOf(oldRating);
+    if (idx != -1) {
+      ratings[idx] = newRating;
+    }
+
+    await updateDoc(trip, {
+      rating: ratings,
+    });
+  } catch (error) {
+    console.error(error);
   }
 };

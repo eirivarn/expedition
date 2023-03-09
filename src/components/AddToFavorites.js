@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Trippage.css";
-import heartIcon from "../img/heart.png";
+import heartIcon from "../img/heart.svg";
 import "firebase/auth";
 import "firebase/firestore";
 import PropTypes from "prop-types";
@@ -27,14 +27,15 @@ export function AddToFavorites({ trip }) {
 
   return (
     <div
-      className="addFavoriteShowBox"
+      id="addFavoriteShowBox"
+      className="lightbutton"
       onClick={() => {
         handleOnClick(trip.id); // <-- Hva som sendes inn her lagres som favoritedTrip
       }}
     >
-      <div className="addFavoriteShowText">Add to favorites</div>
-      <div className="addFavoriteShowHeart">
-        <img id="heartIcon" src={heartIcon}></img>
+      <div id="addFavoriteShowText">Add to favorites</div>
+      <div id="addFavoriteShowHeart">
+        <img id="heartIcon2" src={heartIcon}></img>
       </div>
     </div>
   );

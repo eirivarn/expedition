@@ -1,9 +1,15 @@
 /* General css for the whole page*/
 
-
+/*
 html {
     width: 100%;
     background-color: #f9f9f9;
+}
+*/
+
+body.dark {
+    background-color: #333333;
+    color: #f9f9f9;
 }
 
 
@@ -21,8 +27,24 @@ html {
    
 }
 
+body.dark .button {
+    color: #333333;
+}
+
+body.dark input {
+    background-color: #333333;
+    color: #f9f9f9;
+}
+
+body.dark textarea {
+    background-color: #333333;
+    color: #f9f9f9;
+}
+
+
+
 .button:hover {
-    background-color: #092f24;
+    background-color: #3F543E;
 }
 
 /*Light green buttons*/ 
@@ -34,27 +56,38 @@ html {
     font-size: 17px;
     font-family: "Inter";
     padding: 2px 4px;
-    text-align: center;
     
 }
 
 .lightbutton:hover {
-    background-color: #092f24;
+    background-color: #3F543E;
+}
+
+body.dark .lightbutton {
+    background-color: #3F543E;
+}
+
+body.dark .lightbutton:hover {
+    background-color: #f9f9f9;
 }
 
 
-@media (prefers-color-scheme: dark) {
+body.dark #header {
+    background-color: #3F543E;
+}
 
-    /*
-    html {
-        --primaryBackgroundColor: black;
-        --primaryTextColor: white;
-    }
-    */
 
-    html {
-        background-color: #333333;
-    }
+#toggleButton {
+    border: none;
+    background-color: #C5DFC4;
 
-    
+}
+
+body.dark #toggleButton {
+    background-color: #3F543E;
+}
+
+#toggleIcon {
+    width: 35px;
+    height: 35px;
 }
