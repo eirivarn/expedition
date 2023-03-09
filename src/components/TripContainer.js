@@ -6,12 +6,15 @@ import image from "../img/test.jpg";
 import { db, auth } from "../firebase-config.js";
 import { useNavigate } from "react-router-dom";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import Rating from "@mui/material/Rating";
+//import {updateRating} from "../api/api";
 
 export function TripContainer({ trip }) {
   const navigate = useNavigate();
   const [editing, setEditing] = useState(false);
   const [description, setDescription] = useState(trip.description);
   const [tripName, setTripName] = useState(trip.tripName);
+  const [authorRating, setAuthorRating] = useState(trip.authorRating);
   const isAuthor =
     auth.currentUser !== null
       ? trip.authorName === auth.currentUser.displayName
@@ -23,6 +26,7 @@ export function TripContainer({ trip }) {
       await updateDoc(document, {
         description: description,
         tripName: tripName,
+        authorRating: authorRating,
       });
     }
     handleToggle();
@@ -60,6 +64,15 @@ export function TripContainer({ trip }) {
           setDescription(event.target.value);
         }}
       ></textarea>
+      <Rating
+        className="tripRating"
+        value={authorRating}
+        disabled={!editing}
+        onChange={(event, newValue) => {
+        //updateRating(trip.id, authorRating, newValue)
+          setAuthorRating(newValue);
+        }}
+      />
       <button
         className={isAuthor ? "editTripButton" : "notVisibleEditButton"}
         disabled={!isAuthor}

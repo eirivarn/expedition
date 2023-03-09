@@ -64,9 +64,6 @@ const TripPage = () => {
     <div>
       <div className="infoTrip">
         <TripContainer trip={from} />
-        <div className="tripRating">
-          <Rating value={from.authorRating} size="large" readOnly />
-        </div>
         <div className="averageRating">
           <Rating value={averageRating} size="large" readOnly />
           <p>Average rating based on {from.comments.length + 1} ratings</p>
