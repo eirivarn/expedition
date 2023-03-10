@@ -74,11 +74,49 @@
 .userInputCountriesVisited {
   position: absolute;
   width: 1140px;
-  height: 61px;
+  height: 100px;
   left: 0px;
   top: 245px;
   box-sizing: border-box;
+
+  margin-bottom: 40px;
   /*border: 1px solid #658864;*/
+}
+
+.dropdown {
+  border: solid #658864 1px;
+  height: 50px;
+  width: 500px;
+  margin-right: 20px;
+  color: #658864;
+  font-size: 16px;
+
+}
+
+#addCountryButton {
+  border: none;
+  border-radius: 10px;
+  background-color: #658864;
+  color: #f9f9f9;
+  height: 50px;
+  width: 80px;
+  font-size: 20px;
+  font-family: 'Inter';
+
+}
+
+
+#countriesList {
+  color:#658864;
+  font-size: 20px;
+  font-family: 'Inter';
+  font-weight: bold;
+  bottom: 50px;
+}
+
+#listElement {
+  margin-right: 50px;
+  float: left;
 }
 
 .areaVisited {
@@ -86,7 +124,7 @@
   width: 221px;
   height: 24px;
   left: 0px;
-  top: 300px;
+  top: 360px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -100,7 +138,7 @@
   width: 1140px;
   height: 61px;
   left: 0px;
-  top: 340px;
+  top: 400px;
   box-sizing: border-box;
   /*border: 1px solid #658864;*/
 }
@@ -110,7 +148,7 @@
   width: 221px;
   height: 19px;
   left: 2px;
-  top: 410px;
+  top: 480px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -124,7 +162,7 @@
   width: 271px;
   height: 0px;
   left: -565px;
-  top: 300px;
+  top: 370px;
 }
 
 .description {
@@ -132,7 +170,7 @@
   width: 221px;
   height: 19px;
   left: 0px;
-  top: 530px;
+  top: 600px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -147,7 +185,7 @@
   width: 1140px;
   height: 213px;
   left: 0px;
-  top: 580px;
+  top: 660px;
   /*border: 1px solid #658864;*/
 }
 
@@ -157,11 +195,12 @@
   width: 354px;
   height: 50px;
   left: 394px;
-  top: 811px;
+  top: 920px;
   background: #658864;
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.4);
   border-radius: 40px;
-
+  border: none;
+  
 }
 
 .buttonText {
@@ -205,3 +244,5 @@ textarea {
   color: white;
 }
 */
+
+

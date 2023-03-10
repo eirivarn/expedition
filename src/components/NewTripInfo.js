@@ -51,6 +51,7 @@ export function NewTripInfo() {
       <h2 className="countriesVisited"> COUNTRY </h2>
       <div className="userInputCountriesVisited">
         <select
+          className="dropdown"
           value={selectedCountry}
           onChange={(event) => {
             setSelectedCountry(event.target.value);
@@ -63,10 +64,10 @@ export function NewTripInfo() {
             </option>
           ))}
         </select>
-        <button onClick={onAddCountry}>Add</button>
-        <ul>
+        <button id="addCountryButton" onClick={onAddCountry}>Add</button>
+        <ul id="countriesList">
           {countries.map((country) => (
-            <li key={country}>{country}</li>
+            <li id="listElement" key={country}>{country}</li>
           ))}
         </ul>
       </div>
