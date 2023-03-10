@@ -80,6 +80,9 @@ body.dark #header {
 #toggleButton {
     border: none;
     background-color: #C5DFC4;
+    position: absolute;
+    right: 10%;
+    top: 10px;
 
 }
 

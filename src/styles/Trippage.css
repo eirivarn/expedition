@@ -9,7 +9,7 @@
   width: 1140px;
   height: 564px;
   left: 150px;
-  top: 100px;
+  top: 170px;
   /*overflow-y: scroll;*/
 }
 
@@ -146,6 +146,8 @@
   top: 11px;
 }
 
+
+
 .commentsTripPage {
   position: absolute;
   width: 1167px;
@@ -247,6 +249,7 @@
     color: #F9F9F9;
     background: #658864;
     box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.4);
+    border: none;
     border-radius: 40px;
     font-size: 25px;
 }

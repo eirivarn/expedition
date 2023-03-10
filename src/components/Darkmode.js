@@ -3,7 +3,7 @@ import "../styles/overall.css";
 import sunIcon from "../img/sun.svg";
 import moonIcon from "../img/moon.svg";
 
-/* https://www.makeuseof.com/how-to-add-dark-mode-to-a-react-application/ */
+
 
 export function Darkmode() {
     const [theme, setTheme] = useState('light');
@@ -19,15 +19,7 @@ export function Darkmode() {
             setIcon(moonIcon);
         }
     };
-    /*
-    const toggleIcon = () => {
-        if (theme === 'light') {
-            setIcon(moonIcon);
-        } else {
-            setIcon(sunIcon)
-        }
-    }
-    */
+
 
     useEffect(() => {
         document.body.classList.toggle('dark', theme === 'dark');
