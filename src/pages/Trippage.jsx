@@ -63,7 +63,7 @@ const TripPage = () => {
   return (
     <div>
       <div className="infoTrip">
-        <TripContainer trip={from} />
+        <TripContainer trip={from} calculateAverageRating={calculateAverageRating} />
         <div className="averageRating">
           <Rating value={averageRating} size="large" readOnly />
           <p>Average rating based on {from.comments.length + 1} ratings</p>

@@ -7,14 +7,15 @@ import { db, auth } from "../firebase-config.js";
 import { useNavigate } from "react-router-dom";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import Rating from "@mui/material/Rating";
-//import {updateRating} from "../api/api";
+import {addRating} from "../api/api";
 
-export function TripContainer({ trip }) {
+export function TripContainer({ trip, calculateAverageRating }) {
   const navigate = useNavigate();
   const [editing, setEditing] = useState(false);
   const [description, setDescription] = useState(trip.description);
   const [tripName, setTripName] = useState(trip.tripName);
   const [authorRating, setAuthorRating] = useState(trip.authorRating);
+  //let ratings = trip.rating;
   const isAuthor =
     auth.currentUser !== null
       ? trip.authorName === auth.currentUser.displayName
@@ -66,11 +67,15 @@ export function TripContainer({ trip }) {
       ></textarea>
       <Rating
         className="tripRating"
-        value={authorRating}
-        disabled={!editing}
+        value={trip.rating[0]}
+        readOnly={!editing}
+        size="large"
         onChange={(event, newValue) => {
-        //updateRating(trip.id, authorRating, newValue)
+          //updateRating(trip.id, authorRating, newValue)
           setAuthorRating(newValue);
+          trip.rating[0] = newValue;
+          addRating(trip.id, trip.rating);
+          calculateAverageRating();
         }}
       />
       <button
@@ -101,4 +106,5 @@ export function TripContainer({ trip }) {
 
 TripContainer.propTypes = {
   trip: PropTypes.object,
+  calculateAverageRating: PropTypes.func.isRequired,
 };
