@@ -12,18 +12,27 @@ const TripPage = () => {
   let { from } = location.state;
   const [averageRating, setAverageRating] = useState(0);
   const [comments, setComments] = useState([]);
-  console.log("from:", from);
+  let ratings = from.rating;
 
-  const updatePage = (commentString) => {
-    console.log("commentString: ", commentString);
+  const updatePage = (commentString, newRatings) => {
     from.comments.push(commentString);
-    console.log("from", from);
+    ratings = newRatings;
+
+    const commentArray = commentString.split("::");
+    const comment = {
+      userId: commentArray[0],
+      userName: commentArray[1],
+      content: commentArray[2],
+      date: commentArray[3],
+      rating: parseInt(commentArray[4]),
+    };
+    comments.push(comment);
+    calculateAverageRating();
   };
 
   const getAllComments = () => {
     const cmnts = from.comments;
     const newComments = [];
-    console.log("cmnts:", cmnts);
     cmnts.forEach((ele) => {
       const commentArray = ele.split("::");
       const comment = {
@@ -39,7 +48,6 @@ const TripPage = () => {
   };
 
   const calculateAverageRating = () => {
-    const ratings = from.rating;
     const average = Math.round(
       ratings.reduce((a, b) => a + b, 0) / ratings.length
     );
@@ -50,24 +58,31 @@ const TripPage = () => {
   useEffect(() => {
     calculateAverageRating();
     getAllComments();
-  }, [from, comments]);
+  }, []);
 
   return (
     <div>
       <div className="infoTrip">
         <TripContainer trip={from} />
         <div className="tripRating">
+          <Rating value={from.authorRating} size="large" readOnly />
+        </div>
+        <div className="averageRating">
           <Rating value={averageRating} size="large" readOnly />
+          <p>Average rating based on {from.comments.length + 1} ratings</p>
         </div>
         <div className="addFavoriteArea">
           <AddToFavorites trip={from} />
         </div>
       </div>
       <div className="commentsTripPage">
-        <NewComment tripId={from.id} updatePage={updatePage} />
+        <NewComment
+          tripId={from.id}
+          updatePage={updatePage}
+          ratings={from.rating}
+        />
       </div>
       <div>
-        {console.log("comments:", comments)}
         {comments.map((comment) => {
           return (
             <div key={comment.userId}>

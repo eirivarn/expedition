@@ -5,7 +5,8 @@ import PropTypes from "prop-types";
 import TripComponent from "../components/TripComponent.js";
 import { getAllTripsByCurrentUser, getFavoritedTrips } from "../api/api.js";
 import { NavLink } from "react-router-dom";
-import heartIcon from "../img/heart.png";
+import heartIcon from "../img/heart.svg";
+import locationIcon from "../img/location.svg";
 
 export function ProfileInfo() {
   const [trips, setTrips] = useState([]);
@@ -41,16 +42,20 @@ export function ProfileInfo() {
       <img className="profile-pic" src={user.photoURL} />
       <div className="user-trips ">
         <div className="MyTripArea">
-          <div className="addMyTripsShowBox" onClick={handleShowTrips}>
+          <div id="addMyTripsShowBox" className="lightbutton" onClick={handleShowTrips}>
+            <div>
+              <img id="locationIcon" src={locationIcon}></img>
+            </div>
             <div className="addMyTripsShowText">My Trips</div>
           </div>
         </div>
         <div className="MyFavoritesArea">
-          <div className="addFavoriteShowBox" onClick={handleShowFavorites}>
+          <div id="addFavoriteShowBox" className="lightbutton" onClick={handleShowFavorites}>
+            <div className="addFavoriteShowText">My Favorites</div>
             <div className="addFavoriteShowHeart">
               <img id="heartIcon" src={heartIcon}></img>
             </div>
-            <div className="addFavoriteShowText">My Favorites</div>
+            
           </div>
         </div>
         <div className="flex_images">

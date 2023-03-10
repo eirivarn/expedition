@@ -31,6 +31,10 @@ const FrontPage = () => {
         <h2 className="header2">Trips</h2>
         <div className="front_grid">
           {trips.map((trip) => {
+            const ratings = trip.rating;
+            const average = Math.round(
+              ratings.reduce((a, b) => a + b, 0) / ratings.length
+            );
             return (
               <NavLink
                 key={trip.id}
@@ -38,7 +42,11 @@ const FrontPage = () => {
                 state={{ from: trip }}
                 style={{ textDecoration: "none" }}
               >
-                <TripComponent tripID={trip.id} name={trip.tripName} ratings={trip.rating} />
+                <TripComponent
+                  tripID={trip.id}
+                  name={trip.tripName}
+                  averageRating={average}
+                />
               </NavLink>
             );
           })}
