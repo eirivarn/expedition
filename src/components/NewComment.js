@@ -65,7 +65,7 @@ export function NewComment({ tripId, updatePage, ratings }) {
           value={comment}
         />
       </div>
-      <button className="publishButton" onClick={publishComment}>
+      <button id="publishButton" className="button" onClick={publishComment}>
         Publish Comment
       </button>
     </div>
