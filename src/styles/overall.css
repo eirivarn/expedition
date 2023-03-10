@@ -18,7 +18,7 @@ body.dark {
     background-color: #658864;
     border-radius: 40px; 
     color: white;
-    font-size: 25px;
+    font-size: 20px;
     font-family: "Inter";
     padding: 2px 4px;
     border: none;
@@ -82,7 +82,7 @@ body.dark #header {
     background-color: #C5DFC4;
     position: absolute;
     right: 10%;
-    top: 10px;
+    top: 20px;
 
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import {Darkmode} from './Darkmode.js';
 import "../styles/header.css";
 import { UserAuth } from "../Context/AuthContext";
 import logo from "../img/xpedition_logo.png";
@@ -7,7 +8,7 @@ import { NavLink} from 'react-router-dom';
 import userIcon from '../img/user.png';
 //import { useScrollDirection } from "../hooks/headerScroll";
 //import {DarkToggle} from './Darkmode.js';
-import {Darkmode} from './Darkmode.js';
+
 
 
 const Header = () => {
@@ -29,9 +30,6 @@ const Header = () => {
       <div>
       <NavLink to="/">
         <img id="logo" src={logo}></img>
-      </NavLink>
-      <NavLink to="/trip" id="tripsButton" className="button">
-        Trips
       </NavLink>
       <NavLink to="/" id="frontButton" className="button">
         Frontpage
