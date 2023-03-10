@@ -9,7 +9,7 @@
   width: 1140px;
   height: 564px;
   left: 150px;
-  top: 100px;
+  top: 170px;
   /*overflow-y: scroll;*/
 }
 
@@ -146,6 +146,8 @@
   top: 11px;
 }
 
+
+
 .commentsTripPage {
   position: absolute;
   width: 1167px;
@@ -238,17 +240,12 @@
     border: 1px solid #658864;
 }
 
-.publishButton {
+#publishButton {
     position: absolute;
     width: 369px;
     height: 50px;
     left: 394px;
     top: 720px;
-    color: #F9F9F9;
-    background: #658864;
-    box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.4);
-    border-radius: 40px;
-    font-size: 25px;
 }
 
 .commentShowBody {
@@ -335,7 +332,7 @@ textarea {
   top: 660px;
 }
 
-.addFavoriteShowText {
+#addFavoriteShowText {
   position: absolute;
   left: 24.14%;
   right: -6.32%;
@@ -351,7 +348,7 @@ textarea {
   color: #658864;
 }
 
-.addFavoriteShowHeart {
+#addFavoriteShowHeart {
   position: absolute;
   left: 8.33%;
   right: 8.33%;
@@ -359,13 +356,18 @@ textarea {
   bottom: 20%;
 }
 
-.addFavoriteShowBox {
+#addFavoriteShowBox {
   position: absolute;
   left: 0%;
   right: -6.32%;
   top: 0%;
   bottom: 0%;
 
-  background: #c5dfc4;
-  border-radius: 10px;
+}
+
+#heartIcon2 {
+  height: 24px;
+  width: 24px;
+  margin-top: -3px;
+
 }
