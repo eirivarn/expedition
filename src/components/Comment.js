@@ -3,14 +3,14 @@ import React from "react";
 import "../styles/Trippage.css";
 import "../styles/Trippage.css";
 import PropTypes from "prop-types";
-import { doc, FieldValue, updateDoc } from "firebase/firestore";
+import { doc, arrayRemove, updateDoc } from "firebase/firestore";
 import { db, auth } from "../firebase-config.js";
 import { useState } from "react";
 /* userId,*/
 
 export function Comment({ name, userId, content, rating, date, trip}) {
   const [editing, setEditing] = useState(false);
-  const [description, setDescription] = useState(trip.description);
+  const [text, setText] = useState(content);
   const isAuthor =
     auth.currentUser !== null
       ? userId === auth.currentUser.uid
@@ -21,8 +21,10 @@ export function Comment({ name, userId, content, rating, date, trip}) {
   const handleUpdateComment = async (id) => {
     if (isAuthor) {
       const document = doc(db, "trips", id);
+      const oldCommentString = userId + "::" + name + "::" + text + "::" + date + "::" + rating; 
+      const commentString = userId + "::" + name + "::" + text + "::" + date + "::" + rating;
       await updateDoc(document, {
-        description: description,
+        oldCommentString: commentString,
       });
     }
     handleToggle();
@@ -35,11 +37,11 @@ export function Comment({ name, userId, content, rating, date, trip}) {
   const handleDeleteCommentButtonClick = async (id) => {
     if (isAuthor) {
       const commentString = userId + "::" + name + "::" + content + "::" + date + "::" + rating;
-      comments: {
-        commentString
-      }
+      console.log(commentString);
       const document = doc(db, "trips", id);
-      updateDoc: FieldValue.arrayRemove()
+      await updateDoc(document, {
+        comments: arrayRemove(commentString)
+      });
     }
   };
 
@@ -49,14 +51,14 @@ export function Comment({ name, userId, content, rating, date, trip}) {
       <label className="commentShowDateTime">{date}</label>
       <Rating className="commentRating" value={rating} size="medium" readOnly />
       <textarea className="commentShowText"
-      value={content}
+      value={text}
       onChange={(event) => {
-        setDescription(event.target.value);
+        setText(event.target.value);
       }}>
       </textarea>
       
       <button
-        className={isAuthor ? "editCommentButton" : "notVisibleEditCommentButton"}
+        className={isAuthor ? "editTripButton" : "notVisibleEditButton"}
         disabled={!isAuthor}
         onClick={
           editing
@@ -69,7 +71,7 @@ export function Comment({ name, userId, content, rating, date, trip}) {
         {editing ? "Finished" : "Edit"}
       </button>
       <button
-        className={isAuthor ? "deleteCommentButton" : "notVisibleDeleteCommentButton"}
+        className={isAuthor ? "deleteTripButton" : "notVisibleDeleteButton"}
         disabled={!isAuthor}
         onClick={() => {
           handleDeleteCommentButtonClick(trip.id);
