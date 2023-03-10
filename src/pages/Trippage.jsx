@@ -72,6 +72,7 @@ const TripPage = () => {
           return (
             <div key={comment.userId}>
               <Comment
+                trip = {from}
                 userId={comment.userId}
                 name={comment.userName}
                 content={comment.content}
