@@ -1,6 +1,7 @@
 import { Rating } from "@mui/material";
 import React from "react";
 import "../styles/Trippage.css";
+import "../styles/Trippage.css";
 import PropTypes from "prop-types";
 import { doc, FieldValue, updateDoc } from "firebase/firestore";
 import { db, auth } from "../firebase-config.js";
