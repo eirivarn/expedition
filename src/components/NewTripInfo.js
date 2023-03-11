@@ -10,14 +10,10 @@ export function NewTripInfo() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedRegion, setSelectedRegion] = useState("");
   const [visitedRegions, setVisitedRegions] = useState([]);
-  const [ratings, setRating] = useState([]);
+  const [rating, setRating] = useState(0);
   const [description, setDescription] = useState("");
   const [countries, setCountries] = useState([]);
 
-  const onRatingClick = async (innitRating) => {
-    setRating([]);
-    ratings.push(innitRating);
-  };
 
   const onAddCountry = () => {
     if (selectedCountry !== "" && !countries.includes(selectedCountry)) {
@@ -30,7 +26,7 @@ export function NewTripInfo() {
   };
 
   const onPublishTrip = async () => {
-    createTrip(name, countries, visitedRegions, ratings, description);
+    createTrip(name, countries, visitedRegions, rating, description);
     setName("");
     setCountries([]);
     setSelectedRegion("");
@@ -111,7 +107,7 @@ export function NewTripInfo() {
           </div>
         </>
         )}
-      <h2 className="ratinHeader"> RATING </h2>
+      <h2 className="ratingHeader"> RATING </h2>
       <div className="rating">
         <Rating
           value={rating}
@@ -141,4 +137,6 @@ export function NewTripInfo() {
     </div>
   );
 }
+
+
 

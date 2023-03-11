@@ -148,7 +148,7 @@
   width: 221px;
   height: 19px;
   left: 2px;
-  top: 430px;
+  top: 500px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -159,10 +159,9 @@
 
 .rating {
   position: absolute;
-  width: 271px;
-  height: 0px;
-  left: -565px;
-  top: 340px;
+  left: 0px;
+  top: 550px;
+
 }
 
 .description {
