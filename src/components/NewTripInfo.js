@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/NewTripPage.css";
-import { Rating } from "../components/Rating.js";
+import Rating from "@mui/material/Rating";
 import { createTrip } from "../api/api";
 import { NavLink } from "react-router-dom";
 import { countriesByRegion } from "../Data/CountriesByRegion.js";
@@ -36,7 +36,7 @@ export function NewTripInfo() {
     setSelectedRegion("");
     setVisitedRegions([]);
     setDescription("");
-    setRating("");
+    setRating(0);
   };
 
   const onRegionSelect = (region) => {
@@ -113,7 +113,13 @@ export function NewTripInfo() {
         )}
       <h2 className="ratinHeader"> RATING </h2>
       <div className="rating">
-        <Rating onClick={onRatingClick} clickable={true} ratings={[]} />
+        <Rating
+          value={rating}
+          onChange={(event, newValue) => {
+            setRating(newValue);
+          }}
+          size="large"
+        />
       </div>
       <h2 className="description"> DESCRIPTION </h2>
       <div className="userInputDescription">

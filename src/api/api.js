@@ -1,14 +1,15 @@
-import { db } from "../firebase-config";
+import { db, auth } from "../firebase-config";
 import { v4 as uuid } from "uuid";
 import {
   getDocs,
   collection,
   addDoc,
-  query,
   getDoc,
-  where,
+  setDoc,
+  arrayUnion,
+  updateDoc,
+  doc,
 } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
 
 /* 
 Trips storage format
@@ -23,8 +24,21 @@ Trips storage format
 }
 */
 
-const collectionName = "trips";
-const tripsReference = collection(db, collectionName);
+const tripscollectionName = "trips";
+const tripsReference = collection(db, tripscollectionName);
+
+const usersscollectionName = "users";
+const usersReference = collection(db, usersscollectionName);
+
+export const getAllUsers = async () => {
+  try {
+    const data = await getDocs(usersReference);
+    const tripsArray = data.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    return tripsArray;
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 export const getAllTrips = async () => {
   try {
@@ -46,6 +60,36 @@ export const getAllTrips = async () => {
   }
 };
 
+export const getFavoritedTrips = async (user) => {
+  try {
+    const userRef = doc(usersReference, user.email);
+    const userData = await getDoc(userRef);
+    const favoritedTrips = userData.data().favoritedTrips;
+
+    const trips = await getDocs(tripsReference);
+    const favoritedTripsData = trips.docs
+      .filter((doc) => favoritedTrips.includes(doc.id))
+      .map((doc) => ({ id: doc.id, ...doc.data() }));
+
+    return favoritedTripsData;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const addNewUser = async () => {
+  try {
+    const userEmail = auth.currentUser.email;
+    const usersRef = collection(db, "users");
+    await setDoc(doc(usersRef, userEmail), {
+      myTrips: [],
+      favoritedTrips: [],
+    });
+  } catch (err) {
+    console.error("Error adding user: ", err);
+  }
+};
+
 export const createTrip = async (
   tripName,
   countries,
@@ -56,48 +100,93 @@ export const createTrip = async (
   try {
     const unique_id = uuid();
     const small_id = unique_id.slice(0, 10);
-    const auth = getAuth();
     const userID = auth.currentUser.uid;
     await addDoc(tripsReference, {
       tripName: tripName,
       countries: countries,
       area: area,
       description: description,
-      rating: rating,
+      rating: [rating],
       comments: [],
       tripID: small_id,
       authorID: userID,
       authorName: auth.currentUser.displayName,
+      authorRating: rating,
     });
   } catch (err) {
     console.error("Error adding trip: ", err);
   }
 };
 
-export const getTripsByUser = async (userMail) => {
+export const getAllTripsByCurrentUser = async (currentUser) => {
   try {
-    const q = query(tripsReference, where("userMail", "==", userMail));
-    const querySnapshot = await getDocs(q);
-    const tripsArray = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    return tripsArray;
-  } catch (err) {
-    console.error(err);
+    if (currentUser && currentUser.uid) {
+      const tripsRef = collection(db, "trips");
+      const querySnapshot = await getDocs(tripsRef);
+      const tripsArray = querySnapshot.docs
+        .map((doc) => ({ id: doc.id, ...doc.data() }))
+        .filter((trip) => trip.authorID === currentUser.uid);
+      return tripsArray;
+    } else {
+      console.log("User is not authenticated.");
+      return [];
+    }
+  } catch (error) {
+    console.error(error);
   }
 };
 
-export const getTripRating = async (tripId) => {
+export const getSpecificTrip = async (tripId) => {
   try {
     const tripReference = collection(db, tripsReference, tripId);
     const tripSnapshot = await getDoc(tripReference);
     if (tripSnapshot.exists()) {
       return tripSnapshot.data();
-    } else {
-      console.log("No such trip exists.");
     }
   } catch (err) {
     console.error(err);
+  }
+};
+
+export const addComment = async (tripId, newComment) => {
+  try {
+    const trip = doc(db, "trips", tripId);
+
+    await updateDoc(trip, {
+      comments: arrayUnion(newComment),
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+// This API-call is used when a user publishes a new comment and adds a new rating
+export const addRating = async (tripId, newRating) => {
+  try {
+    const trip = doc(db, "trips", tripId);
+
+    await updateDoc(trip, {
+      rating: newRating,
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+// This API-call updates a rating from a user, NOT the author
+export const updateRating = async (tripId, oldRating, newRating) => {
+  try {
+    const trip = doc(db, "trips", tripId);
+    const ratings = trip.data.rating;
+    let idx = ratings.indexOf(oldRating);
+    if (idx != -1) {
+      ratings[idx] = newRating;
+    }
+
+    await updateDoc(trip, {
+      rating: ratings,
+    });
+  } catch (error) {
+    console.error(error);
   }
 };

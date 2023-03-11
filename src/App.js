@@ -21,7 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<FrontPage />} />
             <Route path="/trip" element={<TripPage />} />
-            <Route path="/NewTrip" element={<NewTripPage />} />
+            <Route path="/newtrip" element={<NewTripPage />} />
             <Route path="/user" element={<UserPage />} />
             <Route path="*" element={<ErrorPage />} />
             <Route path="/demopage" element={<DemoPage />} />
