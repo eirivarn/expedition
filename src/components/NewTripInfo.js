@@ -58,8 +58,9 @@ export function NewTripInfo() {
         />
       </div>
 
-      <h2 className="areaVisited"> REGION </h2>
-      <div className="userInputAreaVisited">
+      <h2 className="regionVisited"> REGION </h2>
+      <h2 className="countriesVisited"> COUNTRY </h2>
+      <div className="userInputRegionVisited">
         <select
           className="dropdown"
           value={selectedRegion}
@@ -78,7 +79,6 @@ export function NewTripInfo() {
 
       {selectedRegion !== "" && (
         <>
-        <h2 className="countriesVisited"> COUNTRY </h2>
           <div className="userInputCountriesVisited">
             <select
               className="dropdown"

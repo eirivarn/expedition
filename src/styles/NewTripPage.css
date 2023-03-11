@@ -57,7 +57,7 @@
 }
 
 
-.countriesVisited {
+.regionVisited {
   position: absolute;
   width: 221px;
   height: 24px;
@@ -71,10 +71,10 @@
   color: #658864;
 }
 
-.userInputCountriesVisited {
+.userInputRegionVisited {
   position: absolute;
   width: 1140px;
-  height: 100px;
+  height: 20px;
   left: 0px;
   top: 245px;
   box-sizing: border-box;
@@ -119,12 +119,12 @@
   float: left;
 }
 
-.areaVisited {
+.countriesVisited {
   position: absolute;
   width: 221px;
   height: 24px;
   left: 0px;
-  top: 360px;
+  top: 300px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -133,12 +133,12 @@
   color: #658864;
 }
 
-.userInputAreaVisited {
+.userInputCountriesVisited {
   position: absolute;
   width: 1140px;
   height: 61px;
   left: 0px;
-  top: 400px;
+  top: 340px;
   box-sizing: border-box;
   /*border: 1px solid #658864;*/
 }
@@ -148,7 +148,7 @@
   width: 221px;
   height: 19px;
   left: 2px;
-  top: 480px;
+  top: 440px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -162,7 +162,7 @@
   width: 271px;
   height: 0px;
   left: -565px;
-  top: 370px;
+  top: 335px;
 }
 
 .description {
