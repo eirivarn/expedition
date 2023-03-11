@@ -3,24 +3,49 @@ import "../styles/NewTripPage.css";
 import Rating from "@mui/material/Rating";
 import { createTrip } from "../api/api";
 import { NavLink } from "react-router-dom";
+import { countriesByRegion } from "../Data/CountriesByRegion.js";
 
 export function NewTripInfo() {
-  //Innit blanc states
   const [name, setName] = useState("");
-  const [countries, setCountries] = useState([]);
-  const [area, setArea] = useState("");
-  const [rating, setRating] = useState(0);
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState("");
+  const [visitedRegions, setVisitedRegions] = useState([]);
+  const [ratings, setRating] = useState([]);
   const [description, setDescription] = useState("");
+  const [countries, setCountries] = useState([]);
 
-  //TODO Legge til ratings som array, legge til egen rating som element ved innit.  legge til area, comments som tom array.
+  const onRatingClick = async (innitRating) => {
+    setRating([]);
+    ratings.push(innitRating);
+  };
+
+  const onAddCountry = () => {
+    if (selectedCountry !== "" && !countries.includes(selectedCountry)) {
+      setCountries([...countries, selectedCountry]);
+      if (!visitedRegions.includes(selectedRegion)) {
+        setVisitedRegions([...visitedRegions, selectedRegion]);
+      }
+      setSelectedCountry("");
+    }
+  };
 
   const onPublishTrip = async () => {
-    createTrip(name, countries, area, rating, description);
+    createTrip(name, countries, visitedRegions, ratings, description);
     setName("");
     setCountries([]);
-    setArea("");
+    setSelectedRegion("");
+    setVisitedRegions([]);
     setDescription("");
     setRating(0);
+  };
+
+  const onRegionSelect = (region) => {
+    setSelectedRegion(region);
+    setSelectedCountry("");
+  };
+
+  const onCountrySelect = (country) => {
+    setSelectedCountry(country);
   };
 
   return (
@@ -37,27 +62,56 @@ export function NewTripInfo() {
         />
       </div>
 
+      <h2 className="regionVisited"> REGION </h2>
       <h2 className="countriesVisited"> COUNTRY </h2>
-      <div className="userInputCountriesVisited">
-        <input
-          type="text"
-          value={countries}
+      <div className="userInputRegionVisited">
+        <select
+          className="dropdown"
+          value={selectedRegion}
           onChange={(event) => {
-            setCountries(event.target.value.split(","));
+            onRegionSelect(event.target.value);
           }}
-        />
+        >
+          <option value="">Select a region</option>
+          {Object.keys(countriesByRegion).map((region) => (
+            <option key={region} value={region}>
+              {region}
+            </option>
+          ))}
+        </select>
       </div>
-      <h2 className="areaVisited"> AREA </h2>
-      <div className="userInputAreaVisited">
-        <input
-          type="text"
-          value={area}
-          onChange={(event) => {
-            setArea(event.target.value);
-          }}
-        />
-      </div>
-      <h2 className="ratingHeader"> RATING </h2>
+
+      {selectedRegion !== "" && (
+        <>
+          <div className="userInputCountriesVisited">
+            <select
+              className="dropdown"
+              value={selectedCountry}
+              onChange={(event) => {
+                onCountrySelect(event.target.value);
+              }}
+            >
+              <option value="">Select a country</option>
+              {countriesByRegion[selectedRegion].map((country) => (
+                <option key={country} value={country}>
+                  {country}
+                </option>
+              ))}
+            </select>
+            <button id="addCountryButton" onClick={onAddCountry}>
+              Add
+            </button>
+            <ul id="countriesList">
+              {countries.map((country) => (
+                <li id="listElement" key={country}>
+                  {country}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+        )}
+      <h2 className="ratinHeader"> RATING </h2>
       <div className="rating">
         <Rating
           value={rating}
@@ -87,3 +141,4 @@ export function NewTripInfo() {
     </div>
   );
 }
+
