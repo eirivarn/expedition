@@ -93,7 +93,7 @@ export const addNewUser = async () => {
 export const createTrip = async (
   tripName,
   countries,
-  area,
+  region,
   rating,
   description
 ) => {
@@ -104,7 +104,7 @@ export const createTrip = async (
     await addDoc(tripsReference, {
       tripName: tripName,
       countries: countries,
-      area: area,
+      region: region,
       description: description,
       rating: [rating],
       comments: [],
@@ -190,3 +190,25 @@ export const updateRating = async (tripId, oldRating, newRating) => {
     console.error(error);
   }
 };
+
+export const getCountriesFromTrip = async (tripID) => {
+  const tripDocRef = doc(tripsReference, tripID);
+  const tripDoc = await getDoc(tripDocRef);
+  if (tripDoc.exists()) {
+    const tripData = tripDoc.data();
+    return tripData.countries;
+  }
+  return null;
+};
+
+export const getRegionsFromTrip = async (tripID) => {
+  const tripDocRef = doc(tripsReference, tripID);
+  const tripDoc = await getDoc(tripDocRef);
+  if (tripDoc.exists()) {
+    const tripData = tripDoc.data();
+    return tripData.region; //Nye turer har sikker area, gamle har regions. 
+  }
+  return null;
+};
+
+
