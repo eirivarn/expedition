@@ -3,11 +3,12 @@ import "../styles/NewTripPage.css";
 import { Rating } from "../components/Rating.js";
 import { createTrip } from "../api/api";
 import { NavLink } from "react-router-dom";
-import { countryList } from "../Data/countries.js";
+import { countriesByRegion } from "../Data/CountriesByRegion.js";
 
 export function NewTripInfo() {
   const [name, setName] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState("");
   const [area, setArea] = useState("");
   const [ratings, setRating] = useState([]);
   const [description, setDescription] = useState("");
@@ -34,6 +35,15 @@ export function NewTripInfo() {
     setRating("");
   };
 
+  const onRegionSelect = (region) => {
+    setSelectedRegion(region);
+    setSelectedCountry("");
+  };
+
+  const onCountrySelect = (country) => {
+    setSelectedCountry(country);
+  };
+
   return (
     <div>
       <h1 className="title"> Add a New Trip</h1>
@@ -48,39 +58,55 @@ export function NewTripInfo() {
         />
       </div>
 
-      <h2 className="countriesVisited"> COUNTRY </h2>
-      <div className="userInputCountriesVisited">
+      <h2 className="areaVisited"> REGION </h2>
+      <div className="userInputAreaVisited">
         <select
           className="dropdown"
-          value={selectedCountry}
+          value={selectedRegion}
           onChange={(event) => {
-            setSelectedCountry(event.target.value);
+            onRegionSelect(event.target.value);
           }}
         >
-          <option value="">Select a country</option>
-          {countryList.map((country) => (
-            <option key={country} value={country}>
-              {country}
+          <option value="">Select a region</option>
+          {Object.keys(countriesByRegion).map((region) => (
+            <option key={region} value={region}>
+              {region}
             </option>
           ))}
         </select>
-        <button id="addCountryButton" onClick={onAddCountry}>Add</button>
-        <ul id="countriesList">
-          {countries.map((country) => (
-            <li id="listElement" key={country}>{country}</li>
-          ))}
-        </ul>
       </div>
-      <h2 className="areaVisited"> AREA </h2>
-      <div className="userInputAreaVisited">
-        <input
-          type="text"
-          value={area}
-          onChange={(event) => {
-            setArea(event.target.value);
-          }}
-        />
-      </div>
+
+      {selectedRegion !== "" && (
+        <>
+        <h2 className="countriesVisited"> COUNTRY </h2>
+          <div className="userInputCountriesVisited">
+            <select
+              className="dropdown"
+              value={selectedCountry}
+              onChange={(event) => {
+                onCountrySelect(event.target.value);
+              }}
+            >
+              <option value="">Select a country</option>
+              {countriesByRegion[selectedRegion].map((country) => (
+                <option key={country} value={country}>
+                  {country}
+                </option>
+              ))}
+            </select>
+            <button id="addCountryButton" onClick={onAddCountry}>
+              Add
+            </button>
+            <ul id="countriesList">
+              {countries.map((country) => (
+                <li id="listElement" key={country}>
+                  {country}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </>
+      )}
       <h2 className="ratinHeader"> RATING </h2>
       <div className="rating">
         <Rating onClick={onRatingClick} clickable={true} ratings={[]} />
