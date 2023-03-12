@@ -193,40 +193,66 @@ export const updateRating = async (tripId, oldRating, newRating) => {
   }
 };
 
+
+//Henter en liste over landene som er en del av en bestemt tur.
 export const getCountriesFromTrip = async (tripID) => {
+  // Hent dokumentreferansen til turen
   const tripDocRef = doc(tripsReference, tripID);
+  
+  // Hent dokumentet fra Firestore
   const tripDoc = await getDoc(tripDocRef);
+  
+  // Hvis dokumentet finnes, hent dataene og returner landene
   if (tripDoc.exists()) {
     const tripData = tripDoc.data();
     return tripData.countries;
   }
+  
+  // Hvis dokumentet ikke finnes, returner null
   return null;
 };
 
+
+ //Henter en liste over regionene (eller areas) som er en del av en bestemt tur.
 export const getRegionsFromTrip = async (tripID) => {
+  // Hent dokumentreferansen til turen
   const tripDocRef = doc(tripsReference, tripID);
+  
+  // Hent dokumentet fra Firestore
   const tripDoc = await getDoc(tripDocRef);
+  
+  // Hvis dokumentet finnes, hent dataene og returner regionene (eller areas)
   if (tripDoc.exists()) {
     const tripData = tripDoc.data();
     return tripData.region; //Nye turer har sikker area, gamle har regions. 
   }
+  
+  // Hvis dokumentet ikke finnes, returner null
   return null;
 };
 
+
+//Henter en liste over turer som inkluderer alle oppgitte land og regioner (eller areas).
 export const getSortedTripByCountriesAndRegions = async (countries, regions) => {
   try {
+    // Hent alle turene fra Firestore
     const trips = await getAllTrips();
+    
+    // Filtrer turene slik at de kun inkluderer alle oppgitte land og regioner (eller areas)
     const sortedTrips = trips.filter(trip => {
       const containsCountries = countries.every(country => trip.countries.includes(country));
-      const containsRegions = regions.every(region => trip.region.includes(region)); // hvis turer bruker 'area' istedenfor 'region' endrer du denne linjen til: const containsRegions = regions.every(region => trip.area.includes(region));
+      const containsRegions = regions.every(region => trip.region.includes(region)); // Hvis turer bruker 'area' istedenfor 'region', endrer du denne linjen til: const containsRegions = regions.every(region => trip.area.includes(region));
       return containsCountries && containsRegions;
     });
+    
+    // Returner den filtrerte listen over turer
     return sortedTrips;
   } catch (err) {
     console.error(err);
   }
 };
 
+//Henter en liste over turer og returnerer listen sortert på rating i synkende rekkefølge.
 export const getSortedTripsByRating = async (trips) => {
   try {
     // Map over trips og lag et nytt objekt med gjennomsnittlig rating for hver trip
