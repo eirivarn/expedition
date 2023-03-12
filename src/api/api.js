@@ -60,6 +60,7 @@ export const getAllTrips = async () => {
   }
 };
 
+
 export const getFavoritedTrips = async (user) => {
   try {
     const userRef = doc(usersReference, user.email);
@@ -148,6 +149,7 @@ export const getSpecificTrip = async (tripId) => {
   }
 };
 
+
 export const addComment = async (tripId, newComment) => {
   try {
     const trip = doc(db, "trips", tripId);
@@ -210,5 +212,38 @@ export const getRegionsFromTrip = async (tripID) => {
   }
   return null;
 };
+
+export const getSortedTripByCountriesAndRegions = async (countries, regions) => {
+  try {
+    const trips = await getAllTrips();
+    const sortedTrips = trips.filter(trip => {
+      const containsCountries = countries.every(country => trip.countries.includes(country));
+      const containsRegions = regions.every(region => trip.region.includes(region)); // hvis turer bruker 'area' istedenfor 'region' endrer du denne linjen til: const containsRegions = regions.every(region => trip.area.includes(region));
+      return containsCountries && containsRegions;
+    });
+    return sortedTrips;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const getSortedTripsByRating = async (trips) => {
+  try {
+    // Map over trips og lag et nytt objekt med gjennomsnittlig rating for hver trip
+    const tripsWithAvgRating = trips.map((trip) => {
+      const avgRating = trip.rating.reduce((acc, curr) => acc + curr, 0) / trip.rating.length;
+      return { ...trip, avgRating };
+    });
+
+    // Sorter trips basert på gjennomsnittlig rating
+    const sortedTrips = tripsWithAvgRating.sort((a, b) => b.avgRating - a.avgRating);
+
+    return sortedTrips;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+
 
 
