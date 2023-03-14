@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import { doc, arrayRemove, updateDoc } from "firebase/firestore";
 import { db, auth } from "../firebase-config.js";
 import { useState } from "react";
+import { addComment } from "../api/api";
 /* userId,*/
 
 export function Comment({ name, userId, content, rating, date, trip}) {
@@ -20,12 +21,10 @@ export function Comment({ name, userId, content, rating, date, trip}) {
 
   const handleUpdateComment = async (id) => {
     if (isAuthor) {
-      const document = doc(db, "trips", id);
-      //const oldCommentString = userId + "::" + name + "::" + text + "::" + date + "::" + rating; 
+      handleDeleteCommentButtonClick(id)
       const commentString = userId + "::" + name + "::" + text + "::" + date + "::" + rating;
-      await updateDoc(document, {
-        oldCommentString: commentString,
-      });
+      await addComment(id, commentString)
+      console.log(commentString);
     }
     handleToggle();
   };
