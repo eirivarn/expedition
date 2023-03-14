@@ -175,6 +175,19 @@ export const addRating = async (tripId, newRating) => {
   }
 };
 
+// This API-call is used to add info about trip to viewedTrips
+export const addToViewedTrips = async (newTrip) => {
+  try {
+    const userEmail = auth.currentUser.email;
+    const user = doc(db, "users", userEmail);
+    await updateDoc(user, {
+      viewedTrips: arrayUnion(newTrip),
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 // This API-call updates a rating from a user, NOT the author
 export const updateRating = async (tripId, oldRating, newRating) => {
   try {
