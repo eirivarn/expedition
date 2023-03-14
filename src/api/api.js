@@ -225,7 +225,7 @@ export const getRegionsFromTrip = async (tripID) => {
   // Hvis dokumentet finnes, hent dataene og returner regionene (eller areas)
   if (tripDoc.exists()) {
     const tripData = tripDoc.data();
-    return tripData.region; //Nye turer har sikker area, gamle har regions. 
+    return tripData.region; //Nye turer har sikker region, gamle har area. 
   }
   
   // Hvis dokumentet ikke finnes, returner null
@@ -272,10 +272,10 @@ export const getSortedTripsByRating = async (trips) => {
 };
 
 export const searchFor = async (searchTerms) => {
-  const tripsMap = new Map(); //Lager et map med turene som matcher
+  const tripsMap = new Map();
   const q = query(collection(db, "trips"));
   const tripSnapshot = await getDocs(q);
-    //Funksjon for å få alle ordene i map (author, description, regions og countries)
+
   const getWordsInTrip = (trip) => {
     const wordsInTrip = [];
 
@@ -286,7 +286,7 @@ export const searchFor = async (searchTerms) => {
     wordsInTrip.push(...countriesAndRegionsWords);
     return wordsInTrip;
   };
-  //Legger til alle som har en match 
+
   tripSnapshot.forEach((doc) => {
     const t = doc.data();
     const wordsInTrip = getWordsInTrip(t);
@@ -296,6 +296,10 @@ export const searchFor = async (searchTerms) => {
     }
   });
 
-  return tripsMap;
+  const sortedTrips = Array.from(tripsMap)
+    .sort((a, b) => b[1] - a[1])
+    .map((trip) => trip[0]);
+
+  return sortedTrips;
 };
 

@@ -25,7 +25,7 @@ export function AddToFavorites({ trip }) {
       console.log("-------")
       console.log(getSortedTripsByRating(sortedTrips));
       */
-     //console.log(searchFor(["Canada", "Norge"]));
+     console.log(searchFor(["Eirik", "Iraq"]));
 
 
     } else {
