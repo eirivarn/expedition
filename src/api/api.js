@@ -271,35 +271,37 @@ export const getSortedTripsByRating = async (trips) => {
   }
 };
 
+//Søker gjenneom alle turer i databasen og returnerer alle turer som inneholder minst et av søkeordene. Sorteres etter antall søkeord som finnes i trippen. 
 export const searchFor = async (searchTerms) => {
-  const tripsMap = new Map();
-  const q = query(collection(db, "trips"));
-  const tripSnapshot = await getDocs(q);
+  const tripsMap = new Map(); // Opprett et Map-objekt for å lagre turer som matcher søkekriteriene
+  const q = query(collection(db, "trips")); // Opprett en spørring for "trips"-samlingen
+  const tripSnapshot = await getDocs(q); // Hent alle dokumentene som svarer til spørringen
 
-  const getWordsInTrip = (trip) => {
+  const getWordsInTrip = (trip) => { // Hjelpefunksjon som ekstraherer ord fra turen
     const wordsInTrip = [];
 
-    const authorAndDescWords = trip.authorName.split(" ").concat(trip.description.split(" "));
+    const authorAndDescWords = trip.authorName.split(" ").concat(trip.description.split(" ")); // Legg til forfatternavn og beskrivelse
     wordsInTrip.push(...authorAndDescWords);
    
-    const countriesAndRegionsWords = trip.countries.concat(trip.regions);
+    const countriesAndRegionsWords = trip.countries.concat(trip.regions); // Legg til land og regioner
     wordsInTrip.push(...countriesAndRegionsWords);
     return wordsInTrip;
   };
 
-  tripSnapshot.forEach((doc) => {
-    const t = doc.data();
-    const wordsInTrip = getWordsInTrip(t);
-    const matchCount = wordsInTrip.filter((word) => searchTerms.includes(word)).length;
-    if (matchCount > 0) {
+  tripSnapshot.forEach((doc) => { // Iterer over alle turene som svarer til spørringen
+    const t = doc.data(); // Hent dataene fra dokumentet
+    const wordsInTrip = getWordsInTrip(t); // Hent ut alle ordene i turen
+    const matchCount = wordsInTrip.filter((word) => searchTerms.includes(word)).length; // Finn antall ord som matcher søkekriteriene
+    if (matchCount > 0) { // Hvis det er en eller flere ord som matcher, legg til turen i kartet med antall matchende ord som verdi
       tripsMap.set(t, matchCount);
     }
   });
 
-  const sortedTrips = Array.from(tripsMap)
-    .sort((a, b) => b[1] - a[1])
-    .map((trip) => trip[0]);
+  const sortedTrips = Array.from(tripsMap) // Konverter tripsMap til et array med [nøkkel, verdi]-par
+    .sort((a, b) => b[1] - a[1]) // Sorter arrayet etter antall matchende ord (verdien)
+    .map((trip) => trip[0]); // Konverter hvert [nøkkel, verdi]-par til turen (nøkkelen) og lag et nytt array
 
-  return sortedTrips;
+  return sortedTrips; // Returner arrayet med turer sortert etter antall matchende ord
 };
+
 
