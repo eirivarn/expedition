@@ -61,7 +61,6 @@ export const getAllTrips = async () => {
   }
 };
 
-
 export const getFavoritedTrips = async (user) => {
   try {
     const userRef = doc(usersReference, user.email);
@@ -86,6 +85,7 @@ export const addNewUser = async () => {
     await setDoc(doc(usersRef, userEmail), {
       myTrips: [],
       favoritedTrips: [],
+      viewedTrips: [],
     });
   } catch (err) {
     console.error("Error adding user: ", err);
@@ -150,7 +150,6 @@ export const getSpecificTrip = async (tripId) => {
   }
 };
 
-
 export const addComment = async (tripId, newComment) => {
   try {
     const trip = doc(db, "trips", tripId);
@@ -194,58 +193,62 @@ export const updateRating = async (tripId, oldRating, newRating) => {
   }
 };
 
-
 //Henter en liste over landene som er en del av en bestemt tur.
 export const getCountriesFromTrip = async (tripID) => {
   // Hent dokumentreferansen til turen
   const tripDocRef = doc(tripsReference, tripID);
-  
+
   // Hent dokumentet fra Firestore
   const tripDoc = await getDoc(tripDocRef);
-  
+
   // Hvis dokumentet finnes, hent dataene og returner landene
   if (tripDoc.exists()) {
     const tripData = tripDoc.data();
     return tripData.countries;
   }
-  
+
   // Hvis dokumentet ikke finnes, returner null
   return null;
 };
 
-
- //Henter en liste over regionene (eller areas) som er en del av en bestemt tur.
+//Henter en liste over regionene (eller areas) som er en del av en bestemt tur.
 export const getRegionsFromTrip = async (tripID) => {
   // Hent dokumentreferansen til turen
   const tripDocRef = doc(tripsReference, tripID);
-  
+
   // Hent dokumentet fra Firestore
   const tripDoc = await getDoc(tripDocRef);
-  
+
   // Hvis dokumentet finnes, hent dataene og returner regionene (eller areas)
   if (tripDoc.exists()) {
     const tripData = tripDoc.data();
-    return tripData.region; //Nye turer har sikker area, gamle har regions. 
+    return tripData.region; //Nye turer har sikker area, gamle har regions.
   }
-  
+
   // Hvis dokumentet ikke finnes, returner null
   return null;
 };
 
-
 //Henter en liste over turer som inkluderer alle oppgitte land og regioner (eller areas).
-export const getSortedTripByCountriesAndRegions = async (countries, regions) => {
+export const getSortedTripByCountriesAndRegions = async (
+  countries,
+  regions
+) => {
   try {
     // Hent alle turene fra Firestore
     const trips = await getAllTrips();
-    
+
     // Filtrer turene slik at de kun inkluderer alle oppgitte land og regioner (eller areas)
-    const sortedTrips = trips.filter(trip => {
-      const containsCountries = countries.every(country => trip.countries.includes(country));
-      const containsRegions = regions.every(region => trip.region.includes(region)); // Hvis turer bruker 'area' istedenfor 'region', endrer du denne linjen til: const containsRegions = regions.every(region => trip.area.includes(region));
+    const sortedTrips = trips.filter((trip) => {
+      const containsCountries = countries.every((country) =>
+        trip.countries.includes(country)
+      );
+      const containsRegions = regions.every((region) =>
+        trip.region.includes(region)
+      ); // Hvis turer bruker 'area' istedenfor 'region', endrer du denne linjen til: const containsRegions = regions.every(region => trip.area.includes(region));
       return containsCountries && containsRegions;
     });
-    
+
     // Returner den filtrerte listen over turer
     return sortedTrips;
   } catch (err) {
@@ -258,12 +261,15 @@ export const getSortedTripsByRating = async (trips) => {
   try {
     // Map over trips og lag et nytt objekt med gjennomsnittlig rating for hver trip
     const tripsWithAvgRating = trips.map((trip) => {
-      const avgRating = trip.rating.reduce((acc, curr) => acc + curr, 0) / trip.rating.length;
+      const avgRating =
+        trip.rating.reduce((acc, curr) => acc + curr, 0) / trip.rating.length;
       return { ...trip, avgRating };
     });
 
     // Sorter trips basert på gjennomsnittlig rating
-    const sortedTrips = tripsWithAvgRating.sort((a, b) => b.avgRating - a.avgRating);
+    const sortedTrips = tripsWithAvgRating.sort(
+      (a, b) => b.avgRating - a.avgRating
+    );
 
     return sortedTrips;
   } catch (err) {
@@ -275,22 +281,26 @@ export const searchFor = async (searchTerms) => {
   const tripsMap = new Map(); //Lager et map med turene som matcher
   const q = query(collection(db, "trips"));
   const tripSnapshot = await getDocs(q);
-    //Funksjon for å få alle ordene i map (author, description, regions og countries)
+  //Funksjon for å få alle ordene i map (author, description, regions og countries)
   const getWordsInTrip = (trip) => {
     const wordsInTrip = [];
 
-    const authorAndDescWords = trip.authorName.split(" ").concat(trip.description.split(" "));
+    const authorAndDescWords = trip.authorName
+      .split(" ")
+      .concat(trip.description.split(" "));
     wordsInTrip.push(...authorAndDescWords);
-   
+
     const countriesAndRegionsWords = trip.countries.concat(trip.regions);
     wordsInTrip.push(...countriesAndRegionsWords);
     return wordsInTrip;
   };
-  //Legger til alle som har en match 
+  //Legger til alle som har en match
   tripSnapshot.forEach((doc) => {
     const t = doc.data();
     const wordsInTrip = getWordsInTrip(t);
-    const matchCount = wordsInTrip.filter((word) => searchTerms.includes(word)).length;
+    const matchCount = wordsInTrip.filter((word) =>
+      searchTerms.includes(word)
+    ).length;
     if (matchCount > 0) {
       tripsMap.set(t, matchCount);
     }
@@ -298,4 +308,3 @@ export const searchFor = async (searchTerms) => {
 
   return tripsMap;
 };
-
