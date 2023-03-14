@@ -6,12 +6,13 @@ import PropTypes from "prop-types";
 import { doc, arrayRemove, updateDoc } from "firebase/firestore";
 import { db, auth } from "../firebase-config.js";
 import { useState } from "react";
-import { addComment } from "../api/api";
+import {addComment, addRating} from "../api/api";
 /* userId,*/
 
 export function Comment({ name, userId, content, rating, date, trip}) {
   const [editing, setEditing] = useState(false);
   const [text, setText] = useState(content);
+  const [ratingValue, setRating] = useState(rating)
   const isAuthor =
     auth.currentUser !== null
       ? userId === auth.currentUser.uid
@@ -48,7 +49,13 @@ export function Comment({ name, userId, content, rating, date, trip}) {
     <div className="commentShowBody">
       <h2 className="commentShowAuthor">{name}</h2>
       <label className="commentShowDateTime">{date}</label>
-      <Rating className="commentRating" value={rating} size="medium" readOnly />
+      <Rating className="commentRating" value={trip.rating.indexOf(rating)} size="medium" readOnly={!editing} />
+        onChange={(event, newValue) => {
+          setRating(newValue);
+          trip.rating[trip.rating.indexOf(rating)] = newValue;
+          addRating(trip.id, trip.rating);
+          //calculateAverageRating();
+      }}
       <textarea className="commentShowText"
       value={text}
       onChange={(event) => {
