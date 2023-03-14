@@ -9,6 +9,7 @@ import {
   arrayUnion,
   updateDoc,
   doc,
+  query,
 } from "firebase/firestore";
 
 /* 
@@ -270,6 +271,31 @@ export const getSortedTripsByRating = async (trips) => {
   }
 };
 
+export const searchFor = async (searchTerms) => {
+  const tripsMap = new Map(); //Lager et map med turene som matcher
+  const q = query(collection(db, "trips"));
+  const tripSnapshot = await getDocs(q);
+    //Funksjon for å få alle ordene i map (author, description, regions og countries)
+  const getWordsInTrip = (trip) => {
+    const wordsInTrip = [];
 
+    const authorAndDescWords = trip.authorName.split(" ").concat(trip.description.split(" "));
+    wordsInTrip.push(...authorAndDescWords);
+   
+    const countriesAndRegionsWords = trip.countries.concat(trip.regions);
+    wordsInTrip.push(...countriesAndRegionsWords);
+    return wordsInTrip;
+  };
+  //Legger til alle som har en match 
+  tripSnapshot.forEach((doc) => {
+    const t = doc.data();
+    const wordsInTrip = getWordsInTrip(t);
+    const matchCount = wordsInTrip.filter((word) => searchTerms.includes(word)).length;
+    if (matchCount > 0) {
+      tripsMap.set(t, matchCount);
+    }
+  });
 
+  return tripsMap;
+};
 
