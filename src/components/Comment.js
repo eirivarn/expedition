@@ -21,7 +21,7 @@ export function Comment({ name, userId, content, rating, date, trip}) {
   const handleUpdateComment = async (id) => {
     if (isAuthor) {
       const document = doc(db, "trips", id);
-      const oldCommentString = userId + "::" + name + "::" + text + "::" + date + "::" + rating; 
+      //const oldCommentString = userId + "::" + name + "::" + text + "::" + date + "::" + rating; 
       const commentString = userId + "::" + name + "::" + text + "::" + date + "::" + rating;
       await updateDoc(document, {
         oldCommentString: commentString,
