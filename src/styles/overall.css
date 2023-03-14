@@ -82,7 +82,7 @@ body.dark #header {
     background-color: #C5DFC4;
     position: absolute;
     right: 10%;
-    top: 20px;
+    top: 15px;
 
 }
 
@@ -91,6 +91,6 @@ body.dark #toggleButton {
 }
 
 #toggleIcon {
-    width: 35px;
-    height: 35px;
+    width: 25px;
+    height: 25px;
 }

@@ -31,9 +31,6 @@ const Header = () => {
       <NavLink to="/">
         <img id="logo" src={logo}></img>
       </NavLink>
-      <NavLink to="/" id="frontButton" className="button">
-        Frontpage
-      </NavLink>
       <NavLink to="/user">
         <img id="userButton" src={userIcon}></img>
       </NavLink>
