@@ -6,6 +6,8 @@ import "firebase/firestore";
 import PropTypes from "prop-types";
 import { updateDoc, collection, getDoc, doc } from "firebase/firestore";
 import { db, auth } from "../firebase-config.js";
+import { searchFor } from "../api/api";
+
 
 //Lagrer basert på hva som sendes til handleOnClick lagres ulik data til arrayet.
 export function AddToFavorites({ trip }) {
@@ -17,6 +19,15 @@ export function AddToFavorites({ trip }) {
     const updatedFavoritedTrips = [...getdoc.data().favoritedTrips, trip];
     if (getdoc.data().favoritedTrips.includes(trip)) {
       console.log("Denne turen er allerede i databasen");
+      console.log("-------")
+      /*const sortedTrips = await getSortedTripByCountriesAndRegions([],["North America"]);
+      console.log(sortedTrips);
+      console.log("-------")
+      console.log(getSortedTripsByRating(sortedTrips));
+      */
+     //console.log(searchFor(["Canada", "Norge"]));
+
+
     } else {
       console.log(
         "Denne turen var ikke favoritt fra før, den blir lagt til nå :)"
