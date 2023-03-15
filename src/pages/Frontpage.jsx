@@ -3,23 +3,34 @@ import React, { useState, useEffect } from "react";
 import TripComponent from "../components/TripComponent.js";
 import "../styles/frontpage.css";
 import PropTypes from "prop-types";
-import { getAllTrips } from "../api/api.js";
+import { getAllTrips, searchFor } from "../api/api.js";
 import { NavLink } from "react-router-dom";
+import calculateWeights from "../utils/calculateWeights.js";
+import { auth } from "../firebase-config.js";
+import sortWeights from "../utils/sortWeights.js";
 
 const FrontPage = () => {
   const [trips, setTrips] = useState([]);
-
-  /*   const getSpecificTrip = (id) => {
-    const res = trips.filter((trip) => trip.id === id);
-    return res;
-  }; */
+  const [recommendedTrips, setReccommendedTrips] = useState([]);
 
   useEffect(() => {
     const fetchAllTrips = async () => {
       const allTrips = await getAllTrips();
       setTrips(allTrips);
     };
+
+    const getRecommendedTrips = async () => {
+      const userId = auth.currentUser.email;
+      const weights = await calculateWeights(userId);
+      const topFourWeights = sortWeights(weights);
+      const allTripsMatchingWeights = await searchFor(topFourWeights);
+      const shuffled = allTripsMatchingWeights.sort(() => 0.5 - Math.random());
+      let fourTrips = shuffled.slice(0, 4);
+      setReccommendedTrips(fourTrips);
+    };
+
     fetchAllTrips();
+    getRecommendedTrips();
   }, []);
 
   return (
