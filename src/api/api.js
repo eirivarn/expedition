@@ -11,6 +11,7 @@ import {
   doc,
   query,
 } from "firebase/firestore";
+import { async } from "@firebase/util";
 
 /* 
 Trips storage format
@@ -145,6 +146,16 @@ export const getSpecificTrip = async (tripId) => {
     if (tripSnapshot.exists()) {
       return tripSnapshot.data();
     }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const getUser = async (userId) => {
+  try {
+    const allUsers = await getAllUsers();
+    const user = allUsers.filter((u) => u.id === userId);
+    return user;
   } catch (err) {
     console.error(err);
   }
