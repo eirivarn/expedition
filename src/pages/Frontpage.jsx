@@ -39,6 +39,29 @@ const FrontPage = () => {
         Share your own adventure!
       </NavLink>
       <div className="flex_images">
+        <h2 className="header2">{auth.currentUser && "Recommended For You"}</h2>
+        <div className="front_grid">
+          {recommendedTrips.map((trip) => {
+            const ratings = trip.rating;
+            const average = Math.round(
+              ratings.reduce((a, b) => a + b, 0) / ratings.length
+            );
+            return (
+              <NavLink
+                key={trip.id}
+                to="/trip"
+                state={{ from: trip }}
+                style={{ textDecoration: "none" }}
+              >
+                <TripComponent
+                  tripID={trip.id}
+                  name={trip.tripName}
+                  averageRating={average}
+                />
+              </NavLink>
+            );
+          })}
+        </div>
         <h2 className="header2">Trips</h2>
         <div className="front_grid">
           {trips.map((trip) => {
