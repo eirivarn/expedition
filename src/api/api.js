@@ -11,6 +11,7 @@ import {
   doc,
   query,
 } from "firebase/firestore";
+import { async } from "@firebase/util";
 
 /* 
 Trips storage format
@@ -61,7 +62,6 @@ export const getAllTrips = async () => {
   }
 };
 
-
 export const getFavoritedTrips = async (user) => {
   try {
     const userRef = doc(usersReference, user.email);
@@ -86,6 +86,7 @@ export const addNewUser = async () => {
     await setDoc(doc(usersRef, userEmail), {
       myTrips: [],
       favoritedTrips: [],
+      viewedTrips: [],
     });
   } catch (err) {
     console.error("Error adding user: ", err);
@@ -150,6 +151,15 @@ export const getSpecificTrip = async (tripId) => {
   }
 };
 
+export const getUser = async (userId) => {
+  try {
+    const allUsers = await getAllUsers();
+    const user = allUsers.filter((u) => u.id === userId);
+    return user;
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 export const addComment = async (tripId, newComment) => {
   try {
@@ -176,6 +186,19 @@ export const addRating = async (tripId, newRating) => {
   }
 };
 
+// This API-call is used to add info about trip to viewedTrips
+export const addToViewedTrips = async (newTrip) => {
+  try {
+    const userEmail = auth.currentUser.email;
+    const user = doc(db, "users", userEmail);
+    await updateDoc(user, {
+      viewedTrips: arrayUnion(newTrip),
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 // This API-call updates a rating from a user, NOT the author
 export const updateRating = async (tripId, oldRating, newRating) => {
   try {
@@ -194,58 +217,62 @@ export const updateRating = async (tripId, oldRating, newRating) => {
   }
 };
 
-
 //Henter en liste over landene som er en del av en bestemt tur.
 export const getCountriesFromTrip = async (tripID) => {
   // Hent dokumentreferansen til turen
   const tripDocRef = doc(tripsReference, tripID);
-  
+
   // Hent dokumentet fra Firestore
   const tripDoc = await getDoc(tripDocRef);
-  
+
   // Hvis dokumentet finnes, hent dataene og returner landene
   if (tripDoc.exists()) {
     const tripData = tripDoc.data();
     return tripData.countries;
   }
-  
+
   // Hvis dokumentet ikke finnes, returner null
   return null;
 };
 
-
- //Henter en liste over regionene (eller areas) som er en del av en bestemt tur.
+//Henter en liste over regionene (eller areas) som er en del av en bestemt tur.
 export const getRegionsFromTrip = async (tripID) => {
   // Hent dokumentreferansen til turen
   const tripDocRef = doc(tripsReference, tripID);
-  
+
   // Hent dokumentet fra Firestore
   const tripDoc = await getDoc(tripDocRef);
-  
+
   // Hvis dokumentet finnes, hent dataene og returner regionene (eller areas)
   if (tripDoc.exists()) {
     const tripData = tripDoc.data();
-    return tripData.region; //Nye turer har sikker region, gamle har area. 
+    return tripData.region; //Nye turer har sikker region, gamle har area.
   }
-  
+
   // Hvis dokumentet ikke finnes, returner null
   return null;
 };
 
-
 //Henter en liste over turer som inkluderer alle oppgitte land og regioner (eller areas).
-export const getSortedTripByCountriesAndRegions = async (countries, regions) => {
+export const getSortedTripByCountriesAndRegions = async (
+  countries,
+  regions
+) => {
   try {
     // Hent alle turene fra Firestore
     const trips = await getAllTrips();
-    
+
     // Filtrer turene slik at de kun inkluderer alle oppgitte land og regioner (eller areas)
-    const sortedTrips = trips.filter(trip => {
-      const containsCountries = countries.every(country => trip.countries.includes(country));
-      const containsRegions = regions.every(region => trip.region.includes(region)); // Hvis turer bruker 'area' istedenfor 'region', endrer du denne linjen til: const containsRegions = regions.every(region => trip.area.includes(region));
+    const sortedTrips = trips.filter((trip) => {
+      const containsCountries = countries.every((country) =>
+        trip.countries.includes(country)
+      );
+      const containsRegions = regions.every((region) =>
+        trip.region.includes(region)
+      ); // Hvis turer bruker 'area' istedenfor 'region', endrer du denne linjen til: const containsRegions = regions.every(region => trip.area.includes(region));
       return containsCountries && containsRegions;
     });
-    
+
     // Returner den filtrerte listen over turer
     return sortedTrips;
   } catch (err) {
@@ -258,12 +285,15 @@ export const getSortedTripsByRating = async (trips) => {
   try {
     // Map over trips og lag et nytt objekt med gjennomsnittlig rating for hver trip
     const tripsWithAvgRating = trips.map((trip) => {
-      const avgRating = trip.rating.reduce((acc, curr) => acc + curr, 0) / trip.rating.length;
+      const avgRating =
+        trip.rating.reduce((acc, curr) => acc + curr, 0) / trip.rating.length;
       return { ...trip, avgRating };
     });
 
     // Sorter trips basert på gjennomsnittlig rating
-    const sortedTrips = tripsWithAvgRating.sort((a, b) => b.avgRating - a.avgRating);
+    const sortedTrips = tripsWithAvgRating.sort(
+      (a, b) => b.avgRating - a.avgRating
+    );
 
     return sortedTrips;
   } catch (err) {
@@ -271,28 +301,35 @@ export const getSortedTripsByRating = async (trips) => {
   }
 };
 
-//Søker gjenneom alle turer i databasen og returnerer alle turer som inneholder minst et av søkeordene. Sorteres etter antall søkeord som finnes i trippen. 
+//Søker gjenneom alle turer i databasen og returnerer alle turer som inneholder minst et av søkeordene. Sorteres etter antall søkeord som finnes i trippen.
 export const searchFor = async (searchTerms) => {
   const tripsMap = new Map(); // Opprett et Map-objekt for å lagre turer som matcher søkekriteriene
   const q = query(collection(db, "trips")); // Opprett en spørring for "trips"-samlingen
   const tripSnapshot = await getDocs(q); // Hent alle dokumentene som svarer til spørringen
 
-  const getWordsInTrip = (trip) => { // Hjelpefunksjon som ekstraherer ord fra turen
+  const getWordsInTrip = (trip) => {
+    // Hjelpefunksjon som ekstraherer ord fra turen
     const wordsInTrip = [];
 
-    const authorAndDescWords = trip.authorName.split(" ").concat(trip.description.split(" ")); // Legg til forfatternavn og beskrivelse
+    const authorAndDescWords = trip.authorName
+      .split(" ")
+      .concat(trip.description.split(" ")); // Legg til forfatternavn og beskrivelse
     wordsInTrip.push(...authorAndDescWords);
-   
+
     const countriesAndRegionsWords = trip.countries.concat(trip.regions); // Legg til land og regioner
     wordsInTrip.push(...countriesAndRegionsWords);
     return wordsInTrip;
   };
 
-  tripSnapshot.forEach((doc) => { // Iterer over alle turene som svarer til spørringen
+  tripSnapshot.forEach((doc) => {
+    // Iterer over alle turene som svarer til spørringen
     const t = doc.data(); // Hent dataene fra dokumentet
     const wordsInTrip = getWordsInTrip(t); // Hent ut alle ordene i turen
-    const matchCount = wordsInTrip.filter((word) => searchTerms.includes(word)).length; // Finn antall ord som matcher søkekriteriene
-    if (matchCount > 0) { // Hvis det er en eller flere ord som matcher, legg til turen i kartet med antall matchende ord som verdi
+    const matchCount = wordsInTrip.filter((word) =>
+      searchTerms.includes(word)
+    ).length; // Finn antall ord som matcher søkekriteriene
+    if (matchCount > 0) {
+      // Hvis det er en eller flere ord som matcher, legg til turen i kartet med antall matchende ord som verdi
       tripsMap.set(t, matchCount);
     }
   });
@@ -303,5 +340,3 @@ export const searchFor = async (searchTerms) => {
 
   return sortedTrips; // Returner arrayet med turer sortert etter antall matchende ord
 };
-
-
