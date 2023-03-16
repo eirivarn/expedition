@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import Rating from "@mui/material/Rating";
 import {addRating} from "../api/api";
+import AdminUser from "./Admin";
 
 export function TripContainer({ trip, calculateAverageRating }) {
   const navigate = useNavigate();
@@ -79,8 +80,8 @@ export function TripContainer({ trip, calculateAverageRating }) {
         }}
       />
       <button
-        className={isAuthor ? "editTripButton" : "notVisibleEditButton"}
-        disabled={!isAuthor}
+        className={isAuthor || AdminUser ? "editTripButton" : "notVisibleEditButton"}
+        disabled={!isAuthor || !AdminUser}
         onClick={
           editing
             ? () => {
@@ -92,8 +93,8 @@ export function TripContainer({ trip, calculateAverageRating }) {
         {editing ? "Ferdig" : "Edit"}
       </button>
       <button
-        className={isAuthor ? "deleteTripButton" : "notVisibleDeleteButton"}
-        disabled={!isAuthor}
+        className={isAuthor || AdminUser ? "deleteTripButton" : "notVisibleDeleteButton"}
+        disabled={!isAuthor || !AdminUser}
         onClick={() => {
           handleDeleteButtonClick(trip.id);
         }}
