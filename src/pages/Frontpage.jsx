@@ -8,10 +8,12 @@ import { NavLink } from "react-router-dom";
 import calculateWeights from "../utils/calculateWeights.js";
 import { auth } from "../firebase-config.js";
 import sortWeights from "../utils/sortWeights.js";
+import adHeader from "../img/nidarHeader.png";
 
 const FrontPage = () => {
   const [trips, setTrips] = useState([]);
   const [recommendedTrips, setReccommendedTrips] = useState([]);
+
 
   useEffect(() => {
     const fetchAllTrips = async () => {
@@ -28,6 +30,7 @@ const FrontPage = () => {
       let fourTrips = shuffled.slice(0, 4);
       setReccommendedTrips(fourTrips);
     };
+
 
     fetchAllTrips();
     getRecommendedTrips();
@@ -85,6 +88,9 @@ const FrontPage = () => {
             );
           })}
         </div>
+        <a href="https://nidarkampanje.nidar.no/nidar-ving-kampanje/">
+          <img className="adHeader" src={adHeader} alt="Ad Header" />
+        </a>
       </div>
     </div>
   );
