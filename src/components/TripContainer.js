@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import Rating from "@mui/material/Rating";
 import {addRating} from "../api/api";
-import AdminUser from "./Admin";
+import isAdmin from "./Admin";
 
 export function TripContainer({ trip, calculateAverageRating }) {
   const navigate = useNavigate();
@@ -23,23 +23,31 @@ export function TripContainer({ trip, calculateAverageRating }) {
       : false;
 
   const handleUpdateTrip = async (id) => {
-    if (isAuthor) {
+    if (isAuthor || isAdmin ) {
       const document = doc(db, "trips", id);
       await updateDoc(document, {
         description: description,
         tripName: tripName,
         authorRating: authorRating,
       });
+      console.log(auth.currentUser);
     }
     handleToggle();
   };
+
+  const checkAdminStatus = async () => {
+    const isAdmin = await isAdmin();
+    console.log(isAdmin);
+  };
+  
+  checkAdminStatus();
 
   const handleToggle = () => {
     setEditing((current) => !current);
   };
 
   const handleDeleteButtonClick = async (id) => {
-    if (isAuthor) {
+    if (isAuthor || isAdmin ) {
       const document = doc(db, "trips", id);
       await deleteDoc(document);
     }
@@ -80,8 +88,8 @@ export function TripContainer({ trip, calculateAverageRating }) {
         }}
       />
       <button
-        className={isAuthor || AdminUser ? "editTripButton" : "notVisibleEditButton"}
-        disabled={!isAuthor || !AdminUser}
+        className={isAuthor || isAdmin  ? "editTripButton" : "notVisibleEditButton"}
+        disabled={!isAuthor || isAdmin}
         onClick={
           editing
             ? () => {
@@ -93,8 +101,8 @@ export function TripContainer({ trip, calculateAverageRating }) {
         {editing ? "Ferdig" : "Edit"}
       </button>
       <button
-        className={isAuthor || AdminUser ? "deleteTripButton" : "notVisibleDeleteButton"}
-        disabled={!isAuthor || !AdminUser}
+        className={isAuthor || isAdmin ? "deleteTripButton" : "notVisibleDeleteButton"}
+        disabled={!isAuthor || isAdmin }
         onClick={() => {
           handleDeleteButtonClick(trip.id);
         }}
