@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import "../styles/Trippage.css";
 import PropTypes from "prop-types";
 import image from "../img/test.jpg";
@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import Rating from "@mui/material/Rating";
 import {addRating} from "../api/api";
-import isAdmin from "./Admin";
+import checkUserIdInField from "./Admin";
 
 export function TripContainer({ trip, calculateAverageRating }) {
   const navigate = useNavigate();
@@ -16,14 +16,27 @@ export function TripContainer({ trip, calculateAverageRating }) {
   const [description, setDescription] = useState(trip.description);
   const [tripName, setTripName] = useState(trip.tripName);
   const [authorRating, setAuthorRating] = useState(trip.authorRating);
+  const [isAdmin, setIsAdmin] = useState(false);
   //let ratings = trip.rating;
   const isAuthor =
     auth.currentUser !== null
       ? trip.authorName === auth.currentUser.displayName
       : false;
 
+  useEffect(() => {
+    const useAdminUser = async () => {
+      const userEmail = auth.currentUser.email; // Replace this with your actual user ID
+      console.log("userEmail", userEmail);
+  
+      const result = await checkUserIdInField("roles", "eHpUakLV9o1r9zA6h6Qs", userEmail);
+      setIsAdmin(result);
+    };
+
+    useAdminUser();
+  }, []);
+
   const handleUpdateTrip = async (id) => {
-    if (isAuthor || isAdmin ) {
+    if (isAuthor || isAdmin) {
       const document = doc(db, "trips", id);
       await updateDoc(document, {
         description: description,
@@ -35,19 +48,14 @@ export function TripContainer({ trip, calculateAverageRating }) {
     handleToggle();
   };
 
-  const checkAdminStatus = async () => {
-    const isAdmin = await isAdmin();
-    console.log(isAdmin);
-  };
-  
-  checkAdminStatus();
+  //const lol = useState(true);
 
   const handleToggle = () => {
     setEditing((current) => !current);
   };
 
   const handleDeleteButtonClick = async (id) => {
-    if (isAuthor || isAdmin ) {
+    if (isAuthor || isAdmin) {
       const document = doc(db, "trips", id);
       await deleteDoc(document);
     }
@@ -88,8 +96,8 @@ export function TripContainer({ trip, calculateAverageRating }) {
         }}
       />
       <button
-        className={isAuthor || isAdmin  ? "editTripButton" : "notVisibleEditButton"}
-        disabled={!isAuthor || isAdmin}
+        className={isAuthor || isAdmin ? "editTripButton" : "notVisibleEditButton"}
+        disabled={!(isAuthor || isAdmin)}
         onClick={
           editing
             ? () => {
@@ -102,7 +110,7 @@ export function TripContainer({ trip, calculateAverageRating }) {
       </button>
       <button
         className={isAuthor || isAdmin ? "deleteTripButton" : "notVisibleDeleteButton"}
-        disabled={!isAuthor || isAdmin }
+        disabled={!(isAuthor || isAdmin)}
         onClick={() => {
           handleDeleteButtonClick(trip.id);
         }}

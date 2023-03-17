@@ -1,17 +1,8 @@
-//import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/firestore";
+import { db } from "../firebase-config";
+import { doc, getDoc } from "@firebase/firestore";
+//import { useEffect, useState } from "react";
 
-import { db } from '../firebase-config';
-//import { auth } from '../firebase-config';
-//import { UserAuth } from "../Context/AuthContext";
-import { doc , getDoc} from "firebase/firestore";
-import { useState, useEffect } from 'react';
-
-const [isAdmin, setIsAdmin] = useState(false);
-
-
-const isUserIdInArray = async (collectionName, docId, arrayFieldName, userId) => {
+const checkUserIdInField = async (collectionName, docId, userEmail) => {
   try {
     // Retrieve the document from Firestore
     const docRef = doc(db, collectionName, docId);
@@ -23,11 +14,10 @@ const isUserIdInArray = async (collectionName, docId, arrayFieldName, userId) =>
       return false;
     }
 
-    // Get the array from the document
-    const userArray = docSnapshot.get(arrayFieldName);
+    const fieldValue = docSnapshot.data().admins;
+    console.log("fieldValue", fieldValue);
 
-    // Check if the array exists and if the userId is in the array
-    if (userArray && Array.isArray(userArray) && userArray.includes(userId)) {
+    if (fieldValue.includes(userEmail)) {
       return true;
     }
 
@@ -39,25 +29,21 @@ const isUserIdInArray = async (collectionName, docId, arrayFieldName, userId) =>
   }
 };
 
-const AdminUser = async () => {
-  const collectionName = "roles";
-  const docId = "eHpUakLV9o1r9zA6h6Qs";
-  const arrayFieldName = "admin";
-  const userId = "johanotto96@gmail.com";
+/*const AdminUser = () => {
+  const [isUserIdInField, setIsUserIdInField] = useState(false);
+  const userId = "SYysAQf44jNiCBdVJWnJubhtcWg2"; // Replace this with your actual user ID
 
-  const isUserInArray = await isUserIdInArray(collectionName, docId, arrayFieldName, userId);
-  console.log("Is userId in the array: ", isUserInArray);
-  return isUserIdInArray;
-};
+  useEffect(() => {
+    const checkUserIdInField = async () => {
+      const result = await isUserIdInField("roles", "eHpUakLV9o1r9zA6h6Qs", "admin", userId);
+      setIsUserIdInField(result);
+    };
 
-useEffect(() => {
-  const checkAdminStatus = async () => {
-    const adminStatus = await AdminUser();
-    setIsAdmin(adminStatus);
-  };
+    checkUserIdInField();
+  }, [userId]);
 
-  checkAdminStatus();
-}, []);
+  
+}; */
 
 
-export default isAdmin;
+export default checkUserIdInField;
