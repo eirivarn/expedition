@@ -6,6 +6,7 @@ import { Comment } from "../components/Comment.js";
 import { AddToFavorites } from "../components/AddToFavorites.js";
 import "../styles/Trippage.css";
 import { useLocation } from "react-router";
+import { addToViewedTrips } from "../api/api.js";
 
 const TripPage = () => {
   const location = useLocation();
@@ -63,6 +64,11 @@ const TripPage = () => {
   };
 
   useEffect(() => {
+    const reccValues = {
+      id: from.id,
+      vals: from.region.concat(from.countries),
+    };
+    addToViewedTrips(reccValues);
     calculateAverageRating();
     getAllComments();
   }, []);
@@ -70,10 +76,10 @@ const TripPage = () => {
   return (
     <div>
       <div className="infoTrip">
-        <TripContainer trip={from} />
-        <div className="tripRating">
-          <Rating value={from.authorRating} size="large" readOnly />
-        </div>
+        <TripContainer
+          trip={from}
+          calculateAverageRating={calculateAverageRating}
+        />
         <div className="averageRating">
           <Rating value={averageRating} size="large" readOnly />
           <p>Average rating based on {from.comments.length + 1} ratings</p>
