@@ -15,7 +15,9 @@ export function TripContainer({ trip, calculateAverageRating }) {
   const [description, setDescription] = useState(trip.description);
   const [tripName, setTripName] = useState(trip.tripName);
   const [authorRating, setAuthorRating] = useState(trip.authorRating);
-  //let ratings = trip.rating;
+  const [regions, setRegions] = useState(trip.region)
+  const [countries, setCountries] = useState(trip.countries)
+
   const isAuthor =
     auth.currentUser !== null
       ? trip.authorName === auth.currentUser.displayName
@@ -45,6 +47,13 @@ export function TripContainer({ trip, calculateAverageRating }) {
     navigate("/");
   };
 
+  const getRegionValues = async () => {
+      let regions = trip.region
+      console.log(regions)
+      console.log(regions[0])
+      return regions
+  }
+
   return (
     <div key={trip.id}>
       <textarea
@@ -65,6 +74,10 @@ export function TripContainer({ trip, calculateAverageRating }) {
           setDescription(event.target.value);
         }}
       ></textarea>
+      <h2 className="regionVisit"> REGION </h2>
+      <div className="tripRegions">regions</div>
+      <h2 className="countryVisit"> COUNTRIES</h2>
+      <div className="tripCountries">countries</div>
       <Rating
         className="tripRating"
         value={trip.rating[0]}

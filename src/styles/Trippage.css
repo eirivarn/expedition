@@ -102,6 +102,40 @@
   color: #000000;
 }
 
+.tripRegions {
+  position: absolute;
+  background: transparent;
+  border: none;
+  resize: none;
+  width: 572px;
+  height: 303px;
+  left: 566px;
+  top: 150px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #000000;
+}
+
+.tripCountries {
+  position: absolute;
+  background: transparent;
+  border: none;
+  resize: none;
+  width: 572px;
+  height: 303px;
+  left: 566px;
+  top: 210px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #000000;
+}
+
 .editTripButton {
   position: absolute;
   border: none;
