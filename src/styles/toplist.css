@@ -1,3 +1,8 @@
+#toplist {
+  margin-top: 150px;
+  margin-bottom: 70px;
+}
+
 #toplist_grid {
   width: 100%;
   display: flex;
@@ -16,14 +21,18 @@
   display: flex;
 }
 
-#toplist_grid > div > h1 {
+#toplist_grid > div > div > h1 {
   color: #658864;
-  height: 95px;
-  width: 50px;
   text-align: center;
-  font-size: 35px;
-  border-right: solid 2px #658864;
-  margin: 0;
+  font-size: 32px;
+  margin-top: 30px;
+}
+
+.toplist_numberbox {
+  width: 50px;
+  height: 100px;
+  margin-top: 8px;
+  border-right: solid 3px #658864;
 }
 
 #toplist_grid > div > img {
@@ -33,9 +42,9 @@
   margin-left: 30px;
 }
 
-.toplist_numbered {
+.toplist_component {
   border-bottom: solid 1px #658864;
-  padding: 20px 5px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #toplist_name_and_rating {

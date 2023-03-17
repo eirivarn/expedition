@@ -60,31 +60,81 @@ const FrontPage = () => {
       </div>
 
       {/*Topplisten */}
-      <div id="toplist"></div>
-      <h2>Top list</h2>
-      <div id="toplist_grid">
-        <div className="toplist_numbered">
-          <h1>1</h1>
-          <img src={image}></img>
-          <div id="toplist_name_and_rating">
-            <h3>Name trip</h3>
-            <h4>RATING</h4>
+      <div id="toplist">
+        <h2>Top list</h2>
+        <div id="toplist_grid">
+          {/*1 */}
+          <div className="toplist_component">
+            <div className="toplist_numberbox">
+              <h1>1</h1>
+            </div>
+
+            <img src={image}></img>
+            <div id="toplist_name_and_rating">
+              <h3>Name trip</h3>
+              <h4>RATING</h4>
+            </div>
           </div>
-        </div>
-        <div className="toplist_numbered">
-          <h1>2</h1>
-        </div>
-        <div className="toplist_numbered">
-          <h1>3</h1>
-        </div>
-        <div className="toplist_numbered">
-          <h1>4</h1>
-        </div>
-        <div className="toplist_numbered">
-          <h1>5</h1>
-        </div>
-        <div className="toplist_numbered">
-          <h1>6</h1>
+          {/*4 */}
+          <div className="toplist_component">
+            <div className="toplist_numberbox">
+              <h1>4</h1>
+            </div>
+
+            <img src={image}></img>
+            <div id="toplist_name_and_rating">
+              <h3>Name trip</h3>
+              <h4>RATING</h4>
+            </div>
+          </div>
+          {/*2 */}
+          <div className="toplist_component">
+            <div className="toplist_numberbox">
+              <h1>2</h1>
+            </div>
+
+            <img src={image}></img>
+            <div id="toplist_name_and_rating">
+              <h3>Name trip</h3>
+              <h4>RATING</h4>
+            </div>
+          </div>
+          {/*5 */}
+          <div className="toplist_component">
+            <div className="toplist_numberbox">
+              <h1>5</h1>
+            </div>
+
+            <img src={image}></img>
+            <div id="toplist_name_and_rating">
+              <h3>Name trip</h3>
+              <h4>RATING</h4>
+            </div>
+          </div>
+          {/*3 */}
+          <div className="toplist_component">
+            <div className="toplist_numberbox">
+              <h1>3</h1>
+            </div>
+
+            <img src={image}></img>
+            <div id="toplist_name_and_rating">
+              <h3>Name trip</h3>
+              <h4>RATING</h4>
+            </div>
+          </div>
+          {/*6 */}
+          <div className="toplist_component">
+            <div className="toplist_numberbox">
+              <h1>6</h1>
+            </div>
+
+            <img src={image}></img>
+            <div id="toplist_name_and_rating">
+              <h3>Name trip</h3>
+              <h4>RATING</h4>
+            </div>
+          </div>
         </div>
       </div>
     </div>
