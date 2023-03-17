@@ -9,9 +9,10 @@ import { useState } from "react";
 import { addComment } from "../api/api";
 /* userId,*/
 
-export function Comment({ name, userId, content, rating, date, trip}) {
+export function Comment({ name, userId, content, rating, date, trip, deleteComment }) {
   const [editing, setEditing] = useState(false);
   const [text, setText] = useState(content);
+  const [prevText, setPrevText] = useState(userId + "::" + name + "::" + content + "::" + date + "::" + rating);
   const isAuthor =
     auth.currentUser !== null
       ? userId === auth.currentUser.uid
@@ -23,8 +24,8 @@ export function Comment({ name, userId, content, rating, date, trip}) {
     if (isAuthor) {
       handleDeleteCommentButtonClick(id)
       const commentString = userId + "::" + name + "::" + text + "::" + date + "::" + rating;
-      await addComment(id, commentString)
-      console.log(commentString);
+      await addComment(id, commentString);
+      setPrevText(commentString);
     }
     handleToggle();
   };
@@ -35,12 +36,11 @@ export function Comment({ name, userId, content, rating, date, trip}) {
 
   const handleDeleteCommentButtonClick = async (id) => {
     if (isAuthor) {
-      const commentString = userId + "::" + name + "::" + content + "::" + date + "::" + rating;
-      console.log(commentString);
       const document = doc(db, "trips", id);
       await updateDoc(document, {
-        comments: arrayRemove(commentString)
+        comments: arrayRemove(prevText)
       });
+      deleteComment(prevText);
     }
   };
 
@@ -91,6 +91,7 @@ Comment.propTypes = {
   rating: PropTypes.number,
   date: PropTypes.string,
   trip: PropTypes.object,
+  deleteComment: PropTypes.func,
 };
 
 export default Comment;
