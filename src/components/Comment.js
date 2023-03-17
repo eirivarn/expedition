@@ -6,10 +6,10 @@ import PropTypes from "prop-types";
 import { doc, arrayRemove, updateDoc } from "firebase/firestore";
 import { db, auth } from "../firebase-config.js";
 import { useState } from "react";
-import {addComment, addRating} from "../api/api";
+import { addComment, addRating } from "../api/api";
 /* userId,*/
 
-export function Comment({ name, userId, content, rating, date, trip, deleteComment }) {
+export function Comment({ name, userId, content, rating, date, trip, deleteComment, updatePage }) {
   const [editing, setEditing] = useState(false);
   const [text, setText] = useState(content);
   const [prevText, setPrevText] = useState(userId + "::" + name + "::" + content + "::" + date + "::" + rating);
@@ -25,11 +25,12 @@ export function Comment({ name, userId, content, rating, date, trip, deleteComme
     if (isAuthor) {
       handleDeleteCommentButtonClick(id)
       const commentString = userId + "::" + name + "::" + text + "::" + date + "::" + newRating;
-      await addComment(id, commentString)
-      setPrevText(commentString);
       const newRatings = trip.rating
       newRatings.push(newRating)
+      await addComment(id, commentString)
+      updatePage(commentString, newRatings)
       await addRating(id, newRatings)
+      setPrevText(commentString);
     }
     handleToggle();
   };
@@ -105,6 +106,7 @@ Comment.propTypes = {
   date: PropTypes.string,
   trip: PropTypes.object,
   deleteComment: PropTypes.func,
+  updatePage: PropTypes.func,
 };
 
 export default Comment;

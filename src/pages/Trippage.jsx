@@ -31,7 +31,7 @@ const TripPage = () => {
   };
 
   const handleDeleteComment = (commentString) => {
-    comments.pop(commentString);
+    from.comments.pop(commentString);
     console.log(comments);
     calculateAverageRating();
     getAllComments();
@@ -101,6 +101,7 @@ const TripPage = () => {
                 rating={comment.rating}
                 date={comment.date}
                 deleteComment={handleDeleteComment}
+                updatePage={updatePage}
               />
             </div>
           );
