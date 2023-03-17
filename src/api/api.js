@@ -11,7 +11,6 @@ import {
   doc,
   query,
 } from "firebase/firestore";
-import { async } from "@firebase/util";
 
 /* 
 Trips storage format
