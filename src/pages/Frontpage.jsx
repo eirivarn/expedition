@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 import calculateWeights from "../utils/calculateWeights.js";
 import { auth } from "../firebase-config.js";
 import sortWeights from "../utils/sortWeights.js";
+import { FilterFrontpage } from "../components/FilterFrontpage.js";
 
 const FrontPage = () => {
   const [trips, setTrips] = useState([]);
@@ -62,6 +63,7 @@ const FrontPage = () => {
             );
           })}
         </div>
+        <div> <FilterFrontpage/></div>
         <h2 className="header2">Trips</h2>
         <div className="front_grid">
           {trips.map((trip) => {
