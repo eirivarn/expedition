@@ -9,9 +9,10 @@ import { useState } from "react";
 import {addComment, addRating} from "../api/api";
 /* userId,*/
 
-export function Comment({ name, userId, content, rating, date, trip}) {
+export function Comment({ name, userId, content, rating, date, trip, deleteComment }) {
   const [editing, setEditing] = useState(false);
   const [text, setText] = useState(content);
+  const [prevText, setPrevText] = useState(userId + "::" + name + "::" + content + "::" + date + "::" + rating);
   const [newRating, setRating] = useState(rating)
   const isAuthor =
     auth.currentUser !== null
@@ -24,8 +25,8 @@ export function Comment({ name, userId, content, rating, date, trip}) {
     if (isAuthor) {
       handleDeleteCommentButtonClick(id)
       const commentString = userId + "::" + name + "::" + text + "::" + date + "::" + newRating;
-      console.log(newRating)
       await addComment(id, commentString)
+      setPrevText(commentString);
       const newRatings = trip.rating
       newRatings.push(newRating)
       await addRating(id, newRatings)
@@ -39,10 +40,6 @@ export function Comment({ name, userId, content, rating, date, trip}) {
 
   const handleDeleteCommentButtonClick = async (id) => {
     if (isAuthor) {
-      const commentString = userId + "::" + name + "::" + content + "::" + date + "::" + rating;
-      console.log(commentString);
-      console.log(rating);
-      //trip.rating[trip.rating.indexOf(rating)] = newRating;
       const newRatings = trip.rating
       const i = newRatings.indexOf(rating)
         if (i !== -1) {
@@ -51,8 +48,9 @@ export function Comment({ name, userId, content, rating, date, trip}) {
       await addRating(id, newRatings)
       const document = doc(db, "trips", id);
       await updateDoc(document, {
-        comments: arrayRemove(commentString),
+        comments: arrayRemove(prevText)
       });
+      deleteComment(prevText);
     }
   };
 
@@ -106,6 +104,7 @@ Comment.propTypes = {
   rating: PropTypes.number,
   date: PropTypes.string,
   trip: PropTypes.object,
+  deleteComment: PropTypes.func,
 };
 
 export default Comment;

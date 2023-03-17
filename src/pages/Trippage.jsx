@@ -30,6 +30,13 @@ const TripPage = () => {
     calculateAverageRating();
   };
 
+  const handleDeleteComment = (commentString) => {
+    comments.pop(commentString);
+    console.log(comments);
+    calculateAverageRating();
+    getAllComments();
+  };
+
   const getAllComments = () => {
     const cmnts = from.comments;
     const newComments = [];
@@ -93,6 +100,7 @@ const TripPage = () => {
                 content={comment.content}
                 rating={comment.rating}
                 date={comment.date}
+                deleteComment={handleDeleteComment}
               />
             </div>
           );
