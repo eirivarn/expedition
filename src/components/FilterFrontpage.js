@@ -6,6 +6,7 @@ import { countryList } from "../Data/countries.js";
 export function FilterFrontpage() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedRegion, setSelectedRegion] = useState("");
+  const [selectedText, setSelectedText] = useState("");
   const [searchTerms, setSearchTerms] = useState([]);
 
   const onRegionSelect = (region) => {
@@ -16,11 +17,24 @@ export function FilterFrontpage() {
     setSelectedCountry(country);
   };
 
-  const onAddToSearchTerms = () => {
-    const newSearchTerms = selectedRegion.concat(" ", selectedCountry)
-      .split(/[, ]+/)
-      .filter((term) => term !== "");
-    setSearchTerms([...searchTerms, ...newSearchTerms]);
+  const onAddCountryToSearchTerms = () => {
+    if (!searchTerms.includes(selectedCountry)) {
+      setSearchTerms([...searchTerms, selectedCountry]);
+    }
+  };
+
+  const onAddRegionToSearchTerms = () => {
+    if (!searchTerms.includes(selectedRegion)) {
+      setSearchTerms([...searchTerms, selectedRegion]);
+    }
+  };
+
+  const onAddTextToSearchTerms = () => {
+    const terms = selectedText.split(",").map((term) => term.trim());
+    const newTerms = terms.filter((term) => term && !searchTerms.includes(term));
+    if (newTerms.length > 0) {
+      setSearchTerms([...searchTerms, ...newTerms]);
+    }
   };
 
   const onClearSearchTerms = () => {
@@ -46,7 +60,7 @@ export function FilterFrontpage() {
             </option>
           ))}
         </select>
-        <button onClick={onAddToSearchTerms}>Add to search terms</button>
+        <button onClick={onAddRegionToSearchTerms}>Add region to search terms</button>
       </div>
       <div className="userInputCountriesVisited">
         <select
@@ -63,7 +77,18 @@ export function FilterFrontpage() {
             </option>
           ))}
         </select>
-        <button onClick={onAddToSearchTerms}>Add to search terms</button>
+        <button onClick={onAddCountryToSearchTerms}>Add country to search terms</button>
+      </div>
+      <div className="userInputText">
+        <input
+          type="text"
+          placeholder="Enter search terms separated by commas"
+          value={selectedText}
+          onChange={(event) => {
+            setSelectedText(event.target.value);
+          }}
+        />
+        <button onClick={onAddTextToSearchTerms}>Add text to search terms</button>
       </div>
       <ul id="countriesList">
         {searchTerms.map((term, index) => (
