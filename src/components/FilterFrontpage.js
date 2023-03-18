@@ -4,9 +4,9 @@ import { countryList } from "../Data/countries.js";
 
 
 export function FilterFrontpage() {
-    const [selectedCountry, setSelectedCountry] = useState(countryList[0].name);
-    const [selectedRegion, setSelectedRegion] = useState("");
-    console.log(countryList);
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState("");
+  const [searchTerms, setSearchTerms] = useState([]);
 
   const onRegionSelect = (region) => {
     setSelectedRegion(region);
@@ -14,7 +14,18 @@ export function FilterFrontpage() {
 
   const onCountrySelect = (country) => {
     setSelectedCountry(country);
-  };  
+  };
+
+  const onAddToSearchTerms = () => {
+    const newSearchTerms = selectedRegion.concat(" ", selectedCountry)
+      .split(/[, ]+/)
+      .filter((term) => term !== "");
+    setSearchTerms([...searchTerms, ...newSearchTerms]);
+  };
+
+  const onClearSearchTerms = () => {
+    setSearchTerms([]);
+  };
 
   return (
     <div>
@@ -35,28 +46,31 @@ export function FilterFrontpage() {
             </option>
           ))}
         </select>
+        <button onClick={onAddToSearchTerms}>Add to search terms</button>
       </div>
       <div className="userInputCountriesVisited">
-      <select
-  className="dropdown"
-  value={selectedCountry}
-  onChange={(event) => {
-    onCountrySelect(event.target.value);
-  }}
->
-  <option value="">Select a country</option>
-  {countryList.map((country) => (
-    <option key={country} value={country}>
-      {country}
-    </option>
-  ))}
-</select>
-
-  <ul id="countriesList">
-  </ul>
-</div>
-
+        <select
+          className="dropdown"
+          value={selectedCountry}
+          onChange={(event) => {
+            onCountrySelect(event.target.value);
+          }}
+        >
+          <option value="">Select a country</option>
+          {countryList.map((country) => (
+            <option key={country} value={country}>
+              {country}
+            </option>
+          ))}
+        </select>
+        <button onClick={onAddToSearchTerms}>Add to search terms</button>
+      </div>
+      <ul id="countriesList">
+        {searchTerms.map((term, index) => (
+          <li key={index}>{term}</li>
+        ))}
+      </ul>
+      <button onClick={onClearSearchTerms}>Clear search terms</button>
     </div>
   );
 }
-
