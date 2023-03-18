@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { countriesByRegion } from "../Data/CountriesByRegion.js";
 import { countryList } from "../Data/countries.js";
+import { searchFor } from "../api/api.js";
+import { NavLink } from "react-router-dom";
+import TripComponent from "../components/TripComponent.js";
+
 
 
 export function FilterFrontpage() {
@@ -8,6 +12,7 @@ export function FilterFrontpage() {
   const [selectedRegion, setSelectedRegion] = useState("");
   const [selectedText, setSelectedText] = useState("");
   const [searchTerms, setSearchTerms] = useState([]);
+  const [searchMatches, setSearchMatches] = useState([]);
 
   const onRegionSelect = (region) => {
     setSelectedRegion(region);
@@ -39,6 +44,11 @@ export function FilterFrontpage() {
 
   const onClearSearchTerms = () => {
     setSearchTerms([]);
+  };
+
+  const onSearch = async () => {
+    const matches = await searchFor(searchTerms);
+    setSearchMatches(matches);
   };
 
   return (
@@ -96,6 +106,29 @@ export function FilterFrontpage() {
         ))}
       </ul>
       <button onClick={onClearSearchTerms}>Clear search terms</button>
-    </div>
-  );
-}
+      <button onClick={onSearch}>Search</button>
+      <h2 className="header2">Trips that match searchTerms</h2>
+      <div className="front_grid">
+      {searchMatches.map((trip) => {
+    const ratings = trip.rating;
+    const average = Math.round(
+      ratings.reduce((a, b) => a + b, 0) / ratings.length
+    );
+    return (
+      <NavLink
+        key={trip.id}
+        to="/trip"
+        state={{ from: trip }}
+        style={{ textDecoration: "none" }}
+      >
+        <TripComponent
+          tripID={trip.id}
+          name={trip.tripName}
+          averageRating={average}
+        />
+      </NavLink>
+    );
+  })}
+  </div>
+</div>
+  )}
