@@ -47,20 +47,23 @@ const FrontPage = () => {
               ratings.reduce((a, b) => a + b, 0) / ratings.length
             );
             return (
-              <NavLink
-                key={trip.id}
-                to="/trip"
-                state={{ from: trip }}
-                style={{ textDecoration: "none" }}
-              >
-                <TripComponent
-                  tripID={trip.id}
-                  name={trip.tripName}
-                  averageRating={average}
-                />
-              </NavLink>
+              <div key={trip.id}>
+                <NavLink
+                  key={trip.id}
+                  to="/trip"
+                  state={{ from: trip }}
+                  style={{ textDecoration: "none" }}
+                >
+                  <TripComponent
+                    tripID={trip.id}
+                    name={trip.tripName}
+                    averageRating={average}
+                  />
+                </NavLink>
+              </div>
             );
           })}
+          <div className="sectionLineBreak"></div>
         </div>
         <h2 className="header2">Trips</h2>
         <div className="front_grid">
