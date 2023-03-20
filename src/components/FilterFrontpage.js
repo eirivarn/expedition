@@ -4,6 +4,7 @@ import { countryList } from "../Data/countries.js";
 import { searchFor } from "../api/api.js";
 import { NavLink } from "react-router-dom";
 import TripComponent from "../components/TripComponent.js";
+import "../styles/Trippage.css";
 
 
 
@@ -53,9 +54,9 @@ export function FilterFrontpage() {
 
   return (
     <div>
-      <h2 className="regionVisited"> REGION </h2>
-      <h2 className="countriesVisited"> COUNTRY </h2>
-      <div className="userInputRegionVisited">
+      <h2 id="region" className="header2"> REGION </h2>
+      <h2 className="header2"> COUNTRY </h2>
+      <div id="regionVisited" className="userInputRegionVisited">
         <select
           className="dropdown"
           value={selectedRegion}
@@ -70,9 +71,9 @@ export function FilterFrontpage() {
             </option>
           ))}
         </select>
-        <button onClick={onAddRegionToSearchTerms}>Add region to search terms</button>
+        <button id="regionButton" type="button" onClick={onAddRegionToSearchTerms}>Add region to search terms</button>
       </div>
-      <div className="userInputCountriesVisited">
+      <div id="countriesVisited" className="userInputCountriesVisited">
         <select
           className="dropdown"
           value={selectedCountry}
@@ -87,7 +88,7 @@ export function FilterFrontpage() {
             </option>
           ))}
         </select>
-        <button onClick={onAddCountryToSearchTerms}>Add country to search terms</button>
+        <button id="countryButton" onClick={onAddCountryToSearchTerms}>Add country to search terms</button>
       </div>
       <div className="userInputText">
         <input
@@ -98,15 +99,15 @@ export function FilterFrontpage() {
             setSelectedText(event.target.value);
           }}
         />
-        <button onClick={onAddTextToSearchTerms}>Add text to search terms</button>
+        <button id="addTextButton" onClick={onAddTextToSearchTerms}>Add text to search terms</button>
       </div>
       <ul id="countriesList">
         {searchTerms.map((term, index) => (
           <li key={index}>{term}</li>
         ))}
       </ul>
-      <button onClick={onClearSearchTerms}>Clear search terms</button>
-      <button onClick={onSearch}>Search</button>
+      <button id="clearButton" onClick={onClearSearchTerms}>Clear search terms</button>
+      <button id="searchButton" onClick={onSearch}>Search</button>
       <h2 className="header2">Trips that match searchTerms</h2>
       <div className="front_grid">
       {searchMatches.map((trip) => {

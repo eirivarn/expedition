@@ -31,6 +31,73 @@
     
 }
 
+
+
+.dropdown {
+    position: relative;
+    min-width: 20px;
+    margin-right: 20px;
+    margin-left: 50px;
+    font-size: 10px;
+  }
+
+#regionButton{
+    width: 180px;
+    height: 25px;
+    background-color: #C5DFC4;
+    border-radius: 40px;
+    color: #658864;
+    border: none;
+    box-shadow: 0px 4px 7px rgba(0,0,0,0.4);
+}
+
+/*#countriesVisited {
+    position: absolute;
+    display: inline-block;
+    margin-right: 20px;
+    margin-left: 30%;
+  }*/
+
+#countryButton{
+    width: 180px;
+    height: 25px;
+    background-color: #C5DFC4;
+    border-radius: 40px;
+    color: #658864;
+    border: none;
+    box-shadow: 0px 4px 7px rgba(0,0,0,0.4);
+}
+
+#addTextButton{
+    width: 160px;
+    height: 25px;
+    background-color: #C5DFC4;
+    border-radius: 40px;
+    color: #658864;
+    border: none;
+    box-shadow: 0px 4px 7px rgba(0,0,0,0.4);
+}
+
+#clearButton{
+    width: 125px;
+    height: 25px;
+    background-color: #C5DFC4;
+    border-radius: 40px;
+    color: #658864;
+    border: none;
+    box-shadow: 0px 4px 7px rgba(0,0,0,0.4);
+}
+
+#searchButton{
+    width: 80px;
+    height: 25px;
+    background-color: #C5DFC4;
+    border-radius: 40px;
+    color: #658864;
+    border: none;
+    box-shadow: 0px 4px 7px rgba(0,0,0,0.4);
+}
+
 .header2{
     color: #658864;
 }
