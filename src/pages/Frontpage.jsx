@@ -112,18 +112,6 @@ const FrontPage = () => {
               <h4>RATING</h4>
             </div>
           </div>
-          {/*4 */}
-          <div className="toplist_component">
-            <div className="toplist_numberbox">
-              <h1>4</h1>
-            </div>
-
-            <img src={image}></img>
-            <div id="toplist_name_and_rating">
-              <h3>Name trip</h3>
-              <h4>RATING</h4>
-            </div>
-          </div>
           {/*2 */}
           <div className="toplist_component">
             <div className="toplist_numberbox">
@@ -136,10 +124,10 @@ const FrontPage = () => {
               <h4>RATING</h4>
             </div>
           </div>
-          {/*5 */}
+          {/*3 */}
           <div className="toplist_component">
             <div className="toplist_numberbox">
-              <h1>5</h1>
+              <h1>3</h1>
             </div>
 
             <img src={image}></img>
@@ -148,10 +136,22 @@ const FrontPage = () => {
               <h4>RATING</h4>
             </div>
           </div>
-          {/*3 */}
+          {/*4 */}
           <div className="toplist_component">
             <div className="toplist_numberbox">
-              <h1>3</h1>
+              <h1>4</h1>
+            </div>
+
+            <img src={image}></img>
+            <div id="toplist_name_and_rating">
+              <h3>Name trip</h3>
+              <h4>RATING</h4>
+            </div>
+          </div>
+          {/*5 */}
+          <div className="toplist_component">
+            <div className="toplist_numberbox">
+              <h1>5</h1>
             </div>
 
             <img src={image}></img>
