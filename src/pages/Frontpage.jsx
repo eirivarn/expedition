@@ -47,7 +47,7 @@ const FrontPage = () => {
               ratings.reduce((a, b) => a + b, 0) / ratings.length
             );
             return (
-              <div>
+              <div key={trip.id}>
                 <NavLink
                   key={trip.id}
                   to="/trip"
