@@ -42,7 +42,11 @@ export function ProfileInfo() {
       <img className="profile-pic" src={user.photoURL} />
       <div className="user-trips ">
         <div className="MyTripArea">
-          <div id="addMyTripsShowBox" className="lightbutton" onClick={handleShowTrips}>
+          <div
+            id="addMyTripsShowBox"
+            className="lightbutton"
+            onClick={handleShowTrips}
+          >
             <div>
               <img id="locationIcon" src={locationIcon}></img>
             </div>
@@ -50,18 +54,25 @@ export function ProfileInfo() {
           </div>
         </div>
         <div className="MyFavoritesArea">
-          <div id="addFavoriteShowBox" className="lightbutton" onClick={handleShowFavorites}>
+          <div
+            id="addFavoriteShowBox"
+            className="lightbutton"
+            onClick={handleShowFavorites}
+          >
             <div className="addFavoriteShowText">My Favorites</div>
             <div className="addFavoriteShowHeart">
               <img id="heartIcon" src={heartIcon}></img>
             </div>
-            
           </div>
         </div>
         <div className="flex_images">
           <h2 className="header2">{showTrips ? "My Trips" : "My Favorites"}</h2>
           <div className="front_grid_userpage">
             {tripsToRender.map((trip) => {
+              const ratings = trip.rating;
+              const average = Math.round(
+                ratings.reduce((a, b) => a + b, 0) / ratings.length
+              );
               return (
                 <NavLink
                   key={trip.id}
@@ -70,10 +81,9 @@ export function ProfileInfo() {
                   style={{ textDecoration: "none" }}
                 >
                   <TripComponent
-                    key={trip.id}
                     tripID={trip.id}
                     name={trip.tripName}
-                    ratings={trip.rating}
+                    averageRating={average}
                   />
                 </NavLink>
               );
