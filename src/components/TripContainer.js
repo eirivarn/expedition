@@ -2,12 +2,12 @@ import React from "react";
 import { useState , useEffect} from "react";
 import "../styles/Trippage.css";
 import PropTypes from "prop-types";
-import image from "../img/test.jpg";
 import { db, auth } from "../firebase-config.js";
 import { useNavigate } from "react-router-dom";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import Rating from "@mui/material/Rating";
 import {addRating} from "../api/api";
+import { getImage } from "../Data/CountriesByRegion";
 import checkUserIdInField from "./Admin";
 
 export function TripContainer({ trip, calculateAverageRating }) {
@@ -73,7 +73,7 @@ export function TripContainer({ trip, calculateAverageRating }) {
         }}
       />
       <h3 className="author">{trip.authorName}</h3>
-      <img className="image" src={image} />
+      <img className="image" src={getImage(trip.region[0])} />
       <textarea
         className="tripDescription"
         disabled={!editing}
@@ -88,13 +88,18 @@ export function TripContainer({ trip, calculateAverageRating }) {
       </div>
       <Rating
         className="tripRating"
-        value={trip.rating[0]}
+        value={authorRating}
         readOnly={!editing}
         size="large"
         onChange={(event, newValue) => {
+          const newRatings = trip.rating
+          const i = newRatings.indexOf(authorRating)
+            if (i !== -1) {
+                newRatings.splice(i, 1);
+            }
           setAuthorRating(newValue);
-          trip.rating[0] = newValue;
-          addRating(trip.id, trip.rating);
+          newRatings.push(newValue)
+          addRating(trip.id, newRatings)
           calculateAverageRating();
         }}
       />

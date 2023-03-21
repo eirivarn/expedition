@@ -85,6 +85,7 @@ const FrontPage = () => {
                   tripID={trip.id}
                   name={trip.tripName}
                   averageRating={average}
+                  region={trip.region[0]}
                 />
               </NavLink>
             );
