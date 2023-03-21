@@ -1,14 +1,14 @@
 import React from "react";
 import "../styles/toplist.css";
-import image from "../img/test.jpg";
 import PropTypes from "prop-types";
 import { Rating } from "@mui/material";
+import { getImage } from "../Data/CountriesByRegion";
 
-const ToplistComponent = ({ name, handleClick, averageRating }) => {
+const ToplistComponent = ({ name, handleClick, averageRating, region }) => {
   return (
     <div id="toplist_component" onClick={handleClick}>
       <div>
-        <img className="toplist_image" src={image}></img>
+        <img className="toplist_image" src={getImage(region)}></img>
       </div>
       <div>
         <h2 className="reiseNavn">{name}</h2>
@@ -24,6 +24,7 @@ ToplistComponent.propTypes = {
   name: PropTypes.string,
   handleClick: PropTypes.func,
   averageRating: PropTypes.number,
+  region: PropTypes.string,
 };
 
 export default ToplistComponent;
