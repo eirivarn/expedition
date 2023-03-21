@@ -88,13 +88,18 @@ export function TripContainer({ trip, calculateAverageRating }) {
       </div>
       <Rating
         className="tripRating"
-        value={trip.rating[0]}
+        value={authorRating}
         readOnly={!editing}
         size="large"
         onChange={(event, newValue) => {
+          const newRatings = trip.rating
+          const i = newRatings.indexOf(authorRating)
+            if (i !== -1) {
+                newRatings.splice(i, 1);
+            }
           setAuthorRating(newValue);
-          trip.rating[0] = newValue;
-          addRating(trip.id, trip.rating);
+          newRatings.push(newValue)
+          addRating(trip.id, newRatings)
           calculateAverageRating();
         }}
       />
