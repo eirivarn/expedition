@@ -14,7 +14,6 @@ export function NewTripInfo() {
   const [description, setDescription] = useState("");
   const [countries, setCountries] = useState([]);
 
-
   const onAddCountry = () => {
     if (selectedCountry !== "" && !countries.includes(selectedCountry)) {
       setCountries([...countries, selectedCountry]);
@@ -106,7 +105,7 @@ export function NewTripInfo() {
             </ul>
           </div>
         </>
-        )}
+      )}
       <h2 className="ratingHeader"> RATING </h2>
       <div className="rating">
         <Rating
@@ -129,7 +128,7 @@ export function NewTripInfo() {
       </div>
       <button className="publishTripButon" onClick={onPublishTrip}>
         <div className="buttonText">
-          <NavLink to="/" type="button">
+          <NavLink className="buttonText" to="/" type="button">
             Publish Trip
           </NavLink>
         </div>
@@ -137,6 +136,3 @@ export function NewTripInfo() {
     </div>
   );
 }
-
-
-

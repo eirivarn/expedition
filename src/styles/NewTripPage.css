@@ -102,7 +102,10 @@
   width: 80px;
   font-size: 20px;
   font-family: 'Inter';
+}
 
+#addCountryButton:hover {
+  color: rgb(58, 58, 58);
 }
 
 
@@ -199,15 +202,15 @@
   box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.4);
   border-radius: 40px;
   border: none;
-  
+  color: #f9f9f9;
 }
 
 .buttonText {
   position: absolute;
   left: 8.59%;
   right: 8.37%;
-  top: 27.03%;
-  bottom: 27.03%;
+  top: 18%;
+  
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -216,7 +219,10 @@
   text-align: center;
   color: #ffffff;
   text-decoration: none;
+}
 
+.buttonText:hover {
+  color: rgb(58, 58, 58);
 }
 
 

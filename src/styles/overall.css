@@ -41,6 +41,10 @@ body.dark textarea {
     color: #f9f9f9;
 }
 
+body.dark h3 {
+    color: #f9f9f9;
+}
+
 
 
 .button:hover {

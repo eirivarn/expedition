@@ -1,6 +1,6 @@
 export const countriesByRegion = {
     "North America": ["Canada", "United States", "Mexico"],
-    "South America": ["Brazil", "Argentina", "Colombia", "Peru", "Venezuela"],
+    "South America": ["Brazil", "Bolivia", "Argentina", "Colombia", "Peru", "Venezuela"],
     "Central America": ["Costa Rica", "Panama", "Belize", "Honduras", "El Salvador", "Guatemala", "Nicaragua"],
     "Caribbean": ["Cuba", "Jamaica", "Haiti", "Dominican Republic", "Puerto Rico", "Trinidad and Tobago", "Bahamas", "Barbados", "Grenada", "Dominica", "Saint Lucia", "Antigua and Barbuda", "Saint Vincent and the Grenadines", "Saint Kitts and Nevis"],
     "Central & South Asia": ["India", "Pakistan", "Bangladesh", "Nepal", "Sri Lanka", "Bhutan", "Maldives", "Afghanistan"],

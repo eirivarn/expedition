@@ -6,6 +6,7 @@ import { Comment } from "../components/Comment.js";
 import { AddToFavorites } from "../components/AddToFavorites.js";
 import "../styles/Trippage.css";
 import { useLocation } from "react-router";
+import { addToViewedTrips } from "../api/api.js";
 
 const TripPage = () => {
   const location = useLocation();
@@ -28,6 +29,13 @@ const TripPage = () => {
     };
     comments.push(comment);
     calculateAverageRating();
+  };
+
+  const handleDeleteComment = (commentString) => {
+    from.comments.pop(commentString);
+    console.log(comments);
+    calculateAverageRating();
+    getAllComments();
   };
 
   const getAllComments = () => {
@@ -56,6 +64,11 @@ const TripPage = () => {
   };
 
   useEffect(() => {
+    const reccValues = {
+      id: from.id,
+      vals: from.region.concat(from.countries),
+    };
+    addToViewedTrips(reccValues);
     calculateAverageRating();
     getAllComments();
   }, []);
@@ -63,7 +76,10 @@ const TripPage = () => {
   return (
     <div>
       <div className="infoTrip">
-        <TripContainer trip={from} calculateAverageRating={calculateAverageRating} />
+        <TripContainer
+          trip={from}
+          calculateAverageRating={calculateAverageRating}
+        />
         <div className="averageRating">
           <Rating value={averageRating} size="large" readOnly />
           <p>Average rating based on {from.comments.length + 1} ratings</p>
@@ -84,11 +100,14 @@ const TripPage = () => {
           return (
             <div key={comment.userId}>
               <Comment
+                trip = {from}
                 userId={comment.userId}
                 name={comment.userName}
                 content={comment.content}
                 rating={comment.rating}
                 date={comment.date}
+                deleteComment={handleDeleteComment}
+                updatePage={updatePage}
               />
             </div>
           );
