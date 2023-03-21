@@ -71,7 +71,7 @@ export function TripContainer({ trip, calculateAverageRating }) {
         onChange={(event) => {
           setTripName(event.target.value);
         }}
-      ></textarea>
+      />
       <h3 className="author">{trip.authorName}</h3>
       <img className="image" src={image} />
       <textarea
@@ -81,7 +81,7 @@ export function TripContainer({ trip, calculateAverageRating }) {
         onChange={(event) => {
           setDescription(event.target.value);
         }}
-      ></textarea>
+      />
       <div className="locationContainer">
           <div className="locationArray" >Region:  {trip.region.join(', ')}</div>
           <div className="locationArray" >Countries:  {trip.countries.join(', ')}</div>
