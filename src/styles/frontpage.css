@@ -31,36 +31,8 @@
     
 }
 
-.dropdown {
-    position: relative;
-    width: 290px;
-    margin-right: 20px;
-    margin-left: 50px;
-    font-size: 10px;
-  }
-
-#regionButton{
-    width: 180px;
-    height: 25px;
-    background-color: #C5DFC4;
-    border-radius: 40px;
-    color: #658864;
-    border: none;
-    box-shadow: 0px 4px 7px rgba(0,0,0,0.4);
-}
-
-#countryButton{
-    width: 180px;
-    height: 25px;
-    background-color: #C5DFC4;
-    border-radius: 40px;
-    color: #658864;
-    border: none;
-    box-shadow: 0px 4px 7px rgba(0,0,0,0.4);
-}
-
-#addTextButton{
-    width: 80px;
+.addButton{
+    width: 50px;
     height: 25px;
     background-color: #C5DFC4;
     border-radius: 40px;
@@ -73,7 +45,7 @@
     width: 290px;
 }
 
-#searchButton{
+.searchButton{
     width: 130px;
     height: 30px;
     background-color: #C5DFC4;
@@ -86,8 +58,8 @@
     flex-direction: row;
 }
 
-#clearButton{
-    width: 85px;
+.clearButton{
+    width: 81px;
     height: 25px;
     background-color: #C5DFC4;
     border-radius: 40px;
@@ -153,6 +125,20 @@
 #tripRating {
     text-align: left;
     margin-top: -15px;
+}
+
+
+.filter{
+    border: solid 1px;
+    background-color: red;
+}
+
+.dropdown {
+    border: solid 3px #658864;
+    display: flex;
+    margin-right: 100;  
+    width: 40px;
+    background-color: blueviolet;
 }
 
 @media only screen and (max-width: 1000px) {

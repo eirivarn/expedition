@@ -5,6 +5,8 @@ import { searchFor } from "../api/api.js";
 import { NavLink } from "react-router-dom";
 import TripComponent from "../components/TripComponent.js";
 import "../styles/Trippage.css";
+import "../styles/frontpage.css";
+
 
 
 
@@ -53,42 +55,42 @@ export function FilterFrontpage() {
   };
 
   return (
-    <div>
-      <h2 id="region" className="header2"> REGION </h2>
-      <div id="regionVisited" className="userInputRegionVisited">
-        <select
-          className="dropdown"
-          value={selectedRegion}
-          onChange={(event) => {
-            onRegionSelect(event.target.value);
-          }}
-        >
-          <option value="">Select a region</option>
-          {Object.keys(countriesByRegion).map((region) => (
-            <option key={region} value={region}>
-              {region}
-            </option>
-          ))}
-        </select>
-        <button id="regionButton" type="button" onClick={onAddRegionToSearchTerms}>Add region to search terms</button>
-      </div>
-      <h2 className="header2"> COUNTRY </h2>
-      <div id="countriesVisited" className="userInputCountriesVisited">
-        <select
-          className="dropdown"
-          value={selectedCountry}
-          onChange={(event) => {
-            onCountrySelect(event.target.value);
-          }}
-        >
-          <option value="">Select a country</option>
-          {countryList.map((country) => (
-            <option key={country} value={country}>
-              {country}
-            </option>
-          ))}
-        </select>
-        <button id="countryButton" onClick={onAddCountryToSearchTerms}>Add country to search terms</button>
+    <div className="input-container">
+      <div>
+        <div id="regionVisited" className="userInputRegionVisited">
+          <select
+            className="dropdown"
+            value={selectedRegion}
+            onChange={(event) => {
+              onRegionSelect(event.target.value);
+            }}
+          >
+            <option value="">Region</option>
+            {Object.keys(countriesByRegion).map((region) => (
+              <option key={region} value={region}>
+                {region}
+              </option>
+            ))}
+          </select>
+          <button className="addButton" onClick={onAddRegionToSearchTerms}>Add</button>
+        </div>
+        <div id="countriesVisited" className="userInputCountriesVisited">
+          <select
+            className="dropdown"
+            value={selectedCountry}
+            onChange={(event) => {
+              onCountrySelect(event.target.value);
+            }}
+          >
+            <option value="">Country</option>
+            {countryList.map((country) => (
+              <option key={country} value={country}>
+                {country}
+              </option>
+            ))}
+          </select>
+          <button className="addButton" onClick={onAddCountryToSearchTerms}>Add</button>
+        </div>
       </div>
       <div className="userInputText">
         <input
@@ -99,15 +101,15 @@ export function FilterFrontpage() {
             setSelectedText(event.target.value);
           }}
         />
-        <button id="addTextButton" onClick={onAddTextToSearchTerms}>Add terms</button>
+        <button className="addButton" onClick={onAddTextToSearchTerms}>Add</button>
       </div>
       <ul id="countriesList">
         {searchTerms.map((term, index) => (
           <li key={index}>{term}</li>
         ))}
       </ul>
-      <button id="clearButton" onClick={onClearSearchTerms}>Clear terms</button>
-      <button id="searchButton" onClick={onSearch}>Search</button>
+      <button className="clearButton" onClick={onClearSearchTerms}>Clear all</button>
+      <button className="searchButton" onClick={onSearch}>Search</button>
       <h2 className="header2">Trips that match searchTerms</h2>
       <div className="front_grid">
       {searchMatches.map((trip) => {
