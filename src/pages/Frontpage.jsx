@@ -9,7 +9,6 @@ import calculateWeights from "../utils/calculateWeights.js";
 import { auth } from "../firebase-config.js";
 import sortWeights from "../utils/sortWeights.js";
 import adHeader from "../img/nidarHeader.png";
-import adLeft from "../img/nidarL.png";
 
 const FrontPage = () => {
   const [trips, setTrips] = useState([]);
@@ -38,10 +37,7 @@ const FrontPage = () => {
   }, []);
 
   return (
-    <div id="body">
-      <a href="https://nidarkampanje.nidar.no/nidar-ving-kampanje/">
-        <img className="adLeft" src={adLeft} alt="Ad Left" />
-      </a>
+   <div id="body">
       <NavLink to="/newtrip" id="shareTrip" className="button" type="button">
         Share your own adventure!
       </NavLink>
