@@ -143,8 +143,7 @@
 
 .notVisibleEditButton {
   position: absolute;
-  background: transparent;
-  color: #ffffff;
+  visibility: hidden;
   border: none;
   width: 85px;
   height: 35px;
@@ -166,8 +165,7 @@
 
 .notVisibleDeleteButton {
   position: absolute;
-  background: transparent;
-  color: #ffffff;
+  visibility: hidden;
   border: none;
   width: 110px;
   height: 35px;

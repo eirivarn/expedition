@@ -45,7 +45,9 @@ body.dark h3 {
     color: #f9f9f9;
 }
 
-
+body.dark .locationArray {
+    color: #f9f9f9;
+}
 
 .button:hover {
     background-color: #3F543E;
