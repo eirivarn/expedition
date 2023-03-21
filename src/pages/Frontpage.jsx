@@ -24,7 +24,10 @@ const FrontPage = () => {
       const weights = await calculateWeights(userId);
       const topFourWeights = sortWeights(weights);
       const allTripsMatchingWeights = await searchFor(topFourWeights);
-      const shuffled = allTripsMatchingWeights.sort(() => 0.5 - Math.random());
+      const allTripsFiltered = allTripsMatchingWeights.find(
+        (x) => x.userId != userId
+      );
+      const shuffled = allTripsFiltered.sort(() => 0.5 - Math.random());
       let fourTrips = shuffled.slice(0, 4);
       setReccommendedTrips(fourTrips);
     };
