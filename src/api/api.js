@@ -317,7 +317,6 @@ export const searchFor = async (searchTerms) => {
 
     const countriesAndRegionsWords = trip.countries.concat(trip.region); // Legg til land og regioner
     wordsInTrip.push(...countriesAndRegionsWords);
-    console.log("api.wordsInTrip", wordsInTrip);
     return wordsInTrip;
   };
 

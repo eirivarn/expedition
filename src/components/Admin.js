@@ -15,14 +15,12 @@ const checkUserIdInField = async (collectionName, docId, userEmail) => {
     }
 
     const fieldValue = docSnapshot.data().admins;
-    console.log("fieldValue", fieldValue);
 
     if (fieldValue.includes(userEmail)) {
       return true;
     }
 
     return false;
-
   } catch (error) {
     console.error("Error retrieving document: ", error);
     return false;
@@ -44,6 +42,5 @@ const checkUserIdInField = async (collectionName, docId, userEmail) => {
 
   
 }; */
-
 
 export default checkUserIdInField;
