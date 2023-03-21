@@ -33,3 +33,8 @@ export const countriesByRegion = {
     { region: "Northern Africa", image: "https://i0.wp.com/www.eurasiareview.com/wp-content/uploads/2021/01/c-152.jpg?resize=800%2C445&ssl=1&is-pending-load=1" },
     { region: "Southern Africa", image: "https://media.discoverafrica.com/wp-content/uploads/2022/04/iStock-958201790-scaled.jpg?strip=all&lossy=1&resize=1920%2C1080&ssl=1" }
   ];
+
+export const getImage = (region) => {
+  console.log(regionImages.find(x => x.region == region).image);
+  return regionImages.find(x => x.region === region).image;
+}

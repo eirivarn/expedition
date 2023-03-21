@@ -74,6 +74,7 @@ export function ProfileInfo() {
                     tripID={trip.id}
                     name={trip.tripName}
                     ratings={trip.rating}
+                    region={trip.region[0]}
                   />
                 </NavLink>
               );

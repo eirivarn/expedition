@@ -2,12 +2,12 @@ import React from "react";
 import { useState } from "react";
 import "../styles/Trippage.css";
 import PropTypes from "prop-types";
-import image from "../img/test.jpg";
 import { db, auth } from "../firebase-config.js";
 import { useNavigate } from "react-router-dom";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import Rating from "@mui/material/Rating";
 import {addRating} from "../api/api";
+import { getImage } from "../Data/CountriesByRegion";
 
 export function TripContainer({ trip, calculateAverageRating }) {
   const navigate = useNavigate();
@@ -56,7 +56,7 @@ export function TripContainer({ trip, calculateAverageRating }) {
         }}
       ></textarea>
       <h3 className="author">{trip.authorName}</h3>
-      <img className="image" src={image} />
+      <img className="image" src={getImage(trip.region[0])} />
       <textarea
         className="tripDescription"
         disabled={!editing}
