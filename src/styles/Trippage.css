@@ -43,7 +43,7 @@
     width: 250px;
     height: 40px;
     left: 566px;
-    top: 170px;
+    top: 230px;
 }
 
 .averageRating {
@@ -92,13 +92,40 @@
   resize: none;
   width: 572px;
   height: 303px;
-  left: 566px;
-  top: 248px;
+  left: 555px;
+  top: 268px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 23px;
+  color: #000000;
+}
+
+.locationContainer {
+  position: absolute;
+  background: transparent;
+  border: none;
+  resize: none;
+  width: 572px;
+  height: 63px;
+  left: 571px;
+  top: 170px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #000000;
+}
+
+.locationArray{
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  left: 10px;
   color: #000000;
 }
 

@@ -27,7 +27,7 @@ export function TripContainer({ trip, calculateAverageRating }) {
     const useAdminUser = async () => {
       const userEmail = auth.currentUser.email; // Replace this with your actual user ID
       console.log("userEmail", userEmail);
-  
+
       const result = await checkUserIdInField("roles", "eHpUakLV9o1r9zA6h6Qs", userEmail);
       setIsAdmin(result);
     };
@@ -71,7 +71,7 @@ export function TripContainer({ trip, calculateAverageRating }) {
         onChange={(event) => {
           setTripName(event.target.value);
         }}
-      ></textarea>
+      />
       <h3 className="author">{trip.authorName}</h3>
       <img className="image" src={image} />
       <textarea
@@ -81,14 +81,17 @@ export function TripContainer({ trip, calculateAverageRating }) {
         onChange={(event) => {
           setDescription(event.target.value);
         }}
-      ></textarea>
+      />
+      <div className="locationContainer">
+          <div className="locationArray" >Region:  {trip.region.join(', ')}</div>
+          <div className="locationArray" >Countries:  {trip.countries.join(', ')}</div>
+      </div>
       <Rating
         className="tripRating"
         value={trip.rating[0]}
         readOnly={!editing}
         size="large"
         onChange={(event, newValue) => {
-          //updateRating(trip.id, authorRating, newValue)
           setAuthorRating(newValue);
           trip.rating[0] = newValue;
           addRating(trip.id, trip.rating);
