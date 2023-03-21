@@ -1,4 +1,3 @@
-
 .NewTripPage {
   position: relative;
   width: 1440px;
@@ -22,9 +21,9 @@
   right: 0%;
   top: 0%;
   bottom: 0%;
-  font-family: "Inter";
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
-  font-weight: 800;
+  font-weight: bold;
   font-size: 40px;
   line-height: 48px;
   text-align: center;
@@ -37,14 +36,13 @@
   height: 21px;
   left: 0px;
   top: 81px;
-  font-family: "Inter";
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
   color: #658864;
 }
-
 
 .userInputNameOfTrip {
   position: absolute;
@@ -56,14 +54,13 @@
   /*border: 1px solid #658864;*/
 }
 
-
 .regionVisited {
   position: absolute;
   width: 221px;
   height: 24px;
   left: 0px;
   top: 200px;
-  font-family: "Inter";
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -90,7 +87,6 @@
   margin-right: 20px;
   color: #658864;
   font-size: 16px;
-
 }
 
 #addCountryButton {
@@ -108,11 +104,10 @@
   color: rgb(58, 58, 58);
 }
 
-
 #countriesList {
-  color:#658864;
+  color: #658864;
   font-size: 20px;
-  font-family: 'Inter';
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: bold;
   bottom: 50px;
 }
@@ -128,7 +123,7 @@
   height: 24px;
   left: 0px;
   top: 300px;
-  font-family: "Inter";
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -152,7 +147,7 @@
   height: 19px;
   left: 2px;
   top: 500px;
-  font-family: "Inter";
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -164,7 +159,6 @@
   position: absolute;
   left: 0px;
   top: 550px;
-
 }
 
 .description {
@@ -173,7 +167,7 @@
   height: 19px;
   left: 0px;
   top: 600px;
-  font-family: "Inter";
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -190,7 +184,6 @@
   top: 660px;
   /*border: 1px solid #658864;*/
 }
-
 
 .publishTripButon {
   position: absolute;
@@ -225,9 +218,8 @@
   color: rgb(58, 58, 58);
 }
 
-
-input[type=text] {
-  border: 1px solid #658864; 
+input[type="text"] {
+  border: 1px solid #658864;
   width: 100%;
   padding: 16px 20px;
   margin: 8px 0;
@@ -242,12 +234,9 @@ textarea {
   border: 1px solid #658864;
 }
 
-
 /*
 .publishButton {
   text-decoration: none;
   color: white;
 }
 */
-
-
