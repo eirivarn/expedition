@@ -24,7 +24,7 @@ const FrontPage = () => {
       const weights = await calculateWeights(userId);
       const topFourWeights = sortWeights(weights);
       const allTripsMatchingWeights = await searchFor(topFourWeights);
-      const allTripsFiltered = allTripsMatchingWeights.find(
+      const allTripsFiltered = allTripsMatchingWeights.filter(
         (x) => x.userId != userId
       );
       const shuffled = allTripsFiltered.sort(() => 0.5 - Math.random());
