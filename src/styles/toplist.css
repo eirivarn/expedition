@@ -1,4 +1,4 @@
-#toplist {
+/*#toplist {
   margin-top: 150px;
   margin-bottom: 70px;
 }
@@ -42,11 +42,11 @@
   margin-left: 30px;
 }
 
-.toplist_component {
+/*.toplist_component {
   border-bottom: solid 1px #658864;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
+ 
 #toplist_name_and_rating {
   display: flex;
   flex-direction: column;
@@ -65,3 +65,62 @@
   font-size: 25px;
   margin: 0px;
 }
+
+*/
+
+/* Toplist section */
+
+
+#toplist {
+  color: #658864;
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#toplist h2 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #658864;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#toplist_grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.toplist_item {
+  width: calc(33% - 10px); 
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+
+.toplist_number {
+  margin-right: 20px;
+  font-size: 3em;
+  font-weight: bold;
+  color: #333;
+}
+
+/*  hover effect on the top list items */
+.toplist_item:hover {
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 767px) {
+  .toplist_item {
+    width: 100%;
+  }
+}
+
+ 

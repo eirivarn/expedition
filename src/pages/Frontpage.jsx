@@ -5,18 +5,34 @@ import TripComponent from "../components/TripComponent.js";
 import "../styles/frontpage.css";
 import "../styles/toplist.css";
 import PropTypes from "prop-types";
-import { getAllTrips, searchFor } from "../api/api.js";
+import { getAllTrips, searchFor, getSortedTripsByRating } from "../api/api.js";
 import { NavLink } from "react-router-dom";
 import calculateWeights from "../utils/calculateWeights.js";
 import { auth } from "../firebase-config.js";
 import sortWeights from "../utils/sortWeights.js";
 
-import image from "../img/test.jpg";
+//import image from "../img/test.jpg";
 
 const FrontPage = () => {
   const [trips, setTrips] = useState([]);
-  //  const [toplist, setToplist] = useState([]);
+  const [topList, setTopList] = useState([]);
   const [recommendedTrips, setReccommendedTrips] = useState([]);
+
+
+  useEffect(() => {
+    const fetchTopList = async () => {
+      const allTrips = await getAllTrips();
+      //console.log(allTrips);
+      const bestTrips = await getSortedTripsByRating(allTrips);
+      //console.log(bestTrips);
+      let topSix = bestTrips.slice(0,6);
+      //console.log(topSix);
+      setTopList(topSix);
+      }
+
+      fetchTopList();
+  }, []);
+
 
   useEffect(() => {
     const fetchAllTrips = async () => {
@@ -97,83 +113,36 @@ const FrontPage = () => {
       </div>
 
       {/*Topplisten */}
-      <div id="toplist">
+      <div id="toplist sectionLineBreak" className="sectionLineBreak">
         <h2>Top list</h2>
-        <div id="toplist_grid">
-          {/*1 */}
-          <div className="toplist_component">
-            <div className="toplist_numberbox">
-              <h1>1</h1>
-            </div>
-
-            <img src={image}></img>
-            <div id="toplist_name_and_rating">
-              <h3>Name trip</h3>
-              <h4>RATING</h4>
-            </div>
-          </div>
-          {/*2 */}
-          <div className="toplist_component">
-            <div className="toplist_numberbox">
-              <h1>2</h1>
-            </div>
-
-            <img src={image}></img>
-            <div id="toplist_name_and_rating">
-              <h3>Name trip</h3>
-              <h4>RATING</h4>
-            </div>
-          </div>
-          {/*3 */}
-          <div className="toplist_component">
-            <div className="toplist_numberbox">
-              <h1>3</h1>
-            </div>
-
-            <img src={image}></img>
-            <div id="toplist_name_and_rating">
-              <h3>Name trip</h3>
-              <h4>RATING</h4>
-            </div>
-          </div>
-          {/*4 */}
-          <div className="toplist_component">
-            <div className="toplist_numberbox">
-              <h1>4</h1>
-            </div>
-
-            <img src={image}></img>
-            <div id="toplist_name_and_rating">
-              <h3>Name trip</h3>
-              <h4>RATING</h4>
-            </div>
-          </div>
-          {/*5 */}
-          <div className="toplist_component">
-            <div className="toplist_numberbox">
-              <h1>5</h1>
-            </div>
-
-            <img src={image}></img>
-            <div id="toplist_name_and_rating">
-              <h3>Name trip</h3>
-              <h4>RATING</h4>
-            </div>
-          </div>
-          {/*6 */}
-          <div className="toplist_component">
-            <div className="toplist_numberbox">
-              <h1>6</h1>
-            </div>
-
-            <img src={image}></img>
-            <div id="toplist_name_and_rating">
-              <h3>Name trip</h3>
-              <h4>RATING</h4>
-            </div>
-          </div>
+          <div id="toplist_grid">
+          {topList.map((trip, index) => {
+          const ratings = trip.rating;
+          const average = Math.round(
+            ratings.reduce((a, b) => a + b, 0) / ratings.length
+          );
+          return (
+            <NavLink
+              key={trip.id}
+              to="/trip"
+              state={{ from: trip }}
+              style={{ textDecoration: "none" }}
+            >
+              <div className="toplist_item">
+                <h3 className="toplist_number">{index + 1 + "."}</h3>
+                <TripComponent
+                  tripID={trip.id}
+                  name={trip.tripName}
+                  averageRating={average}
+                />
+              </div>
+            </NavLink>
+              );
+            })}
         </div>
       </div>
+
+          
     </div>
   );
 };
