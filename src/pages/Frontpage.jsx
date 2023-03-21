@@ -20,12 +20,13 @@ const FrontPage = () => {
     };
 
     const getRecommendedTrips = async () => {
-      const userId = auth.currentUser.email;
-      const weights = await calculateWeights(userId);
+      const userEmail = auth.currentUser.email;
+      const userId = auth.currentUser.uid;
+      const weights = await calculateWeights(userEmail);
       const topFourWeights = sortWeights(weights);
       const allTripsMatchingWeights = await searchFor(topFourWeights);
       const allTripsFiltered = allTripsMatchingWeights.filter(
-        (x) => x.userId != userId
+        (trip) => trip.authorID != userId
       );
       const shuffled = allTripsFiltered.sort(() => 0.5 - Math.random());
       let fourTrips = shuffled.slice(0, 4);
@@ -61,6 +62,7 @@ const FrontPage = () => {
                     tripID={trip.id}
                     name={trip.tripName}
                     averageRating={average}
+                    region={trip.region[0]}
                   />
                 </NavLink>
               </div>
