@@ -63,7 +63,7 @@ const FrontPage = () => {
             );
           })}
         </div>
-        <div> <FilterFrontpage/></div>
+        <div className="filter"> <FilterFrontpage/></div>
         <h2 className="header2">Trips</h2>
         <div className="front_grid">
           {trips.map((trip) => {

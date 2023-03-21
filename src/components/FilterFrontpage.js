@@ -55,7 +55,6 @@ export function FilterFrontpage() {
   return (
     <div>
       <h2 id="region" className="header2"> REGION </h2>
-      <h2 className="header2"> COUNTRY </h2>
       <div id="regionVisited" className="userInputRegionVisited">
         <select
           className="dropdown"
@@ -73,6 +72,7 @@ export function FilterFrontpage() {
         </select>
         <button id="regionButton" type="button" onClick={onAddRegionToSearchTerms}>Add region to search terms</button>
       </div>
+      <h2 className="header2"> COUNTRY </h2>
       <div id="countriesVisited" className="userInputCountriesVisited">
         <select
           className="dropdown"
@@ -99,14 +99,14 @@ export function FilterFrontpage() {
             setSelectedText(event.target.value);
           }}
         />
-        <button id="addTextButton" onClick={onAddTextToSearchTerms}>Add text to search terms</button>
+        <button id="addTextButton" onClick={onAddTextToSearchTerms}>Add terms</button>
       </div>
       <ul id="countriesList">
         {searchTerms.map((term, index) => (
           <li key={index}>{term}</li>
         ))}
       </ul>
-      <button id="clearButton" onClick={onClearSearchTerms}>Clear search terms</button>
+      <button id="clearButton" onClick={onClearSearchTerms}>Clear terms</button>
       <button id="searchButton" onClick={onSearch}>Search</button>
       <h2 className="header2">Trips that match searchTerms</h2>
       <div className="front_grid">
