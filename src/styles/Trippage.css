@@ -398,3 +398,18 @@ textarea {
   margin-top: -3px;
 
 }
+
+.adLeft{
+  float: left;
+  margin-left: 0px 0px 0px 50px;
+  width: 150px;
+  height: 600px;
+}
+
+.adRight{
+  float: right;
+  margin-right: 0px 0px 0px 50px;
+  width: 150px;
+  height: 600px;
+  
+}

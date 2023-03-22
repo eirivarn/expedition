@@ -99,3 +99,15 @@
   text-align: left;
   margin-top: -15px;
 }
+
+.adHeader{
+    position: absolute;
+    width: 1150px;
+    height: auto;
+}
+
+@media only screen and (max-width: 1000px) {}
+
+
+
+
