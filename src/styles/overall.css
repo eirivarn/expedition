@@ -1,5 +1,16 @@
 /* General css for the whole page*/
 
+/*
+html {
+    width: 100%;
+    background-color: #f9f9f9;
+}
+*/
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body.dark {
   background-color: #333333;
   color: #f9f9f9;
@@ -7,15 +18,16 @@ body.dark {
 
 /*Dark green buttons*/
 .button {
-  background-color: #658864;
-  border-radius: 40px;
-  color: white;
-  font-size: 20px;
-  font-family: "Inter";
-  padding: 2px 4px;
-  border: none;
-  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.4);
-  text-align: center;
+    background-color: #658864;
+    border-radius: 40px; 
+    color: white;
+    font-size: 20px;
+    font-family: "Inter";
+    padding: 2px 4px;
+    border: none;
+    box-shadow: 0px 4px 7px rgba(0,0,0,0.4); 
+    text-align: center;
+   
 }
 
 body.dark .button {
@@ -36,6 +48,10 @@ body.dark h3 {
   color: #f9f9f9;
 }
 
+body.dark .locationArray {
+    color: #f9f9f9;
+}
+
 .button:hover {
   background-color: #3f543e;
 }
@@ -43,12 +59,13 @@ body.dark h3 {
 /*Light green buttons*/
 
 .lightbutton {
-  background-color: #c5dfc4;
-  color: #658864;
-  border-radius: 10px;
-  font-size: 17px;
-  font-family: "Inter";
-  padding: 2px 4px;
+    background-color: #C5DFC4;
+    color: #658864;
+    border-radius: 10px;
+    font-size: 17px;
+    font-family: "Inter";
+    padding: 2px 4px;
+    
 }
 
 .lightbutton:hover {
@@ -82,6 +99,12 @@ body.dark #toggleButton {
 #toggleIcon {
   width: 25px;
   height: 25px;
+}
+
+h2 {
+  color: #658864;
+  font-size: 27px;
+  font-family: "Inter";
 }
 
 body.dark .filter_dropdown {
