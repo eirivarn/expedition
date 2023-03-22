@@ -97,7 +97,7 @@
   height: 50px;
   width: 80px;
   font-size: 20px;
-  font-family: 'Inter';
+  font-family: "Inter";
 }
 
 #addCountryButton:hover {
@@ -107,12 +107,12 @@
 #countriesList {
   color: #658864;
   font-size: 20px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Inter";
   font-weight: bold;
   bottom: 50px;
 }
 
-#listElement {
+.listElement {
   margin-right: 50px;
   float: left;
 }
@@ -203,7 +203,7 @@
   left: 8.59%;
   right: 8.37%;
   top: 18%;
-  
+
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;

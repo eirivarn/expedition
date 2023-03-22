@@ -1,0 +1,120 @@
+#filter_flex_whole {
+  display: flex;
+  flex-direction: column;
+}
+
+#addButton1 {
+  height: 47px;
+  width: 57px;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 18px;
+}
+
+#addButton2 {
+  height: 47px;
+  width: 57px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+#addButton3 {
+  height: 47px;
+  width: 85px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+#searchButton {
+  width: 85px;
+  height: 29px;
+  border-radius: 10px;
+  right: 0;
+  margin-left: 10px;
+}
+
+#clearButton {
+  width: 85px;
+  height: 29px;
+  border-radius: 10px;
+  font-size: 15px;
+  border: none;
+}
+
+.filter_dropdown {
+  width: 150px;
+  height: 47px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #658864;
+  border: solid 3px #658864;
+  margin-right: 100;
+  margin-top: 0px;
+}
+
+.input_container {
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /*gap: 230px;*/
+}
+
+select {
+  width: 40px;
+}
+
+#filter_flex1 {
+  display: flex;
+  flex-direction: row;
+}
+
+#filter_flex2 {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+#filter_select {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+#filter_list {
+  height: 50px;
+}
+
+#regionVisited {
+  display: flex;
+  flex-direction: row;
+}
+
+#countriesVisited {
+  display: flex;
+  flex-direction: row;
+}
+
+#filter_searchbar {
+  display: flex;
+  flex-direction: row;
+}
+
+#filter_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#filter_userInputText {
+  height: 49px;
+  width: 390px;
+  border-radius: 40px;
+  border: solid 2px #658864;
+  margin: 0;
+}
+
+#filter_userInputText::placeholder {
+  font-size: 20px;
+  color: #658864;
+}

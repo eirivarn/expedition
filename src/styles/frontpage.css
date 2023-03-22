@@ -30,6 +30,20 @@
   flex-direction: row;
 }
 
+.addButton {
+  width: 50px;
+  height: 25px;
+  background-color: #c5dfc4;
+  border-radius: 40px;
+  color: #658864;
+  border: none;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.4);
+}
+
+.userInputText {
+  width: 290px;
+}
+
 .header2 {
   color: #658864;
 }
@@ -64,12 +78,12 @@
 
 
 .sectionLineBreak {
-    border-top: #658864 solid 1px;
-    width: 1130px;
-    margin-left: 12px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    color: #658864;
+  border-top: #658864 solid 1px;
+  width: 1130px;
+  margin-left: 12px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: #658864;
 }
 
 .reiseNavn {
