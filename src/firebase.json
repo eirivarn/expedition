@@ -1,0 +1,15 @@
+{
+    "database": {
+      "rules": {
+        "adminOnly": {
+          ".read": "auth.token.admin === true",
+          ".write": "auth.token.admin === true"
+        },
+        "publicData": {
+          ".read": true,
+          ".write": "!data.exists()"
+        }
+      }
+    }
+  }
+  

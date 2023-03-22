@@ -43,7 +43,7 @@
     width: 250px;
     height: 40px;
     left: 566px;
-    top: 170px;
+    top: 230px;
 }
 
 .averageRating {
@@ -92,8 +92,8 @@
   resize: none;
   width: 572px;
   height: 303px;
-  left: 566px;
-  top: 248px;
+  left: 555px;
+  top: 268px;
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -102,24 +102,51 @@
   color: #000000;
 }
 
+.locationContainer {
+  position: absolute;
+  background: transparent;
+  border: none;
+  resize: none;
+  width: 572px;
+  height: 63px;
+  left: 571px;
+  top: 170px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #000000;
+}
+
+.locationArray{
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  left: 10px;
+  color: #000000;
+}
+
 .editTripButton {
   position: absolute;
   border: none;
-  width: 102px;
-  height: 40px;
+  width: 85px;
+  height: 35px;
   left: 893px;
   top: 11px;
   color: #658864;
   background-color: #c8e7bb;
+  border-radius: 40px;
 }
 
 .notVisibleEditButton {
   position: absolute;
-  background: transparent;
-  color: #ffffff;
+  visibility: hidden;
   border: none;
-  width: 102px;
-  height: 40px;
+  width: 85px;
+  height: 35px;
   left: 893px;
   top: 11px;
 }
@@ -127,22 +154,22 @@
 .deleteTripButton {
   position: absolute;
   border: none;
-  width: 134px;
-  height: 40px;
-  left: 1004px;
+  width: 110px;
+  height: 35px;
+  left: 990px;
   top: 11px;
+  border-radius: 40px;
   color: #658864;
   background-color: #c8e7bb;
 }
 
 .notVisibleDeleteButton {
   position: absolute;
-  background: transparent;
-  color: #ffffff;
+  visibility: hidden;
   border: none;
-  width: 134px;
-  height: 40px;
-  left: 1004px;
+  width: 110px;
+  height: 35px;
+  left: 990px;
   top: 11px;
 }
 

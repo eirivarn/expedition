@@ -1,13 +1,14 @@
 import React from "react";
 import "../styles/frontpage.css";
-import image from "../img/test.jpg";
 import PropTypes from "prop-types";
 import { Rating } from "@mui/material";
+import { getImage } from "../Data/CountriesByRegion";
 
-const TripComponent = ({ name, handleClick, averageRating }) => {
+
+const TripComponent = ({ name, handleClick, averageRating, region }) => {
   return (
     <div className="trips" onClick={handleClick}>
-      <img className="tripImage" src={image}></img>
+      <img className="tripImage" src={getImage(region)}></img>
       <div className="tripAvgRating">
         <Rating value={averageRating} size="medium" readOnly />
       </div>
@@ -20,6 +21,7 @@ TripComponent.propTypes = {
   name: PropTypes.string,
   handleClick: PropTypes.func,
   averageRating: PropTypes.number,
+  region: PropTypes.string,
 };
 
 export default TripComponent;

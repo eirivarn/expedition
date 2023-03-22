@@ -7,11 +7,14 @@ html {
 }
 */
 
-body.dark {
-    background-color: #333333;
-    color: #f9f9f9;
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body.dark {
+  background-color: #333333;
+  color: #f9f9f9;
+}
 
 /*Dark green buttons*/
 .button {
@@ -28,26 +31,32 @@ body.dark {
 }
 
 body.dark .button {
-    color: #333333;
+  color: #333333;
 }
 
 body.dark input {
-    background-color: #333333;
-    color: #f9f9f9;
+  background-color: #333333;
+  color: #f9f9f9;
 }
 
 body.dark textarea {
-    background-color: #333333;
+  background-color: #333333;
+  color: #f9f9f9;
+}
+
+body.dark h3 {
+  color: #f9f9f9;
+}
+
+body.dark .locationArray {
     color: #f9f9f9;
 }
 
-
-
 .button:hover {
-    background-color: #3F543E;
+  background-color: #3f543e;
 }
 
-/*Light green buttons*/ 
+/*Light green buttons*/
 
 .lightbutton {
     background-color: #C5DFC4;
@@ -60,37 +69,48 @@ body.dark textarea {
 }
 
 .lightbutton:hover {
-    background-color: #3F543E;
+  background-color: #3f543e;
 }
 
 body.dark .lightbutton {
-    background-color: #3F543E;
+  background-color: #3f543e;
 }
 
 body.dark .lightbutton:hover {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
-
 
 body.dark #header {
-    background-color: #3F543E;
+  background-color: #3f543e;
 }
 
-
 #toggleButton {
-    border: none;
-    background-color: #C5DFC4;
-    position: absolute;
-    right: 10%;
-    top: 15px;
-
+  border: none;
+  background-color: #c5dfc4;
+  position: absolute;
+  right: 10%;
+  top: 15px;
 }
 
 body.dark #toggleButton {
-    background-color: #3F543E;
+  background-color: #3f543e;
 }
 
 #toggleIcon {
-    width: 25px;
-    height: 25px;
+  width: 25px;
+  height: 25px;
+}
+
+h2 {
+  color: #658864;
+  font-size: 27px;
+  font-family: "Inter";
+}
+
+body.dark .filter_dropdown {
+  background-color: #333333;
+}
+
+body.dark .dropdown {
+  background-color: #333333;
 }

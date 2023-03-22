@@ -11,7 +11,6 @@ import {
   doc,
   query,
 } from "firebase/firestore";
-import { async } from "@firebase/util";
 
 /* 
 Trips storage format
@@ -316,7 +315,7 @@ export const searchFor = async (searchTerms) => {
       .concat(trip.description.split(" ")); // Legg til forfatternavn og beskrivelse
     wordsInTrip.push(...authorAndDescWords);
 
-    const countriesAndRegionsWords = trip.countries.concat(trip.regions); // Legg til land og regioner
+    const countriesAndRegionsWords = trip.countries.concat(trip.region); // Legg til land og regioner
     wordsInTrip.push(...countriesAndRegionsWords);
     return wordsInTrip;
   };
