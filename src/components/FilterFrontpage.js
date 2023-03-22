@@ -150,7 +150,7 @@ export function FilterFrontpage() {
         </div>
       </div>
       <div id="output_container">
-        <h2 className="header2">Trips that match searchTerms</h2>
+        <h2 className="header2">Trips that match the search terms</h2>
         <div className="front_grid">
           {searchMatches.map((trip) => {
             const ratings = trip.rating;
