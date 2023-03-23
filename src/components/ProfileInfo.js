@@ -30,7 +30,7 @@ export function ProfileInfo() {
   const handleShowFavorites = async () => {
     const favoritedTrips = await getFavoritedTrips(user);
     setTrips(favoritedTrips);
-    setShowTrips(true);
+    setShowTrips(false);
     setShowTripsText("My Favorites");
   };
 
@@ -48,9 +48,8 @@ export function ProfileInfo() {
             className="lightbutton"
             onClick={handleShowTrips}
           >
-            <div>
-              <img id="locationIcon" src={locationIcon}></img>
-            </div>
+            <img id="locationIcon" src={locationIcon}></img>
+
             <div className="addMyTripsShowText">My Trips</div>
           </div>
         </div>
