@@ -31,11 +31,11 @@ const TripPage = () => {
     };
     comments.push(comment);
     calculateAverageRating();
+    getAllComments();
   };
 
   const handleDeleteComment = (commentString) => {
     from.comments.pop(commentString);
-    console.log(comments);
     calculateAverageRating();
     getAllComments();
   };
@@ -77,7 +77,7 @@ const TripPage = () => {
 
   return (
     <div>
-       <a href="https://nidarkampanje.nidar.no/nidar-ving-kampanje/">
+      <a href="https://nidarkampanje.nidar.no/nidar-ving-kampanje/">
         <img className="adLeft" src={adLeft} alt="Ad Left" />
       </a>
       <a href="https://nidarkampanje.nidar.no/nidar-ving-kampanje/">
@@ -108,7 +108,7 @@ const TripPage = () => {
           return (
             <div key={comment.userId}>
               <Comment
-                trip = {from}
+                trip={from}
                 userId={comment.userId}
                 name={comment.userName}
                 content={comment.content}

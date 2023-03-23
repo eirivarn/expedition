@@ -23,14 +23,14 @@ export function ProfileInfo() {
     const allTrips = await getAllTripsByCurrentUser(user);
     setTrips(allTrips);
     setShowTrips(true);
-    console.log("Show all trips");
+    //console.log("Show all trips");
   };
 
   const handleShowFavorites = async () => {
     const favoritedTrips = await getFavoritedTrips(user);
     setTrips(favoritedTrips);
     setShowTrips(true);
-    console.log("Show all favorited trips");
+    //console.log("Show all favorited trips");
   };
 
   const tripsToRender = showTrips ? trips : trips;
