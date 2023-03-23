@@ -10,7 +10,7 @@ const ToplistComponent = ({ name, handleClick, averageRating, region }) => {
       <div>
         <img className="toplist_image" src={getImage(region)}></img>
       </div>
-      <div>
+      <div id="toplist_name_rating">
         <h2 className="reiseNavn">{name}</h2>
         <div className="tripAvgRating">
           <Rating value={averageRating} size="medium" readOnly />
