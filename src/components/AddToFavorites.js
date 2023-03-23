@@ -39,21 +39,18 @@ export function AddToFavorites({ trip }) {
   };
 
 
-
   return (
-    <div
+    <button
       id="addFavoriteShowBox"
       className="lightbutton"
       onClick={() => {
         handleOnClick(trip.id); // <-- Hva som sendes inn her lagres som favoritedTrip
     
       }}
-    >
-      <div id="addFavoriteShowText"> Add to favorite</div>
-      <div id="addFavoriteShowHeart">
-        <img id="heartIcon2" src={heartIcon}></img>
-      </div>
-    </div>
+    > 
+    <img id="heartIcon2" src={heartIcon}></img>
+      Add to favorite
+    </button>
   );
 }
 

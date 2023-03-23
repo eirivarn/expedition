@@ -62,14 +62,15 @@ body.dark .locationArray {
     background-color: #C5DFC4;
     color: #658864;
     border-radius: 10px;
+    border: none;
     font-size: 17px;
     font-family: "Inter";
     padding: 2px 4px;
-    
 }
 
 .lightbutton:hover {
   background-color: #3f543e;
+  color: white;
 }
 
 body.dark .lightbutton {

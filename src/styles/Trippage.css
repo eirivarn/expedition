@@ -139,7 +139,14 @@
   color: #658864;
   background-color: #c8e7bb;
   border-radius: 40px;
+  cursor: pointer;
 }
+
+.editTripButton:hover {
+  background-color: #3f543e;
+  color: white;
+}
+
 
 .notVisibleEditButton {
   position: absolute;
@@ -161,6 +168,12 @@
   border-radius: 40px;
   color: #658864;
   background-color: #c8e7bb;
+  cursor: pointer;
+}
+
+.deleteTripButton:hover {
+  background-color: #3f543e;
+  color: white;
 }
 
 .notVisibleDeleteButton {
@@ -172,8 +185,6 @@
   left: 990px;
   top: 11px;
 }
-
-
 
 .commentsTripPage {
   position: absolute;
@@ -191,7 +202,6 @@
     top: 680px;
     color: #658864;
 }
-
 
 .commentIcon {
     position: absolute;
@@ -226,7 +236,6 @@
     left: -64px;
 }
 
-
 .nameText {
     position: absolute;
     width: 221px;
@@ -245,7 +254,6 @@
     top: 300px;
     border: #658864 solid 1px;
 }
-
 
 .commentText {
     position: absolute;
@@ -273,6 +281,7 @@
     height: 50px;
     left: 394px;
     top: 720px;
+    cursor: pointer;
 }
 
 .commentShowBody {
@@ -296,7 +305,6 @@
 .commentRating {
     top: 30px;
     left: -457px;
-
 }
 
 .commentShowDateTime {
@@ -359,44 +367,30 @@ textarea {
   top: 660px;
 }
 
-#addFavoriteShowText {
-  position: absolute;
-  left: 24.14%;
-  right: -6.32%;
-  top: 22.5%;
-  bottom: 30%;
-
+#addFavoriteShowBox {
+  cursor: pointer;
   font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   font-size: 17px;
   line-height: 21px;
 
+  display: flex;
+  justify-content: center;
+  padding-top: 5%;
+
   color: #658864;
 }
 
-#addFavoriteShowHeart {
-  position: absolute;
-  left: 8.33%;
-  right: 8.33%;
-  top: 26%;
-  bottom: 20%;
+#addFavoriteShowBox:hover {
+  color: white !important;
 }
 
-#addFavoriteShowBox {
-  position: absolute;
-  left: 0%;
-  right: -6.32%;
-  top: 0%;
-  bottom: 0%;
-
-}
 
 #heartIcon2 {
   height: 24px;
   width: 24px;
   margin-top: -3px;
-
 }
 
 .adLeft{
