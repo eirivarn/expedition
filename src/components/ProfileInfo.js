@@ -11,6 +11,7 @@ import locationIcon from "../img/location.svg";
 export function ProfileInfo() {
   const [trips, setTrips] = useState([]);
   const [showTrips, setShowTrips] = useState(true); // show trips by default
+  const [showTripsText, setShowTripsText] = useState("");
   const { user } = UserAuth();
 
   if (!user) {
@@ -23,14 +24,14 @@ export function ProfileInfo() {
     const allTrips = await getAllTripsByCurrentUser(user);
     setTrips(allTrips);
     setShowTrips(true);
-    //console.log("Show all trips");
+    setShowTripsText("My Trips");
   };
 
   const handleShowFavorites = async () => {
     const favoritedTrips = await getFavoritedTrips(user);
     setTrips(favoritedTrips);
     setShowTrips(true);
-    //console.log("Show all favorited trips");
+    setShowTripsText("My Favorites");
   };
 
   const tripsToRender = showTrips ? trips : trips;
@@ -66,7 +67,7 @@ export function ProfileInfo() {
           </div>
         </div>
         <div className="flex_images">
-          <h2 className="header2">{showTrips ? "My Trips" : "My Favorites"}</h2>
+          <h2 className="header2">{showTripsText}</h2>
           <div className="front_grid_userpage">
             {tripsToRender.map((trip) => {
               const ratings = trip.rating;
