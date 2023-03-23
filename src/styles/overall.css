@@ -27,7 +27,7 @@ body.dark {
     border: none;
     box-shadow: 0px 4px 7px rgba(0,0,0,0.4); 
     text-align: center;
-   
+    cursor: pointer;
 }
 
 body.dark .button {
@@ -66,11 +66,12 @@ body.dark .locationArray {
     font-size: 17px;
     font-family: "Inter";
     padding: 2px 4px;
+    cursor: pointer;
 }
 
 .lightbutton:hover {
   background-color: #3f543e;
-  color: white;
+  color: white !important;
 }
 
 body.dark .lightbutton {
@@ -91,6 +92,7 @@ body.dark #header {
   position: absolute;
   right: 10%;
   top: 15px;
+  cursor: pointer;
 }
 
 body.dark #toggleButton {
