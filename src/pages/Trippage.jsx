@@ -7,6 +7,8 @@ import { AddToFavorites } from "../components/AddToFavorites.js";
 import "../styles/Trippage.css";
 import { useLocation } from "react-router";
 import { addToViewedTrips } from "../api/api.js";
+import adLeft from "../img/nidarL.png";
+import adRight from "../img/nidarR.png";
 
 const TripPage = () => {
   const location = useLocation();
@@ -29,11 +31,11 @@ const TripPage = () => {
     };
     comments.push(comment);
     calculateAverageRating();
+    getAllComments();
   };
 
   const handleDeleteComment = (commentString) => {
     from.comments.pop(commentString);
-    console.log(comments);
     calculateAverageRating();
     getAllComments();
   };
@@ -75,6 +77,12 @@ const TripPage = () => {
 
   return (
     <div>
+      <a href="https://nidarkampanje.nidar.no/nidar-ving-kampanje/">
+        <img className="adLeft" src={adLeft} alt="Ad Left" />
+      </a>
+      <a href="https://nidarkampanje.nidar.no/nidar-ving-kampanje/">
+        <img className="adRight" src={adRight} alt="Ad Right" />
+      </a>
       <div className="infoTrip">
         <TripContainer
           trip={from}
@@ -100,7 +108,7 @@ const TripPage = () => {
           return (
             <div key={comment.userId}>
               <Comment
-                trip = {from}
+                trip={from}
                 userId={comment.userId}
                 name={comment.userName}
                 content={comment.content}

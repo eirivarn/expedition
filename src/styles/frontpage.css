@@ -30,6 +30,20 @@
   flex-direction: row;
 }
 
+.addButton {
+  width: 50px;
+  height: 25px;
+  background-color: #c5dfc4;
+  border-radius: 40px;
+  color: #658864;
+  border: none;
+  box-shadow: 0px 4px 7px rgba(0, 0, 0, 0.4);
+}
+
+.userInputText {
+  width: 290px;
+}
+
 .header2 {
   color: #658864;
 }
@@ -83,3 +97,15 @@
   text-align: left;
   margin-top: -15px;
 }
+
+.adHeader{
+    position: absolute;
+    width: 1150px;
+    height: auto;
+}
+
+@media only screen and (max-width: 1000px) {}
+
+
+
+

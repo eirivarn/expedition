@@ -98,7 +98,7 @@ export function NewTripInfo() {
             </button>
             <ul id="countriesList">
               {countries.map((country) => (
-                <li id="listElement" key={country}>
+                <li className="listElement" key={country}>
                   {country}
                 </li>
               ))}
