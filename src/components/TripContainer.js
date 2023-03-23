@@ -1,14 +1,15 @@
 import React from "react";
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import "../styles/Trippage.css";
 import PropTypes from "prop-types";
 import { db, auth } from "../firebase-config.js";
 import { useNavigate } from "react-router-dom";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import Rating from "@mui/material/Rating";
-import {addRating} from "../api/api";
+import { addRating } from "../api/api";
 import { getImage } from "../Data/CountriesByRegion";
 import checkUserIdInField from "./Admin";
+import trashcan from "../img/trashcan.svg";
 
 export function TripContainer({ trip, calculateAverageRating }) {
   const navigate = useNavigate();
@@ -28,7 +29,11 @@ export function TripContainer({ trip, calculateAverageRating }) {
       const userEmail = auth.currentUser.email; // Replace this with your actual user ID
       console.log("userEmail", userEmail);
 
-      const result = await checkUserIdInField("roles", "eHpUakLV9o1r9zA6h6Qs", userEmail);
+      const result = await checkUserIdInField(
+        "roles",
+        "eHpUakLV9o1r9zA6h6Qs",
+        userEmail
+      );
       setIsAdmin(result);
     };
 
@@ -83,8 +88,10 @@ export function TripContainer({ trip, calculateAverageRating }) {
         }}
       />
       <div className="locationContainer">
-          <div className="locationArray" >Region:  {trip.region.join(', ')}</div>
-          <div className="locationArray" >Countries:  {trip.countries.join(', ')}</div>
+        <div className="locationArray">Region: {trip.region.join(", ")}</div>
+        <div className="locationArray">
+          Countries: {trip.countries.join(", ")}
+        </div>
       </div>
       <Rating
         className="tripRating"
@@ -92,19 +99,20 @@ export function TripContainer({ trip, calculateAverageRating }) {
         readOnly={!editing}
         size="large"
         onChange={(event, newValue) => {
-          const newRatings = trip.rating
-          const i = newRatings.indexOf(authorRating)
-            if (i !== -1) {
-                newRatings.splice(i, 1);
-            }
+          const newRatings = trip.rating;
+          const i = newRatings.indexOf(authorRating);
+          if (i !== -1) {
+            newRatings.splice(i, 1);
+          }
           setAuthorRating(newValue);
-          newRatings.push(newValue)
-          addRating(trip.id, newRatings)
+          newRatings.push(newValue);
+          addRating(trip.id, newRatings);
           calculateAverageRating();
         }}
       />
       <button
-        className={isAuthor || isAdmin ? "editTripButton" : "notVisibleEditButton"}
+        className="lightbutton"
+        id={isAuthor || isAdmin ? "editTripButton" : "notVisibleEditButton"}
         disabled={!(isAuthor || isAdmin)}
         onClick={
           editing
@@ -117,13 +125,15 @@ export function TripContainer({ trip, calculateAverageRating }) {
         {editing ? "Ferdig" : "Edit"}
       </button>
       <button
-        className={isAuthor || isAdmin ? "deleteTripButton" : "notVisibleDeleteButton"}
+        className="lightbutton"
+        id={isAuthor || isAdmin ? "deleteTripButton" : "notVisibleDeleteButton"}
         disabled={!(isAuthor || isAdmin)}
         onClick={() => {
           handleDeleteButtonClick(trip.id);
         }}
       >
-        &#9746; Delete
+        <img id="trashcan_icon" src={trashcan}></img>
+        <h4 id="delete_text">Delete</h4>
       </button>
     </div>
   );

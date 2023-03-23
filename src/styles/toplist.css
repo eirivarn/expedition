@@ -10,11 +10,13 @@
   gap: 30px;
   flex-wrap: wrap;
   align-items: center;
+  margin-bottom: 170px;
 }
 
 .toplist_item {
   display: flex;
   flex-direction: row;
+  border-bottom: solid 1px #658864;
 }
 
 #number_border {
@@ -36,7 +38,11 @@
   padding: 20px;
   font-size: 30px;
   display: flex;
-  border-bottom: solid 1px #658864;
+}
+
+#toplist_name_rating {
+  margin-left: 50px;
+  width: 200px;
 }
 
 #toplist_grid > div > div > h1 {

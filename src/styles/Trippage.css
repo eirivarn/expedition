@@ -39,11 +39,11 @@
 }
 
 .tripRating {
-    position: absolute;
-    width: 250px;
-    height: 40px;
-    left: 566px;
-    top: 230px;
+  position: absolute;
+  width: 250px;
+  height: 40px;
+  left: 566px;
+  top: 230px;
 }
 
 .averageRating {
@@ -119,7 +119,7 @@
   color: #000000;
 }
 
-.locationArray{
+.locationArray {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -129,45 +129,40 @@
   color: #000000;
 }
 
-.editTripButton {
+#editTripButton {
   position: absolute;
   border: none;
   width: 85px;
   height: 35px;
   left: 893px;
-  top: 11px;
-  color: #658864;
-  background-color: #c8e7bb;
-  border-radius: 40px;
+  top: 22px;
   cursor: pointer;
 }
 
-.editTripButton:hover {
+#editTripButton:hover {
   background-color: #3f543e;
   color: white;
 }
 
-
-.notVisibleEditButton {
+#notVisibleEditButton {
   position: absolute;
   visibility: hidden;
   border: none;
   width: 85px;
   height: 35px;
   left: 893px;
-  top: 11px;
+  top: 22px;
+  padding: 20px 10px;
 }
 
-.deleteTripButton {
+#deleteTripButton {
   position: absolute;
   border: none;
   width: 110px;
   height: 35px;
   left: 990px;
-  top: 11px;
-  border-radius: 40px;
-  color: #658864;
-  background-color: #c8e7bb;
+  top: 22px;
+  padding: 2px 10px;
   cursor: pointer;
 }
 
@@ -176,14 +171,27 @@
   color: white;
 }
 
-.notVisibleDeleteButton {
+#notVisibleDeleteButton {
   position: absolute;
   visibility: hidden;
   border: none;
   width: 110px;
   height: 35px;
   left: 990px;
-  top: 11px;
+  top: 22px;
+}
+
+#trashcan_icon {
+  width: 23px;
+  height: 25px;
+  margin-top: 3px;
+  margin-left: -50px;
+}
+
+#delete_text {
+  margin-top: -28px;
+  margin-left: 25px;
+  font-weight: 400;
 }
 
 .commentsTripPage {
@@ -195,84 +203,83 @@
 }
 
 .commentSymbol {
-    position: absolute;
-    width: 41px;
-    height: 41px;
-    left: 18px;
-    top: 680px;
-    color: #658864;
+  position: absolute;
+  width: 41px;
+  height: 41px;
+  left: 18px;
+  top: 680px;
+  color: #658864;
 }
 
 .commentIcon {
-    position: absolute;
-    width: 31px;
-    height: 31px;
-    left: 18px;
-    top: 28px;
-    color: #658864;
+  position: absolute;
+  width: 31px;
+  height: 31px;
+  left: 18px;
+  top: 28px;
+  color: #658864;
 }
 
 .commentHeader {
-    position: relative;
-    width: 155px;
-    height: 45px;
-    font-size: 27px;
-    left: 62px;
-    color: #658864;
+  position: relative;
+  width: 155px;
+  height: 45px;
+  font-size: 27px;
+  left: 62px;
+  color: #658864;
 }
 
 .nameRating {
-    width: 221px;
-    height: 19px;
-    font-size: 20px;
-    left: 12px;
-    top: 170px;
-    color: #658864;
-
+  width: 221px;
+  height: 19px;
+  font-size: 20px;
+  left: 12px;
+  top: 170px;
+  color: #658864;
 }
 
 .newCommentRating {
-    top: 60px;
-    left: -64px;
+  top: 60px;
+  left: -64px;
 }
 
 .nameText {
-    position: absolute;
-    width: 221px;
-    height: 19px;
-    font-size: 20px;
-    left: 20px;
-    top: 250px;
-    color: #658864;
+  position: absolute;
+  width: 221px;
+  height: 19px;
+  font-size: 20px;
+  left: 20px;
+  top: 250px;
+  color: #658864;
 }
 
 .nameInput {
-    position: absolute;
-    width: 1140px;
-    height: 61px;
-    left: 20px;
-    top: 300px;
-    border: #658864 solid 1px;
+  position: absolute;
+  width: 1140px;
+  height: 61px;
+  left: 20px;
+  top: 300px;
+  border: #658864 solid 1px;
 }
 
 .commentText {
-    position: absolute;
-    width: 221px;
-    height: 19px;
-    font-size: 20px;
-    left: 20px;
-    top: 410px;
-    color: #658864;
+  position: absolute;
+  width: 221px;
+  height: 19px;
+  font-size: 20px;
+  left: 20px;
+  top: 410px;
+  color: #658864;
 }
 
 .commentInput {
-    box-sizing: border-box;
-    position: absolute;
-    width: 1140px;
-    height: 213px;
-    left: 20px;
-    top: 450px;
-    border: 1px solid #658864;
+  box-sizing: border-box;
+  position: absolute;
+  width: 1140px;
+  height: 213px;
+  left: 20px;
+  top: 450px;
+  border: 1px solid #658864;
 }
 
 #publishButton {
@@ -285,35 +292,37 @@
 }
 
 .commentShowBody {
-    position: relative;
-    width: 1138px;
-    height: 243px;
-    left: 152px;
-    top: 1812px;
+  position: relative;
+  width: 1138px;
+  height: 243px;
+  left: 152px;
+  top: 1812px;
 }
 
 .commentShowAuthor {
-    position: relative;
-    width: 750px;
-    height: 45px;
-    font-size: 27px;
-    left: 12px;
-    top: 0px;
-    color: #658864;
+  position: relative;
+  width: 750px;
+  height: 45px;
+  font-size: 27px;
+  left: 12px;
+  top: 0px;
+  color: #658864;
 }
 
 .commentRating {
     top: 30px;
     left: -457px;
+  top: 30px;
+  left: -457px;
 }
 
 .commentShowDateTime {
-    position: relative;
-    width: 221px;
-    height: 19px;
-    left: 12px;
-    top: -20px;
-    color: #658864;
+  position: relative;
+  width: 221px;
+  height: 19px;
+  left: 12px;
+  top: -20px;
+  color: #658864;
 }
 
 textarea {
@@ -321,42 +330,42 @@ textarea {
 }
 
 .commentShowText {
-    position: relative;
-    background: transparent;
-    border: none;
-    width: 1140px;
-    height: 80px;
-    left: -7px;
-    top: 50px;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 23px;
-    color: #000000;
+  position: relative;
+  background: transparent;
+  border: none;
+  width: 1140px;
+  height: 80px;
+  left: -7px;
+  top: 50px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 23px;
+  color: #000000;
 }
 
 .commentLinebrake {
-    border-top: #658864 solid 1px;
-    width: 1130px;
-    margin-left: 12px;
-    margin-top: 50px;
-    color: #658864;
+  border-top: #658864 solid 1px;
+  width: 1130px;
+  margin-left: 12px;
+  margin-top: 50px;
+  color: #658864;
 }
 
 .commentShowLine {
-    position: relative;
-    width: 1140px;
-    height: 0px;
-    left: 12px;
-    top: 195px;
-    border: 3px solid #658864;
+  position: relative;
+  width: 1140px;
+  height: 0px;
+  left: 12px;
+  top: 195px;
+  border: 3px solid #658864;
 }
 
 .addRating {
-    position: relative;
-    left: 22px;
-    top: 20px;
+  position: relative;
+  left: 22px;
+  top: 20px;
 }
 
 .addFavoriteArea {
