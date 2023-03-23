@@ -312,7 +312,7 @@ export const searchFor = async (searchTerms) => {
 
     const authorAndDescWords = trip.authorName
       .split(" ")
-      .concat(trip.description.split(" ")); // Legg til forfatternavn og beskrivelse
+      .concat(trip.description.split(" ")).concat(trip.tripName.split(" ")); // Legg til forfatternavn og beskrivelse
     wordsInTrip.push(...authorAndDescWords);
 
     const countriesAndRegionsWords = trip.countries.concat(trip.region); // Legg til land og regioner
